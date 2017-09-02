@@ -5,18 +5,18 @@
   
   <title>Java 数组 | 李泽伟热爱生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一维数组  定义方式: 元素类型[] 数组名 = new 元素类型[元素类型或数组长度];1int[] arr = new int[2]; 定义变量是在栈内存中开辟空间 –&amp;gt; new 在堆内存中开辟空间 –&amp;gt; 赋值是将堆内存中实体的首地址赋给栈内存中的变量.所以数组是引用类型. 数组编译时不会在堆分配空间,所以检查不出下标越界错误.  二维数组  定义方式: 元素类型[][] 数组名">
+  <meta name="description" content="一维数组  定义方式: 元素类型[] 数组名 = new 元素类型[元素类型或数组长度];1int[] arr = new int[2]; 声明变量是在栈内存中开辟空间 –&amp;gt; new 在堆内存中开辟空间 –&amp;gt; 赋值是将堆内存中实体的首地址赋给栈内存中的变量.所以数组是引用类型. 数组编译时不会在堆分配空间,所以检查不出下标越界错误.  注意, 长度非零的数组总是可变的,所以类具有公共">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 数组">
 <meta property="og:url" content="http://yoursite.com/2017/08/31/java_02/index.html">
 <meta property="og:site_name" content="李泽伟热爱生活">
-<meta property="og:description" content="一维数组  定义方式: 元素类型[] 数组名 = new 元素类型[元素类型或数组长度];1int[] arr = new int[2]; 定义变量是在栈内存中开辟空间 –&amp;gt; new 在堆内存中开辟空间 –&amp;gt; 赋值是将堆内存中实体的首地址赋给栈内存中的变量.所以数组是引用类型. 数组编译时不会在堆分配空间,所以检查不出下标越界错误.  二维数组  定义方式: 元素类型[][] 数组名">
+<meta property="og:description" content="一维数组  定义方式: 元素类型[] 数组名 = new 元素类型[元素类型或数组长度];1int[] arr = new int[2]; 声明变量是在栈内存中开辟空间 –&amp;gt; new 在堆内存中开辟空间 –&amp;gt; 赋值是将堆内存中实体的首地址赋给栈内存中的变量.所以数组是引用类型. 数组编译时不会在堆分配空间,所以检查不出下标越界错误.  注意, 长度非零的数组总是可变的,所以类具有公共">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-01T15:21:07.609Z">
+<meta property="og:updated_time" content="2017-09-02T13:51:29.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 数组">
-<meta name="twitter:description" content="一维数组  定义方式: 元素类型[] 数组名 = new 元素类型[元素类型或数组长度];1int[] arr = new int[2]; 定义变量是在栈内存中开辟空间 –&amp;gt; new 在堆内存中开辟空间 –&amp;gt; 赋值是将堆内存中实体的首地址赋给栈内存中的变量.所以数组是引用类型. 数组编译时不会在堆分配空间,所以检查不出下标越界错误.  二维数组  定义方式: 元素类型[][] 数组名">
+<meta name="twitter:description" content="一维数组  定义方式: 元素类型[] 数组名 = new 元素类型[元素类型或数组长度];1int[] arr = new int[2]; 声明变量是在栈内存中开辟空间 –&amp;gt; new 在堆内存中开辟空间 –&amp;gt; 赋值是将堆内存中实体的首地址赋给栈内存中的变量.所以数组是引用类型. 数组编译时不会在堆分配空间,所以检查不出下标越界错误.  注意, 长度非零的数组总是可变的,所以类具有公共">
   
     <link rel="alternate" href="/atom.xml" title="李泽伟热爱生活" type="application/atom+xml">
   
@@ -93,8 +93,11 @@
       
         <p><strong> 一维数组 </strong> 定义方式:</p>
 <p>元素类型[] 数组名 = new 元素类型[元素类型或数组长度];<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div></pre></td></tr></table></figure></p>
-<p>定义变量是在栈内存中开辟空间 –&gt; new 在堆内存中开辟空间 –&gt; 赋值是将堆内存中<br>实体的首地址赋给栈内存中的变量.所以数组是引用类型.</p>
+<p>声明变量是在栈内存中开辟空间 –&gt; new 在堆内存中开辟空间 –&gt; 赋值是将堆内存中<br>实体的首地址赋给栈内存中的变量.所以数组是引用类型.</p>
 <p>数组编译时不会在堆分配空间,所以检查不出下标越界错误.</p>
+<blockquote>
+<p>注意, 长度非零的数组总是可变的,所以类具有公共的静态<code>final</code>数组域, 或者返回这种域的访问方法,这几乎总是可变的.</p>
+</blockquote>
 <p><strong> 二维数组 </strong> 定义方式:</p>
 <p>元素类型[][] 数组名 = new 元素类型[一维长度][二维长度];<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[][] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>][<span class="number">3</span>];</div></pre></td></tr></table></figure></p>
 <p>在堆内存中一维实体存二维实体的首地址.</p>
@@ -106,7 +109,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7216erm0003x8qv21sxv231" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj73eldwk000374qvpgszuolc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -180,6 +183,10 @@
       <ul>
         
           <li>
+            <a href="/2017/09/02/java_04/">Java 面向对象编程</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/01/java_03/">Java 内存分配</a>
           </li>
         
@@ -193,10 +200,6 @@
         
           <li>
             <a href="/2017/08/31/eclipse_setting/">eclipse 自用配置</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/30/hello_world/">Hello World</a>
           </li>
         
       </ul>
