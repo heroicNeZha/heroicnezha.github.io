@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>单例设计模式 | 李泽伟热爱生活</title>
+  <title>单例设计模式 | lzw Love Hj</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。  Java中一共有23中设计模式, 今天学的是第一种: 单例设计模式. 解决问题: 单例设计模式解决的问题是一个类的对象在内存中的唯一性. 应用场景:">
+  <meta name="description" content="设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。  Java中一共有23中设计模式, 今天学的是第一种: 单例设计模式. 解决问题: 单例设计模式解决的问题是一个类的对象在内存中的唯一性. 应用场景: 多个应用都在操作同一个配置文件时, 需要程序A操作后的结果,程序B要知道并基于A操作后的结果进行操作. 示例: 再类加载时加载对象(饿汉">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单例设计模式">
 <meta property="og:url" content="http://yoursite.com/2017/09/03/design_pattern_01/index.html">
-<meta property="og:site_name" content="李泽伟热爱生活">
-<meta property="og:description" content="设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。  Java中一共有23中设计模式, 今天学的是第一种: 单例设计模式. 解决问题: 单例设计模式解决的问题是一个类的对象在内存中的唯一性. 应用场景:">
+<meta property="og:site_name" content="lzw Love Hj">
+<meta property="og:description" content="设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。  Java中一共有23中设计模式, 今天学的是第一种: 单例设计模式. 解决问题: 单例设计模式解决的问题是一个类的对象在内存中的唯一性. 应用场景: 多个应用都在操作同一个配置文件时, 需要程序A操作后的结果,程序B要知道并基于A操作后的结果进行操作. 示例: 再类加载时加载对象(饿汉">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-03T13:55:48.743Z">
+<meta property="og:updated_time" content="2017-09-05T14:38:27.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单例设计模式">
-<meta name="twitter:description" content="设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。  Java中一共有23中设计模式, 今天学的是第一种: 单例设计模式. 解决问题: 单例设计模式解决的问题是一个类的对象在内存中的唯一性. 应用场景:">
+<meta name="twitter:description" content="设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。  Java中一共有23中设计模式, 今天学的是第一种: 单例设计模式. 解决问题: 单例设计模式解决的问题是一个类的对象在内存中的唯一性. 应用场景: 多个应用都在操作同一个配置文件时, 需要程序A操作后的结果,程序B要知道并基于A操作后的结果进行操作. 示例: 再类加载时加载对象(饿汉">
   
-    <link rel="alternate" href="/atom.xml" title="李泽伟热爱生活" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="lzw Love Hj" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -39,12 +39,8 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">李泽伟热爱生活</a>
+        <a href="/" id="logo">lzw Love Hj</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">一个计算机学生的小奋斗</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -96,12 +92,17 @@
 </blockquote>
 <p>Java中一共有23中设计模式, 今天学的是第一种: 单例设计模式.</p>
 <p>解决问题: 单例设计模式解决的问题是一个类的对象在内存中的唯一性.</p>
-<p>应用场景: </p>
+<p>应用场景: 多个应用都在操作同一个配置文件时, 需要程序A操作后的结果,<br>程序B要知道并基于A操作后的结果进行操作.</p>
+<p>示例:</p>
+<p>再类加载时加载对象(饿汉):<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Single</span></span>&#123;</div><div class="line">  <span class="keyword">static</span> Single s = <span class="keyword">new</span> Single();</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span></span>&#123;&#125;;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">static</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> s;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>延迟加载方式(懒汉):<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Single</span></span>&#123;</div><div class="line">  <span class="keyword">static</span> Single s = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span></span>&#123;&#125;;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">static</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span>) &#123;</div><div class="line">      s = <span class="keyword">new</span> Single();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> s;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>主方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">  Single s1 = Single.getInstance();</div><div class="line">  Single s2 = Single.getInstance();</div><div class="line">  System.out.println(s1==s2);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用静态方法<code>getInstance()</code>得到唯一的静态对象<code>s</code>;</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj74uqoim0000hgqvrqzt7uek" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj77q3jkb0000r8qv94rd2dz7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -197,7 +198,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 李泽伟<br>
+      &copy; 2017 lzw<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
