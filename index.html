@@ -99,7 +99,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7ajqeij000dicqvw106gezx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7der65e0000p0qvms381d3k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -143,9 +143,12 @@
 <li>提高了代码的复用性</li>
 <li>让类与类之间产生了关系,为第三个特征多态提供了前提</li>
 </ol>
-<p><code>Java</code>支持单继承, 不直接支持多继承. 多继承的的弊端是方法调用具有不确定性,因为方法的主体不同,<code>Java</code>对其进行了改良.</p>
-<p>当事物存在<code>(is-a)</code>的关系时, 可以通过继承实现这个关系.</p>
-<p>子父类出现的相同名字的成员变量, 用<code>super</code>关键字来区分.</p>
+<p><code>Java</code>支持单继承, 不直接支持多继承. 多继承的的弊端是方法调用具有不确定性,因为方法的主体不同,<code>Java</code>对其进行了改良;</p>
+<p>当事物存在<code>(is-a)</code>的关系时, 可以通过继承实现这个关;</p>
+<p>子父类出现的相同名字的成员变量, 用<code>super</code>关键字来区分;</p>
+<p>子类每一个构造函数第一行都有隐式的super();<br>如果父类没有空参数构造函数, 则需要显式调用super的方式调用父类构造函数;<br>并且只能定义在第一行, 因为父类的初始化要先完成;<br>super()和this()不能同时出现,因为他们只能定义在第一行;</p>
+<p>如下例:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">zi</span> <span class="keyword">extends</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(<span class="string">"0"</span>);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(s);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">fu</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"fu runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注意覆盖(Override:关键字<code>Override</code>), 重载(Overload), 重写(OverWrite:关键字<code>new</code>)三种方法;</p>
 <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h5 id="创建对象时的流程如下"><a href="#创建对象时的流程如下" class="headerlink" title="创建对象时的流程如下:"></a>创建对象时的流程如下:</h5><ol>
 <li>加载指定的字节码文件进内存</li>
 <li>通过<code>new</code>在堆内存中开辟空间并分配首地址值</li>
@@ -161,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7ajqehx0003icqvx43cie2b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7der65n0004p0qvbsxjdp7m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -232,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7ajqeia000aicqv3xhj7ev1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7der65n0003p0qvk3prcaq5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -284,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7ajqei90009icqvv6lrl84k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7der661000fp0qvkbbyi4sd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -408,7 +411,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7ajqehy0004icqv9fp5etp3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7der65q0008p0qvigktq2oq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -454,7 +457,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7ajqegk0000icqvweu49scd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7der65j0001p0qvff8fg3bp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -501,7 +504,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7ajqeht0001icqvzpdvhs4k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7der65o0005p0qvxwlcjm0d" class="article-share-link">Share</a>
       
       
     </footer>
