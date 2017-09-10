@@ -62,6 +62,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_05" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/10/java_05/" class="article-date">
+  <time datetime="2017-09-10T14:19:22.794Z" itemprop="datePublished">2017-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/10/java_05/">Java 面向对象编程(下)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7etth3y000by8qvmhgwkw4g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-design_pattern_01" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/03/design_pattern_01/" class="article-date">
@@ -99,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7der65e0000p0qvms381d3k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7etth45000ey8qvva4xikks" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -125,7 +163,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/02/java_04/">Java 面向对象编程</a>
+      <a class="article-title" href="/2017/09/02/java_04/">Java 面向对象编程(上)</a>
     </h1>
   
 
@@ -147,9 +185,9 @@
 <p>当事物存在<code>(is-a)</code>的关系时, 可以通过继承实现这个关;</p>
 <p>子父类出现的相同名字的成员变量, 用<code>super</code>关键字来区分;</p>
 <p>子类每一个构造函数第一行都有隐式的super();<br>如果父类没有空参数构造函数, 则需要显式调用super的方式调用父类构造函数;<br>并且只能定义在第一行, 因为父类的初始化要先完成;<br>super()和this()不能同时出现,因为他们只能定义在第一行;</p>
-<p>如下例:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">zi</span> <span class="keyword">extends</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(<span class="string">"0"</span>);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(s);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">fu</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"fu runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如下例:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">zi</span> <span class="keyword">extends</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(<span class="string">"0"</span>);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(s);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">fu</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"fu runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>注意覆盖(Override:关键字<code>Override</code>), 重载(Overload), 重写(OverWrite:关键字<code>new</code>)三种方法;</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h5 id="创建对象时的流程如下"><a href="#创建对象时的流程如下" class="headerlink" title="创建对象时的流程如下:"></a>创建对象时的流程如下:</h5><ol>
+<h5 id="创建对象时的流程如下"><a href="#创建对象时的流程如下" class="headerlink" title="创建对象时的流程如下:"></a>创建对象时的流程如下:</h5><ol>
 <li>加载指定的字节码文件进内存</li>
 <li>通过<code>new</code>在堆内存中开辟空间并分配首地址值</li>
 <li>对象中的属性进行默认初始化</li>
@@ -164,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7der65n0004p0qvbsxjdp7m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7etth3x0009y8qvsa7a0yls" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -235,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7der65n0003p0qvk3prcaq5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7etth3w0007y8qvgodz4igl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -287,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7der661000fp0qvkbbyi4sd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7etth3u0006y8qv5ndqev5f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -353,6 +391,9 @@
 </tr>
 </tbody>
 </table>
+<ul>
+<li>常量 Integer.MIN_VALUE和 Integer.MAX_VALUE分别是最小和最大的整数, 其他类也有同样作用的常量.</li>
+</ul>
 <h5 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h5><table>
 <thead>
 <tr>
@@ -371,6 +412,10 @@
 </tr>
 </tbody>
 </table>
+<ul>
+<li>Double.POSITIVE_INFINITY代表∞, Double.NEGATIVE_INFINITY代表-∞, Double.NaN代表”非数值”.</li>
+<li>所有的”非数值”都被认为是彼此不同的, 比如不能这样判断<code>if(x==Double.NaN)</code>, 但是可以用<code>if(Double.isNaN(x))</code>.</li>
+</ul>
 <h5 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h5><table>
 <thead>
 <tr>
@@ -407,11 +452,17 @@
 <li><p>默认浮点类型为double,float加后缀<code>f</code>或<code>F</code>.</p>
 </li>
 </ol>
+<ul>
+<li>可以给数字加下划线, 比如<code>1_000_000</code>, Java编译器会直接删除他们.</li>
+</ul>
+<ol>
+<li>Maths类提供常见的数学函数.</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7der65q0008p0qvigktq2oq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7etth3i0001y8qvffw7ks0x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -457,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7der65j0001p0qvff8fg3bp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7etth3d0000y8qv8kbj0f38" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -504,7 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7der65o0005p0qvxwlcjm0d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7etth4d000hy8qvxo4tdxrs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -558,11 +609,15 @@
       <ul>
         
           <li>
+            <a href="/2017/09/10/java_05/">Java 面向对象编程(下)</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/03/design_pattern_01/">单例设计模式</a>
           </li>
         
           <li>
-            <a href="/2017/09/02/java_04/">Java 面向对象编程</a>
+            <a href="/2017/09/02/java_04/">Java 面向对象编程(上)</a>
           </li>
         
           <li>
@@ -571,10 +626,6 @@
         
           <li>
             <a href="/2017/08/31/java_02/">Java 数组</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/31/java_01/">Java 基本数据类型</a>
           </li>
         
       </ul>

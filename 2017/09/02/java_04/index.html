@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java 面向对象编程 | lzw Love Hj</title>
+  <title>Java 面向对象编程(上) | lzw Love Hj</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="面向对象三个特征:封装,继承和多态. 封装封装就是隐藏实现细节. 对外提供公共的访问方式(接口). 封装的目的是为了解耦, 降低耦合可以加快系统的开发速度, 减轻维护的负担. 还提高了软件的可重用行,也便于进一步优化.  访问控制机制. 实体的可访问性由该实体声明所在的位置,以及该实体声明中所出现的访问修饰符(private,protected,public)共同决定. 第一规则是尽可能地使每个类">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 面向对象编程">
+<meta property="og:title" content="Java 面向对象编程(上)">
 <meta property="og:url" content="http://yoursite.com/2017/09/02/java_04/index.html">
 <meta property="og:site_name" content="lzw Love Hj">
 <meta property="og:description" content="面向对象三个特征:封装,继承和多态. 封装封装就是隐藏实现细节. 对外提供公共的访问方式(接口). 封装的目的是为了解耦, 降低耦合可以加快系统的开发速度, 减轻维护的负担. 还提高了软件的可重用行,也便于进一步优化.  访问控制机制. 实体的可访问性由该实体声明所在的位置,以及该实体声明中所出现的访问修饰符(private,protected,public)共同决定. 第一规则是尽可能地使每个类">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-09T14:30:16.149Z">
+<meta property="og:updated_time" content="2017-09-10T14:19:12.659Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 面向对象编程">
+<meta name="twitter:title" content="Java 面向对象编程(上)">
 <meta name="twitter:description" content="面向对象三个特征:封装,继承和多态. 封装封装就是隐藏实现细节. 对外提供公共的访问方式(接口). 封装的目的是为了解耦, 降低耦合可以加快系统的开发速度, 减轻维护的负担. 还提高了软件的可重用行,也便于进一步优化.  访问控制机制. 实体的可访问性由该实体声明所在的位置,以及该实体声明中所出现的访问修饰符(private,protected,public)共同决定. 第一规则是尽可能地使每个类">
   
     <link rel="alternate" href="/atom.xml" title="lzw Love Hj" type="application/atom+xml">
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java 面向对象编程
+      Java 面向对象编程(上)
     </h1>
   
 
@@ -101,9 +101,9 @@
 <p>当事物存在<code>(is-a)</code>的关系时, 可以通过继承实现这个关;</p>
 <p>子父类出现的相同名字的成员变量, 用<code>super</code>关键字来区分;</p>
 <p>子类每一个构造函数第一行都有隐式的super();<br>如果父类没有空参数构造函数, 则需要显式调用super的方式调用父类构造函数;<br>并且只能定义在第一行, 因为父类的初始化要先完成;<br>super()和this()不能同时出现,因为他们只能定义在第一行;</p>
-<p>如下例:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">zi</span> <span class="keyword">extends</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(<span class="string">"0"</span>);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(s);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">fu</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"fu runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如下例:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">zi</span> <span class="keyword">extends</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(<span class="string">"0"</span>);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(s);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">fu</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"fu runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>注意覆盖(Override:关键字<code>Override</code>), 重载(Overload), 重写(OverWrite:关键字<code>new</code>)三种方法;</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h5 id="创建对象时的流程如下"><a href="#创建对象时的流程如下" class="headerlink" title="创建对象时的流程如下:"></a>创建对象时的流程如下:</h5><ol>
+<h5 id="创建对象时的流程如下"><a href="#创建对象时的流程如下" class="headerlink" title="创建对象时的流程如下:"></a>创建对象时的流程如下:</h5><ol>
 <li>加载指定的字节码文件进内存</li>
 <li>通过<code>new</code>在堆内存中开辟空间并分配首地址值</li>
 <li>对象中的属性进行默认初始化</li>
@@ -118,7 +118,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7der65n0004p0qvbsxjdp7m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7etth3x0009y8qvsa7a0yls" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -192,11 +192,15 @@
       <ul>
         
           <li>
+            <a href="/2017/09/10/java_05/">Java 面向对象编程(下)</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/03/design_pattern_01/">单例设计模式</a>
           </li>
         
           <li>
-            <a href="/2017/09/02/java_04/">Java 面向对象编程</a>
+            <a href="/2017/09/02/java_04/">Java 面向对象编程(上)</a>
           </li>
         
           <li>
@@ -205,10 +209,6 @@
         
           <li>
             <a href="/2017/08/31/java_02/">Java 数组</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/31/java_01/">Java 基本数据类型</a>
           </li>
         
       </ul>
