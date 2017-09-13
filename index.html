@@ -62,6 +62,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_06" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/13/java_06/" class="article-date">
+  <time datetime="2017-09-13T14:16:13.037Z" itemprop="datePublished">2017-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/13/java_06/">Java 字符串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>字符串就是一系列字符。</p>
+<h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h3><ul>
+<li>字符串连接用＋</li>
+<li>以分隔符隔开String.join(分隔符,字符1,字符2)</li>
+<li>最好使用StringBuilder<h3 id="子字符串"><a href="#子字符串" class="headerlink" title="子字符串"></a>子字符串</h3></li>
+<li>子字符串拆开用substring(要提取的自字符串起始位置,不要的字符串起始位置)方法</li>
+<li>提取所有分割后的自字符串用split(分隔符)方法，分隔符可以是正则表达式<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3></li>
+<li>不要使用==比较字符串，这种比较只有两个字符串在内存中为同一对象时才返回true。<br>java虚拟机中每个文字串只有一个实例，因此<code>&quot;world&quot;==&quot;world&quot;</code>为真，但如果<code>s1=s2.subString(7,12);</code>则<code>s1==&quot;world&quot;</code>为假</li>
+<li>测试是否为null可以使用==，但null和空字符串””不相同</li>
+<li>比较<code>if(&quot;world&quot;.equals(s1))</code>时，将文字串放前面更好，因为如果s1为null也可以正常工作</li>
+<li>不考虑大小写比较字符串使用equalsIgnore Case方法</li>
+<li>compareTo方法是比较Unicode的值<h3 id="数字与字符串转换"><a href="#数字与字符串转换" class="headerlink" title="数字与字符串转换"></a>数字与字符串转换</h3></li>
+<li><code>String s = Integer.tostring(n,2)</code>是将n的二进制数保存在字符串内</li>
+<li><code>Integer.parseInt(str,2)</code>将保存二进制数的字符串转换为<code>int</code>型</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7j4cy9b000cfsqv4b3vjlac" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java_05" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/10/java_05/" class="article-date">
@@ -88,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7hoet7p00099sqvgzyrau6e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7j4cy980009fsqvvxpujmme" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -137,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7hoet6e00009sqv7s8u2lkg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7j4cy7x0000fsqvwoquroeg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -204,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7hoet7a00049sqvb2zi7bat" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7j4cy970008fsqv1gci8vpc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -275,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7hoet7a00059sqvoqufr4qv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7j4cy950005fsqv4rbwvu6e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -327,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7hoet7a00089sqv09dvdhtz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7j4cy940004fsqvdkrcwxon" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -464,7 +517,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7hoet7a00039sqv3ak6v7fr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7j4cy8x0001fsqvwurzqzyl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -510,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7hoet6u00019sqvsyflwmkb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7j4cy920003fsqvk1k87suj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -557,7 +610,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7hoet85000j9sqv9hxwflds" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7j4cy9l000lfsqv0mr7n5kp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -611,6 +664,10 @@
       <ul>
         
           <li>
+            <a href="/2017/09/13/java_06/">Java 字符串</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/10/java_05/">Java 面向对象编程(下)</a>
           </li>
         
@@ -624,10 +681,6 @@
         
           <li>
             <a href="/2017/09/01/java_03/">Java 内存分配</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/31/java_02/">Java 数组</a>
           </li>
         
       </ul>
