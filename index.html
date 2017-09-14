@@ -103,7 +103,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7j4cy9b000cfsqv4b3vjlac" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7ki68iv0008esqvszwtm8ex" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -141,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7j4cy980009fsqvvxpujmme" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7ki68iv0005esqv1659lq8p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -190,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7j4cy7x0000fsqvwoquroeg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7ki68i00000esqve2m4jeme" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -257,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7j4cy970008fsqv1gci8vpc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7ki68jb000cesqvmrfnuxpk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -328,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7j4cy950005fsqv4rbwvu6e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7ki68iv0004esqv7de4mtii" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -363,24 +363,56 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong> 一维数组 </strong> 定义方式:</p>
-<p>元素类型[] 数组名 = new 元素类型[元素类型或数组长度];<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div></pre></td></tr></table></figure></p>
-<p>声明变量是在栈内存中开辟空间 –&gt; new 在堆内存中开辟空间 –&gt; 赋值是将堆内存中<br>实体的首地址赋给栈内存中的变量.所以数组是引用类型.</p>
-<p>数组编译时不会在堆分配空间,所以检查不出下标越界错误.</p>
+<ul>
+<li><p>元素类型[] 数组名 = new 元素类型[元素类型或数组长度];</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div></pre></td></tr></table></figure>
+</li>
+<li><p>声明变量是在栈内存中开辟空间 –&gt; new 在堆内存中开辟空间 –&gt; 赋值是将堆内存中<br>实体的首地址赋给栈内存中的变量.所以数组是引用类型.</p>
+</li>
+<li><p>数组编译时不会在堆分配空间,所以检查不出下标越界错误.</p>
+</li>
+</ul>
 <blockquote>
 <p>注意, 长度非零的数组总是可变的,所以类具有公共的静态<code>final</code>数组域, 或者返回这种域的访问方法,这几乎总是可变的.</p>
 </blockquote>
-<p><strong> 二维数组 </strong> 定义方式:</p>
-<p>元素类型[][] 数组名 = new 元素类型[一维长度][二维长度];<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[][] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>][<span class="number">3</span>];</div></pre></td></tr></table></figure></p>
-<p>在堆内存中一维实体存二维实体的首地址.</p>
-<p>如果二维数组长度不定,需要分别初始化二维数组.</p>
+<p><strong> 多维数组 </strong> 定义方式:</p>
+<ul>
+<li><p>java没有真正意义上的多维数组，从技术上来讲，本质上二维数组是一维数组的数组</p>
+</li>
+<li><p>元素类型[][] 数组名 = new 元素类型[一维长度][二维长度];</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[][] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>][<span class="number">3</span>];</div></pre></td></tr></table></figure>
+</li>
+<li><p>在堆内存中一维实体存二维实体的首地址.</p>
+</li>
+<li><p>如果二维数组长度不定,需要分别初始化二维数组.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[][] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>][];</div><div class="line">arr[<span class="number">0</span>] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</div><div class="line">arr[<span class="number">1</span>] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</div></pre></td></tr></table></figure>
-<p>数组的工具类<code>Array</code>;</p>
-<p>二分查找<code>Array.binarySearch()</code>,查询成功返回正索引,查询失败返回<code>-(1+插入位置)</code>;</p>
+</li>
+</ul>
+<h3 id="数组算法"><a href="#数组算法" class="headerlink" title="数组算法"></a>数组算法</h3><ul>
+<li>Arrays类和Collections类实现了数组和数组列表的常用算法</li>
+<li>填充<code>Arrays.fill()</code></li>
+<li>排序<code>Arrays.sort()</code>，数组可以使用parallelSort方法，如果数组较大，该方法可以将工作分布到多个处理器上运行</li>
+<li>产生字符串<code>Arrays.toString()</code></li>
+<li>二分查找<code>Array.binarySearch()</code>,查询成功返回正索引,查询失败返回<code>-(1+插入位置)</code>;</li>
+</ul>
+<h3 id="数组列表"><a href="#数组列表" class="headerlink" title="数组列表"></a>数组列表</h3><ul>
+<li>java.util.ArrayList类，其对象可以内部管理数组，当数组太小不够使用时，自动创建另外一个内部数组，并将元素移动到该数组，这个过程是透明的</li>
+<li>限制：不能使用基本类型作为类型参数，解决办法是使用包装类</li>
+<li>基本类型和它们对应的包装类型之间的转换是在一种名为<code>自动装箱</code>的过程中自动构造的</li>
+<li>将Integer对象赋值给int变量时，这个对象<code>自动拆箱</code>，内部产生一个int值</li>
+</ul>
+<h3 id="数组与数组列表的复制"><a href="#数组与数组列表的复制" class="headerlink" title="数组与数组列表的复制"></a>数组与数组列表的复制</h3><ul>
+<li>可以将数组变量复制到另一个数组变量，但两个变量引用同一个数组</li>
+<li>复制数组使用静态方法<code>Arrays.copyOf()</code></li>
+<li>复制数组列表可以直接使用构造方法</li>
+<li><code>Arrays.asList()</code>方法可以使用一个数组或任意数量的参数，使用任意数量参数时，你可以将它当作初始化数组的一种替代，返回数组列表</li>
+<li>没有简单的方法可以完成int[]和ArrayList<integer>之间的转换，需要使用显示循环或IntStream</integer></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7j4cy940004fsqvdkrcwxon" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7ki68iv0001esqveriumhio" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -517,7 +549,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7j4cy8x0001fsqvwurzqzyl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7ki68iv0003esqv2fw35spz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -563,7 +595,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7j4cy920003fsqvk1k87suj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7ki68iv0009esqvaesq0zk7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -610,7 +642,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7j4cy9l000lfsqv0mr7n5kp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7ki68jq000lesqvughn5x87" class="article-share-link">Share</a>
       
       
     </footer>
