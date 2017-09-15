@@ -3,15 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档: 2017/9 | lzw Love Hj</title>
+  <title>信息安全之DES加密过程 | lzw Love Hj</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="lzw Love Hj">
-<meta property="og:url" content="http://yoursite.com/archives/2017/09/index.html">
+  <meta name="description" content="代换是将明文字母替换为其他字母,数字或者符号.置换是保持铭文的所有字母不变,只是打乱明文字母的位置和次序 DES同时使用代换和置换两种技巧, 它用56位密匙加密64位密文, 最后输出64位密文.整个过程由两部分组成:一个是加密过程, 一个是子密钥产生过程.  加密过程                       子密钥产生  64位明文                      64位密钥输入">
+<meta name="keywords" content="信息安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信息安全之DES加密过程">
+<meta property="og:url" content="http://yoursite.com/2017/09/15/informationSecure_01/index.html">
 <meta property="og:site_name" content="lzw Love Hj">
+<meta property="og:description" content="代换是将明文字母替换为其他字母,数字或者符号.置换是保持铭文的所有字母不变,只是打乱明文字母的位置和次序 DES同时使用代换和置换两种技巧, 它用56位密匙加密64位密文, 最后输出64位密文.整个过程由两部分组成:一个是加密过程, 一个是子密钥产生过程.  加密过程                       子密钥产生  64位明文                      64位密钥输入">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-15T15:52:16.937Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lzw Love Hj">
+<meta name="twitter:title" content="信息安全之DES加密过程">
+<meta name="twitter:description" content="代换是将明文字母替换为其他字母,数字或者符号.置换是保持铭文的所有字母不变,只是打乱明文字母的位置和次序 DES同时使用代换和置换两种技巧, 它用56位密匙加密64位密文, 最后输出64位密文.整个过程由两部分组成:一个是加密过程, 一个是子密钥产生过程.  加密过程                       子密钥产生  64位明文                      64位密钥输入">
   
     <link rel="alternate" href="/atom.xml" title="lzw Love Hj" type="application/atom+xml">
   
@@ -60,134 +65,76 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/15/informationSecure_01/" class="archive-article-date">
-  <time datetime="2017-09-15T15:13:14.416Z" itemprop="datePublished">9月 15</time>
+        <section id="main"><article id="post-informationSecure_01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/15/informationSecure_01/" class="article-date">
+  <time datetime="2017-09-15T15:13:14.416Z" itemprop="datePublished">2017-09-15</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/15/informationSecure_01/">信息安全之DES加密过程</a>
+    <h1 class="article-title" itemprop="name">
+      信息安全之DES加密过程
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/13/java_06/" class="archive-article-date">
-  <time datetime="2017-09-13T14:16:13.037Z" itemprop="datePublished">9月 13</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/13/java_06/">Java 字符串</a>
-    </h1>
-  
+        <ul>
+<li>代换是将明文字母替换为其他字母,数字或者符号.置换是保持铭文的所有字母不变,只是打乱明文字母的位置和次序</li>
+<li><p>DES同时使用代换和置换两种技巧, 它用56位密匙加密64位密文, 最后输出64位密文.整个过程由两部分组成:一个是加密过程, 一个是子密钥产生过程.</p>
+<pre><code> 加密过程                       子密钥产生
+ 64位明文                      64位密钥输入
+    |                              |
+ 初始置换                  产生16个48位的子密钥
+    |                              │
+  第1轮←───────────────────────────┤
+    |                              │
+  第2轮←───────────────────────────┤
+    !                              │
+    |                              │
+  第16轮←──────────────────────────┘
+    |                           
+ 32位互换                          
+    |
+逆初始置换
+    |
+ 64位密文                 图1.1 DES加密算法简图
+</code></pre></li>
+<li>可以将图1.1左半边处理过程分一下3各部分:</li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/10/java_05/" class="archive-article-date">
-  <time datetime="2017-09-10T14:19:22.794Z" itemprop="datePublished">9月 10</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/10/java_05/">Java 面向对象编程(下)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/03/design_pattern_01/" class="archive-article-date">
-  <time datetime="2017-09-03T13:49:53.254Z" itemprop="datePublished">9月 3</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7m2boel00095kqv3p3fgw7h" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/design_pattern_01/">单例设计模式</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/02/java_04/" class="archive-article-date">
-  <time datetime="2017-09-02T12:39:05.313Z" itemprop="datePublished">9月 2</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/02/java_04/">Java 面向对象编程(上)</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/01/java_03/" class="archive-article-date">
-  <time datetime="2017-09-01T11:23:51.583Z" itemprop="datePublished">9月 1</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/01/java_03/">Java 内存分配</a>
-    </h1>
   
+    <a href="/2017/09/13/java_06/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java 字符串</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
