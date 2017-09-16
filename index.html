@@ -103,15 +103,138 @@
     |
 逆初始置换
     |
- 64位密文                 图1.1 DES加密算法简图
+ 64位密文                 图1 DES加密算法简图
 </code></pre></li>
-<li>可以将图1.1左半边处理过程分一下3各部分:</li>
+<li>可以将图1左半边处理过程分一下3各部分:<ol>
+<li>64位明文经过初始置换被重新排列,然后分为左右两半,每半各32位</li>
+<li>左右两半经过16轮置换和代换迭代,即16次实施相同的变换,然后左右两半互换</li>
+<li>互换后的左右两半合并,在经过逆置换输出64位密文</li>
+</ol>
+</li>
+<li>图1.1右半部分则由56位密钥产生16个48位子密钥,分别供左半边的16轮迭代加密使用</li>
+</ul>
+<h3 id="初始置换"><a href="#初始置换" class="headerlink" title="初始置换"></a>初始置换</h3><ul>
+<li>初始置换是数据加密第一步,将64位明文按照图2中置换</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>58</th>
+<th>50</th>
+<th>42</th>
+<th>34</th>
+<th>26</th>
+<th>18</th>
+<th>10</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>60</td>
+<td>52</td>
+<td>44</td>
+<td>36</td>
+<td>28</td>
+<td>20</td>
+<td>12</td>
+<td>4</td>
+</tr>
+<tr>
+<td>62</td>
+<td>54</td>
+<td>46</td>
+<td>38</td>
+<td>30</td>
+<td>22</td>
+<td>14</td>
+<td>6</td>
+</tr>
+<tr>
+<td>64</td>
+<td>56</td>
+<td>48</td>
+<td>40</td>
+<td>32</td>
+<td>24</td>
+<td>16</td>
+<td>8</td>
+</tr>
+<tr>
+<td>57</td>
+<td>49</td>
+<td>41</td>
+<td>33</td>
+<td>25</td>
+<td>17</td>
+<td>9</td>
+<td>1</td>
+</tr>
+<tr>
+<td>59</td>
+<td>51</td>
+<td>43</td>
+<td>35</td>
+<td>27</td>
+<td>19</td>
+<td>11</td>
+<td>3</td>
+</tr>
+<tr>
+<td>61</td>
+<td>53</td>
+<td>45</td>
+<td>37</td>
+<td>29</td>
+<td>21</td>
+<td>13</td>
+<td>5</td>
+</tr>
+<tr>
+<td>63</td>
+<td>55</td>
+<td>47</td>
+<td>39</td>
+<td>31</td>
+<td>23</td>
+<td>15</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>置换后将数据分为上下两部分,上半部分L0和下半部分R0各32位</li>
+</ul>
+<h3 id="DES每轮结构"><a href="#DES每轮结构" class="headerlink" title="DES每轮结构"></a>DES每轮结构</h3><pre><code>Li-1         Ri-1
+  ╲           ╱│
+   ╲         ╱ │
+    ╲       ╱  │
+     ╲     ╱   F ←────Ki
+      ╲   ╱    │
+       ╲ ╱     │
+        ╳      │
+       ╱ ╲     │
+      ╱   ╲    │
+     ╱     ╲   │
+    ╱       ╲  │
+   ╱          +
+  ╱            │
+ ╱             │
+Li             Ri
+图3 DES每一轮结构
+</code></pre><ul>
+<li>DES每轮结构如图3所示,上一轮右边的Ri-1直接变换为下一轮的左边Li,上一轮左边的Li-1与加密函数F异或后作为下一轮的右边Ri</li>
+<li><p>加密函数F则是上一轮右边Ri-1和子密钥K1的函数即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Li = Ri-1</div><div class="line">Ri = Li-1(异或)F(Ri-1,Ki)</div></pre></td></tr></table></figure>
+</li>
+<li><p>加密函数F本质上是Ri-1和子密钥Ki的异或,如图4所示</p>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7m2boel00095kqv3p3fgw7h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7nfcb530003akqvq5a0nykh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -164,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7m2boes000h5kqvtzu7s5bc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7nfcb5p000iakqvnhxehm71" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -202,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7m2boer000f5kqvejz8w2k8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7nfcb5o000gakqvws0lh78w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -251,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7m2bods00005kqvizpl1ytz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7nfcb4v0000akqvmh4qdx8l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -289,13 +412,31 @@
 <li>面向对象三个特征:封装,继承和多态</li>
 <li>(Accessor)访问器和(Mutator)更改器方法,其中更改器方法更好</li>
 </ul>
+<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><ul>
+<li>有final声明的变量必须在所有的构造函数末尾初始化。之后该变量不会被再次修改</li>
+<li>final声明引用时，只是声明该引用永不改变，但是修改对象自身是完全合法的 来，比如数组列表添加元素</li>
+</ul>
+<h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><ul>
+<li>如果你在类中将变量声明为static，那么该变量是属于这个类的，而不是对象</li>
+<li><p>可修改的静态常量很少，但是静态常量(static final)很普遍，比如System.out，它在System类中这样声明</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">System</span> </span>&#123;</div><div class="line">	   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> PrintStream out;</div><div class="line">		 …</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>静态初始块，用于额外的静态初始化工作</p>
+</li>
+<li>静态方法，同样使用static修饰，用于给不属于你的类提供额外功能等</li>
+<li>不能在静态方法中访问实例变量，因为静态方法没有运行在对象上</li>
+<li>静态方法最常见的使用就是工厂方法，返回类的新实例的静态方法，工厂方法也能返回共享对象</li>
+</ul>
+<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><ul>
+<li>使用包的主要原因是保证类名的唯一性，比如两个程序都提供了一个Element方法，只要开发者将他们开发的类放到不同的包中，就没有冲突</li>
+<li>包的声明使用以点号分隔的标识符，例如Java.util.regex</li>
+<li>为了保证包名的唯一性，可以使用倒着写的因特网域名比如(com.lhaojing.javaProgram)，但Java的标准类库的包名是以Java或者javax开始的</li>
+<li>在Java中，包不能嵌套，Java.util和java.util.regex是各自独立类的集合</li>
+</ul>
 <h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><ul>
-<li><p>封装就是隐藏实现细节. 对外提供公共的访问方式(接口).</p>
-</li>
-<li><p>封装的目的是为了解耦, 降低耦合可以加快系统的开发速度, 减轻维护的负担. 还提高了软件的可重用行,<br>也便于进一步优化.</p>
-</li>
-<li><p>访问控制机制. 实体的可访问性由该实体声明所在的位置,以及该实体声明中所出现的访问修饰符<br>(<code>private</code>,<code>protected</code>,<code>public</code>)共同决定. 第一规则是尽可能地使每个类或者成员不被外界访问.</p>
-</li>
+<li>封装就是隐藏实现细节. 对外提供公共的访问方式(接口).</li>
+<li>封装的目的是为了解耦, 降低耦合可以加快系统的开发速度, 减轻维护的负担. 还提高了软件的可重用行,<br>也便于进一步优化.</li>
+<li>访问控制机制. 实体的可访问性由该实体声明所在的位置,以及该实体声明中所出现的访问修饰符<br>(<code>private</code>,<code>protected</code>,<code>public</code>)共同决定. 第一规则是尽可能地使每个类或者成员不被外界访问.</li>
 </ul>
 <h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
 <li>提高了代码的复用性</li>
@@ -305,12 +446,9 @@
 </li>
 <li><p><code>Java</code>支持单继承, 不直接支持多继承. 多继承的的弊端是方法调用具有不确定性,因为方法的主体不同,<code>Java</code>对其进行了改良;</p>
 </li>
-<li><p>当事物存在<code>(is-a)</code>的关系时, 可以通过继承实现这个关;</p>
-</li>
-<li><p>子父类出现的相同名字的成员变量, 用<code>super</code>关键字来区分;</p>
-</li>
-<li><p>子类每一个构造函数第一行都有隐式的super();<br>如果父类没有空参数构造函数, 则需要显式调用super的方式调用父类构造函数;<br>并且只能定义在第一行, 因为父类的初始化要先完成;<br>super()和this()不能同时出现,因为他们只能定义在第一行;<br>如下例:</p>
-</li>
+<li>当事物存在<code>(is-a)</code>的关系时, 可以通过继承实现这个关;</li>
+<li>子父类出现的相同名字的成员变量, 用<code>super</code>关键字来区分;</li>
+<li>子类每一个构造函数第一行都有隐式的super();<br>如果父类没有空参数构造函数, 则需要显式调用super的方式调用父类构造函数;<br>并且只能定义在第一行, 因为父类的初始化要先完成;<br>super()和this()不能同时出现,因为他们只能定义在第一行;<br>如下例:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">zi</span> <span class="keyword">extends</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(<span class="string">"0"</span>);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(s);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">fu</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"fu runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
@@ -331,7 +469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7m2boen000b5kqvyabb37dw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7nfcb5m000eakqvglhjxpt1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -402,7 +540,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7m2boep000d5kqvk295o4b6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7nfcb5k000cakqvje7fsd5w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -486,7 +624,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7m2boek00075kqvjrw6kdyf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7nfcb5j000aakqviopa557b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -623,7 +761,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7m2boei00065kqvwivle7kh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7nfcb5h0009akqvlhnt6uwz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -669,7 +807,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7m2bodz00015kqvzv1hrdiu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7nfcb500001akqv21foswon" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -716,7 +854,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7m2bof0000l5kqv5bq6o6js" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7nfcb5z000lakqvccuod1c8" class="article-share-link">Share</a>
       
       
     </footer>
