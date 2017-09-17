@@ -62,6 +62,82 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_07" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/17/java_07/" class="article-date">
+  <time datetime="2017-09-17T14:13:13.054Z" itemprop="datePublished">2017-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/17/java_07/">Java 包</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><ul>
+<li>使用包的主要原因是保证类名的唯一性，比如两个程序都提供了一个Element方法，只要开发者将他们开发的类放到不同的包中，就没有冲突</li>
+<li>包的声明使用以点号分隔的标识符，例如Java.util.regex</li>
+<li>为了保证包名的唯一性，可以使用倒着写的因特网域名比如(com.lhaojing.javaProgram)，但Java的标准类库的包名是以Java或者javax开始的</li>
+<li>在Java中，包不能嵌套，Java.util和java.util.regex是各自独立类的集合</li>
+<li>从文件系统中读取类文件时，路径名称必须匹配包名称</li>
+</ul>
+<h3 id="类路径"><a href="#类路径" class="headerlink" title="类路径"></a>类路径</h3><ul>
+<li><p>你可以将class文件放到一个或多个被称为JAR文件的归档文件中，而不是将class文件存储在文件系统，可以使用jar工具制作归档文件，它的命令行参数与Unix上的tar程序类似</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jar cvf library.jar com/lhaojing/*.class</div></pre></td></tr></table></figure>
+<p>包类库常常这样做</p>
+</li>
+<li><p>也可以使用JAR将程序打包，而不仅仅是类库，运行时输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -jar program.jar</div></pre></td></tr></table></figure>
+</li>
+<li><p>当你在项目中使用类库的JAR时需要指定class path来告诉编译器和虚拟机这些文件的位置</p>
+</li>
+<li>注意：Windows下分隔符为分号，Unix下为冒号</li>
+<li>设置类路径首选使用-classpath，如果设置全局变量未来可能找不到自己的类</li>
+</ul>
+<h3 id="包作用域"><a href="#包作用域" class="headerlink" title="包作用域"></a>包作用域</h3><ul>
+<li>不指定public和private的类可以被包内所有方法访问</li>
+<li>一个源文件可以包含很多个类，但是最多只有一个可以被声明为public，如果一个源文件有个public类，那么文件名和类名必须匹配</li>
+<li>变量的默认作用域是包级，比如java.awt包中window类里面，<code>warningString</code>变量就因为忘记了private修饰符从而可以被awt包中任何类访问</li>
+<li>可以通过将自己的类放到封闭的jar文件中，并添加manifest来保护自己的包</li>
+</ul>
+<h3 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h3><ul>
+<li>可以使用import来导入静态的方法和变量比如<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import static java.lang.Math.*</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这样就可以直接使用Math类的静态方法和变量了</p>
+<h3 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h3><ul>
+<li><code>静态嵌套类</code>的作用有限制可见性或避免因为导入一些使用了通用名称的包而产生混乱</li>
+<li><code>内部类</code>相当于静态嵌套类去掉了static，这时它可以访问他的外部类的实例变量，这种情况下他就是外部类对象的实例变量，每个内部类对象都有自己外部类对象<code>outer</code>的隐藏引用</li>
+<li>当嵌套类的实例不需要知道它属于外部类的哪个实例时，使用静态嵌套类。当这些信息重要时，使用内部类</li>
+<li><code>outer</code>实际上应该是<code>OuterClass.this</code>，但这不是必须的</li>
+<li>内部类不应该有静态成员，不然static的含义界限很模糊</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/17/java_07/" data-id="cj7otu3y20009y8qvh0lhtu4x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-informationSecure_01" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/15/informationSecure_01/" class="article-date">
@@ -234,7 +310,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7nfcb530003akqvq5a0nykh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7otu3wc0000y8qvdbaq51b0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -272,14 +348,20 @@ Li             Ri
 <h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h3><ul>
 <li>字符串连接用＋</li>
 <li>以分隔符隔开String.join(分隔符,字符1,字符2)</li>
-<li>最好使用StringBuilder<h3 id="子字符串"><a href="#子字符串" class="headerlink" title="子字符串"></a>子字符串</h3></li>
+<li>最好使用StringBuilder</li>
+</ul>
+<h3 id="子字符串"><a href="#子字符串" class="headerlink" title="子字符串"></a>子字符串</h3><ul>
 <li>子字符串拆开用substring(要提取的自字符串起始位置,不要的字符串起始位置)方法</li>
-<li>提取所有分割后的自字符串用split(分隔符)方法，分隔符可以是正则表达式<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3></li>
+<li>提取所有分割后的自字符串用split(分隔符)方法，分隔符可以是正则表达式</li>
+</ul>
+<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><ul>
 <li>不要使用==比较字符串，这种比较只有两个字符串在内存中为同一对象时才返回true。<br>java虚拟机中每个文字串只有一个实例，因此<code>&quot;world&quot;==&quot;world&quot;</code>为真，但如果<code>s1=s2.subString(7,12);</code>则<code>s1==&quot;world&quot;</code>为假</li>
 <li>测试是否为null可以使用==，但null和空字符串””不相同</li>
 <li>比较<code>if(&quot;world&quot;.equals(s1))</code>时，将文字串放前面更好，因为如果s1为null也可以正常工作</li>
 <li>不考虑大小写比较字符串使用equalsIgnore Case方法</li>
-<li>compareTo方法是比较Unicode的值<h3 id="数字与字符串转换"><a href="#数字与字符串转换" class="headerlink" title="数字与字符串转换"></a>数字与字符串转换</h3></li>
+<li>compareTo方法是比较Unicode的值</li>
+</ul>
+<h3 id="数字与字符串转换"><a href="#数字与字符串转换" class="headerlink" title="数字与字符串转换"></a>数字与字符串转换</h3><ul>
 <li><code>String s = Integer.tostring(n,2)</code>是将n的二进制数保存在字符串内</li>
 <li><code>Integer.parseInt(str,2)</code>将保存二进制数的字符串转换为<code>int</code>型</li>
 </ul>
@@ -287,7 +369,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7nfcb5p000iakqvnhxehm71" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7otu3y2000cy8qvmh27ocmh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -325,7 +407,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7nfcb5o000gakqvws0lh78w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7otu3y20008y8qvqiybojv1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -374,7 +456,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7nfcb4v0000akqvmh4qdx8l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7otu3yi000my8qvotvwobt6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -427,12 +509,6 @@ Li             Ri
 <li>不能在静态方法中访问实例变量，因为静态方法没有运行在对象上</li>
 <li>静态方法最常见的使用就是工厂方法，返回类的新实例的静态方法，工厂方法也能返回共享对象</li>
 </ul>
-<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><ul>
-<li>使用包的主要原因是保证类名的唯一性，比如两个程序都提供了一个Element方法，只要开发者将他们开发的类放到不同的包中，就没有冲突</li>
-<li>包的声明使用以点号分隔的标识符，例如Java.util.regex</li>
-<li>为了保证包名的唯一性，可以使用倒着写的因特网域名比如(com.lhaojing.javaProgram)，但Java的标准类库的包名是以Java或者javax开始的</li>
-<li>在Java中，包不能嵌套，Java.util和java.util.regex是各自独立类的集合</li>
-</ul>
 <h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><ul>
 <li>封装就是隐藏实现细节. 对外提供公共的访问方式(接口).</li>
 <li>封装的目的是为了解耦, 降低耦合可以加快系统的开发速度, 减轻维护的负担. 还提高了软件的可重用行,<br>也便于进一步优化.</li>
@@ -469,7 +545,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7nfcb5m000eakqvglhjxpt1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7otu3y20005y8qvjegba8qv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -540,7 +616,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7nfcb5k000cakqvje7fsd5w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7otu3y20004y8qvuqiljgn0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -624,7 +700,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7nfcb5j000aakqviopa557b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7otu3xn0003y8qvabfxcml9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -761,7 +837,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7nfcb5h0009akqvlhnt6uwz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7otu3yy000py8qv2qhmyu0k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -807,7 +883,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7nfcb500001akqv21foswon" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7otu3xn0001y8qvvf1chne4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -819,52 +895,11 @@ Li             Ri
 
 
   
-    <article id="post-hello_world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/30/hello_world/" class="article-date">
-  <time datetime="2017-08-30T14:06:40.487Z" itemprop="datePublished">2017-08-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/30/hello_world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>李泽伟终于开通了自己的博客啦!</p>
-<h3 id="李泽伟"><a href="#李泽伟" class="headerlink" title="李泽伟"></a>李泽伟</h3><p>沈阳理工大学 2015-</p>
-<p>计算机科学与技术</p>
-<p>C#  php Android java 以上按时间顺序</p>
-<h3 id="过去"><a href="#过去" class="headerlink" title="过去"></a>过去</h3><p>2016 校级奖学金</p>
-<p>2017 高校党建平台负责人(php)</p>
-<p>2017 辽宁省计算机设计大赛三等奖</p>
-<p><a href="https://github.com/heroicNeZha" target="_blank" rel="external">Github</a></p>
-<p><a href="heroicNeZha.github.io">Blog</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7nfcb5z000lakqvccuod1c8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
 
 
-  
-
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -908,6 +943,10 @@ Li             Ri
       <ul>
         
           <li>
+            <a href="/2017/09/17/java_07/">Java 包</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/15/informationSecure_01/">信息安全之DES加密过程</a>
           </li>
         
@@ -921,10 +960,6 @@ Li             Ri
         
           <li>
             <a href="/2017/09/03/design_pattern_01/">单例设计模式</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/02/java_04/">Java 面向对象编程(上)</a>
           </li>
         
       </ul>

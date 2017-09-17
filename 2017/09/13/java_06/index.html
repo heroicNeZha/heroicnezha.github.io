@@ -5,18 +5,18 @@
   
   <title>Java 字符串 | lzw Love Hj</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="字符串就是一系列字符。 字符串连接 字符串连接用＋ 以分隔符隔开String.join(分隔符,字符1,字符2) 最好使用StringBuilder子字符串 子字符串拆开用substring(要提取的自字符串起始位置,不要的字符串起始位置)方法 提取所有分割后的自字符串用split(分隔符)方法，分隔符可以是正则表达式字符串比较 不要使用==比较字符串，这种比较只有两个字符串在内存中为同一对象时才">
+  <meta name="description" content="字符串就是一系列字符。 字符串连接 字符串连接用＋ 以分隔符隔开String.join(分隔符,字符1,字符2) 最好使用StringBuilder  子字符串 子字符串拆开用substring(要提取的自字符串起始位置,不要的字符串起始位置)方法 提取所有分割后的自字符串用split(分隔符)方法，分隔符可以是正则表达式  字符串比较 不要使用==比较字符串，这种比较只有两个字符串在内存中为同一">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 字符串">
 <meta property="og:url" content="http://yoursite.com/2017/09/13/java_06/index.html">
 <meta property="og:site_name" content="lzw Love Hj">
-<meta property="og:description" content="字符串就是一系列字符。 字符串连接 字符串连接用＋ 以分隔符隔开String.join(分隔符,字符1,字符2) 最好使用StringBuilder子字符串 子字符串拆开用substring(要提取的自字符串起始位置,不要的字符串起始位置)方法 提取所有分割后的自字符串用split(分隔符)方法，分隔符可以是正则表达式字符串比较 不要使用==比较字符串，这种比较只有两个字符串在内存中为同一对象时才">
+<meta property="og:description" content="字符串就是一系列字符。 字符串连接 字符串连接用＋ 以分隔符隔开String.join(分隔符,字符1,字符2) 最好使用StringBuilder  子字符串 子字符串拆开用substring(要提取的自字符串起始位置,不要的字符串起始位置)方法 提取所有分割后的自字符串用split(分隔符)方法，分隔符可以是正则表达式  字符串比较 不要使用==比较字符串，这种比较只有两个字符串在内存中为同一">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-13T14:17:07.335Z">
+<meta property="og:updated_time" content="2017-09-17T14:13:35.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 字符串">
-<meta name="twitter:description" content="字符串就是一系列字符。 字符串连接 字符串连接用＋ 以分隔符隔开String.join(分隔符,字符1,字符2) 最好使用StringBuilder子字符串 子字符串拆开用substring(要提取的自字符串起始位置,不要的字符串起始位置)方法 提取所有分割后的自字符串用split(分隔符)方法，分隔符可以是正则表达式字符串比较 不要使用==比较字符串，这种比较只有两个字符串在内存中为同一对象时才">
+<meta name="twitter:description" content="字符串就是一系列字符。 字符串连接 字符串连接用＋ 以分隔符隔开String.join(分隔符,字符1,字符2) 最好使用StringBuilder  子字符串 子字符串拆开用substring(要提取的自字符串起始位置,不要的字符串起始位置)方法 提取所有分割后的自字符串用split(分隔符)方法，分隔符可以是正则表达式  字符串比较 不要使用==比较字符串，这种比较只有两个字符串在内存中为同一">
   
     <link rel="alternate" href="/atom.xml" title="lzw Love Hj" type="application/atom+xml">
   
@@ -91,14 +91,20 @@
 <h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h3><ul>
 <li>字符串连接用＋</li>
 <li>以分隔符隔开String.join(分隔符,字符1,字符2)</li>
-<li>最好使用StringBuilder<h3 id="子字符串"><a href="#子字符串" class="headerlink" title="子字符串"></a>子字符串</h3></li>
+<li>最好使用StringBuilder</li>
+</ul>
+<h3 id="子字符串"><a href="#子字符串" class="headerlink" title="子字符串"></a>子字符串</h3><ul>
 <li>子字符串拆开用substring(要提取的自字符串起始位置,不要的字符串起始位置)方法</li>
-<li>提取所有分割后的自字符串用split(分隔符)方法，分隔符可以是正则表达式<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3></li>
+<li>提取所有分割后的自字符串用split(分隔符)方法，分隔符可以是正则表达式</li>
+</ul>
+<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><ul>
 <li>不要使用==比较字符串，这种比较只有两个字符串在内存中为同一对象时才返回true。<br>java虚拟机中每个文字串只有一个实例，因此<code>&quot;world&quot;==&quot;world&quot;</code>为真，但如果<code>s1=s2.subString(7,12);</code>则<code>s1==&quot;world&quot;</code>为假</li>
 <li>测试是否为null可以使用==，但null和空字符串””不相同</li>
 <li>比较<code>if(&quot;world&quot;.equals(s1))</code>时，将文字串放前面更好，因为如果s1为null也可以正常工作</li>
 <li>不考虑大小写比较字符串使用equalsIgnore Case方法</li>
-<li>compareTo方法是比较Unicode的值<h3 id="数字与字符串转换"><a href="#数字与字符串转换" class="headerlink" title="数字与字符串转换"></a>数字与字符串转换</h3></li>
+<li>compareTo方法是比较Unicode的值</li>
+</ul>
+<h3 id="数字与字符串转换"><a href="#数字与字符串转换" class="headerlink" title="数字与字符串转换"></a>数字与字符串转换</h3><ul>
 <li><code>String s = Integer.tostring(n,2)</code>是将n的二进制数保存在字符串内</li>
 <li><code>Integer.parseInt(str,2)</code>将保存二进制数的字符串转换为<code>int</code>型</li>
 </ul>
@@ -106,7 +112,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7nfcb5p000iakqvnhxehm71" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7otu3y2000cy8qvmh27ocmh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -180,6 +186,10 @@
       <ul>
         
           <li>
+            <a href="/2017/09/17/java_07/">Java 包</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/15/informationSecure_01/">信息安全之DES加密过程</a>
           </li>
         
@@ -193,10 +203,6 @@
         
           <li>
             <a href="/2017/09/03/design_pattern_01/">单例设计模式</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/02/java_04/">Java 面向对象编程(上)</a>
           </li>
         
       </ul>
