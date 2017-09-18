@@ -62,6 +62,73 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_interface" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/18/java_interface/" class="article-date">
+  <time datetime="2017-09-18T13:11:25.875Z" itemprop="datePublished">2017-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/18/java_interface/">Java 接口</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>接口是服务提供方和想让他们的对象对服务是可用的那些类，之间约定合同的一种机制。</p>
+<h3 id="接口声明与实现"><a href="#接口声明与实现" class="headerlink" title="接口声明与实现"></a>接口声明与实现</h3><ul>
+<li><p>声明如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Isalary</span></span>&#123;</div><div class="line">    <span class="function">Decimal <span class="title">pay</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  接口中的方法默认为公有方法，无需声明</p>
+</li>
+<li><p>实现接口</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ManagerSalary</span> <span class="keyword">implements</span> <span class="title">Isalary</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> decimal <span class="title">pay</span><span class="params">()</span></span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="number">15000</span>*<span class="number">14</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实体类必须实现接口的所有方法，但抽象类可以只实现部分方法</p>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3></li>
+<li><p>下面这段代码很常见</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Isalary anyone = <span class="keyword">new</span> Manager();</div><div class="line">Decimal salary = anyone.pay();</div></pre></td></tr></table></figure>
+<p>  “文言文”的说法是</p>
+<blockquote>
+<p>当子类型T的任何值不需要转换就能赋值给父类型S的变量时，类型S是类型T的父类。</p>
+</blockquote>
+</li>
+<li>虽然可以声明接口类型的变量，但不能存在类型为接口的对象，所有的对象都是类的实例</li>
+<li>想从父类转换为子类可以使用强制类型转换(cast)，但弄错了就会发生编译时错误或强制类型转换异常</li>
+<li>为了避免异常可以使用instanceof操作符来测试对象是否是期望的类型</li>
+<li>接口可以被继承，实现子接口的类必须实现子父接口中的所有方法</li>
+<li>一个类可以实现很多个接口，但不能继承多个类</li>
+<li>定义在接口中的任何变量都自动为<code>public static final</code><h3 id="接口中的方法实现"><a href="#接口中的方法实现" class="headerlink" title="接口中的方法实现"></a>接口中的方法实现</h3></li>
+<li>接口中可以有静态方法与默认方法，过去或许将接口作为抽象规范，但现在思想变了</li>
+<li>静态方法常常用作工厂方法</li>
+<li>默认方法则提供一个默认实现，一个重要用途是接口演化，比如为接口Collection添加一个新方法，那Collection的实现类Bag将无法通过编译<code>public class Bag implements Collection</code><br>因为它们没有实现新方法。但如果提供了默认实现，就可以向后兼容了。这时编译后在Bag的实例上调用新方法，就会自动寻找Collection的默认实现了</li>
+<li>如果有相同的方法名并且至少有一个提供了默认实现的两个接口，而一个类实现了这两个接口，就会发生冲突，而解决办法可以使用委托其中一个冲突方法或者提供自己的方法并实现计划，例如<h5 id="常见接口用法"><a href="#常见接口用法" class="headerlink" title="常见接口用法"></a>常见接口用法</h5></li>
+<li>Java标准类库中的四个使用接口的常见情况<code>Comparable</code>接口、<code>Comparator</code>接口、<code>Runable</code>接口和UI回调使用的<code>EventHandler</code>接口</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj7q7hu7v000cioqvbe3hazxn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java_07" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/17/java_07/" class="article-date">
@@ -86,14 +153,14 @@
       
         <h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><ul>
 <li>使用包的主要原因是保证类名的唯一性，比如两个程序都提供了一个Element方法，只要开发者将他们开发的类放到不同的包中，就没有冲突</li>
-<li>包的声明使用以点号分隔的标识符，例如Java.util.regex</li>
-<li>为了保证包名的唯一性，可以使用倒着写的因特网域名比如(com.lhaojing.javaProgram)，但Java的标准类库的包名是以Java或者javax开始的</li>
+<li>包的声明使用以点号分隔的标识符，例如<code>Java.util.regex</code></li>
+<li>为了保证包名的唯一性，可以使用倒着写的因特网域名比如<code>com.lhaojing.javaProgram</code>，但Java的标准类库的包名是以Java或者javax开始的</li>
 <li>在Java中，包不能嵌套，Java.util和java.util.regex是各自独立类的集合</li>
 <li>从文件系统中读取类文件时，路径名称必须匹配包名称</li>
 </ul>
 <h3 id="类路径"><a href="#类路径" class="headerlink" title="类路径"></a>类路径</h3><ul>
 <li><p>你可以将class文件放到一个或多个被称为JAR文件的归档文件中，而不是将class文件存储在文件系统，可以使用jar工具制作归档文件，它的命令行参数与Unix上的tar程序类似</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jar cvf library.jar com/lhaojing/*.class</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jar cvf library.jar com/lhaojing/*.class</div></pre></td></tr></table></figure>
 <p>包类库常常这样做</p>
 </li>
 <li><p>也可以使用JAR将程序打包，而不仅仅是类库，运行时输入</p>
@@ -126,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/17/java_07/" data-id="cj7otu3y20009y8qvh0lhtu4x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/17/java_07/" data-id="cj7q7hu7x000fioqvmk4t63yb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -310,7 +377,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7otu3wc0000y8qvdbaq51b0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7q7hu7o0003ioqvwkw58n9h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -369,7 +436,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7otu3y2000cy8qvmh27ocmh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7q7hu8c000mioqv4n5whr6d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -407,7 +474,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7otu3y20008y8qvqiybojv1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7q7hu7q0004ioqvklwp4f0b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -456,7 +523,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7otu3yi000my8qvotvwobt6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7q7hu7u000aioqvcypsy5np" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -545,7 +612,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7otu3y20005y8qvjegba8qv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7q7hu7y000hioqv2ro3gg5b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -616,7 +683,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7otu3y20004y8qvuqiljgn0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7q7hu7r0006ioqv04pgr4r9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -700,7 +767,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7otu3xn0003y8qvabfxcml9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7q7hu8d000nioqv0bdhsauf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -837,53 +904,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7otu3yy000py8qv2qhmyu0k" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-eclipse_setting" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/31/eclipse_setting/" class="article-date">
-  <time datetime="2017-08-31T07:52:25.254Z" itemprop="datePublished">2017-08-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/31/eclipse_setting/">eclipse 自用配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>eclipse 是一个开源的,基于Java的可扩展平台,因为他的诸多组件和控件额存在,一万个人手中就有一万个eclpse,以下是我的eclipse的配置(不断更新).</p>
-<h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>eclipse Jee Oxygen (4.7)</p>
-<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p>consolas</p>
-<p>(最常见的consolas-yahei-Hybrid不等宽)</p>
-<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><p>自动补全</p>
-<p>自动格式</p>
-<p>添加注释模板(alt+shift+j)</p>
-<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>无</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7otu3xn0001y8qvvf1chne4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7q7hu7s0008ioqvs67vtdzt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -943,6 +964,10 @@ Li             Ri
       <ul>
         
           <li>
+            <a href="/2017/09/18/java_interface/">Java 接口</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/17/java_07/">Java 包</a>
           </li>
         
@@ -956,10 +981,6 @@ Li             Ri
         
           <li>
             <a href="/2017/09/10/java_05/">Java 面向对象编程(下)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/03/design_pattern_01/">单例设计模式</a>
           </li>
         
       </ul>
