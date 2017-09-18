@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="lzw Love Hj">
 <meta property="og:description" content="接口是服务提供方和想让他们的对象对服务是可用的那些类，之间约定合同的一种机制。 接口声明与实现 声明如下   123public interface Isalary&amp;#123;    Decimal pay();&amp;#125;   接口中的方法默认为公有方法，无需声明  实现接口   12345public class ManagerSalary implements Isalary&amp;#123;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-18T13:28:01.763Z">
+<meta property="og:updated_time" content="2017-09-18T13:58:10.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 接口">
 <meta name="twitter:description" content="接口是服务提供方和想让他们的对象对服务是可用的那些类，之间约定合同的一种机制。 接口声明与实现 声明如下   123public interface Isalary&amp;#123;    Decimal pay();&amp;#125;   接口中的方法默认为公有方法，无需声明  实现接口   12345public class ManagerSalary implements Isalary&amp;#123;">
@@ -112,15 +112,23 @@
 <li>定义在接口中的任何变量都自动为<code>public static final</code><h3 id="接口中的方法实现"><a href="#接口中的方法实现" class="headerlink" title="接口中的方法实现"></a>接口中的方法实现</h3></li>
 <li>接口中可以有静态方法与默认方法，过去或许将接口作为抽象规范，但现在思想变了</li>
 <li>静态方法常常用作工厂方法</li>
-<li>默认方法则提供一个默认实现，一个重要用途是接口演化，比如为接口Collection添加一个新方法，那Collection的实现类Bag将无法通过编译<code>public class Bag implements Collection</code><br>因为它们没有实现新方法。但如果提供了默认实现，就可以向后兼容了。这时编译后在Bag的实例上调用新方法，就会自动寻找Collection的默认实现了</li>
-<li>如果有相同的方法名并且至少有一个提供了默认实现的两个接口，而一个类实现了这两个接口，就会发生冲突，而解决办法可以使用委托其中一个冲突方法或者提供自己的方法并实现计划，例如<h5 id="常见接口用法"><a href="#常见接口用法" class="headerlink" title="常见接口用法"></a>常见接口用法</h5></li>
+<li><p>默认方法则提供一个默认实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Persion</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">default</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>默认方法的一个重要用途是接口演化，比如为接口Collection添加一个新方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> class Bag implements <span class="title">Collection</span><span class="params">()</span></span>&#123;</div><div class="line">  ...</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">stream</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>那Collection的实现类Bag将无法通过编译，因为它们没有实现新方法。但如果提供了默认实现，就可以向后兼容了。这时编译后在Bag的实例上调用新方法，就会自动寻找Collection的默认实现了</p>
+<ul>
+<li>如果有两个接口,它们具有相同的方法名并且至少有一个提供了默认实现,那么实现这两个接口的类就会发生冲突，而解决办法可以使用委托其中一个冲突方法或者提供自己的方法并实现计划(此条存疑,经试验为自动实现第一个接口的方法)<h5 id="常见接口用法"><a href="#常见接口用法" class="headerlink" title="常见接口用法"></a>常见接口用法</h5></li>
 <li>Java标准类库中的四个使用接口的常见情况<code>Comparable</code>接口、<code>Comparator</code>接口、<code>Runable</code>接口和UI回调使用的<code>EventHandler</code>接口</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj7q7hu7v000cioqvbe3hazxn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj7q8kgnl000lioqvebalkley" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
