@@ -62,6 +62,143 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/31/java_01/" class="article-date">
+  <time datetime="2017-08-31T14:35:01.863Z" itemprop="datePublished">2017-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/31/java_01/">Java 基本数据类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java 中基本数据类型分整型,浮点型,字符型,布尔型四类八种 ;</p>
+<h5 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h5><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">长度</th>
+<th style="text-align:right">表示范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td style="text-align:center">8</td>
+<td style="text-align:right">-128 ~ 127</td>
+</tr>
+<tr>
+<td>short</td>
+<td style="text-align:center">16</td>
+<td style="text-align:right">-2^15 ~ (2^15)-1</td>
+</tr>
+<tr>
+<td>int</td>
+<td style="text-align:center">32</td>
+<td style="text-align:right">-2^31 ~ (2^31)-1</td>
+</tr>
+<tr>
+<td>long</td>
+<td style="text-align:center">64</td>
+<td style="text-align:right">-2^63 ~ (2^63)-1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>常量 Integer.MIN_VALUE和 Integer.MAX_VALUE分别是最小和最大的整数, 其他类也有同样作用的常量.</li>
+</ul>
+<h5 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h5><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td>double</td>
+<td style="text-align:center">64</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Double.POSITIVE_INFINITY代表∞, Double.NEGATIVE_INFINITY代表-∞, Double.NaN代表”非数值”.</li>
+<li>所有的”非数值”都被认为是彼此不同的, 比如不能这样判断<code>if(x==Double.NaN)</code>, 但是可以用<code>if(Double.isNaN(x))</code>.</li>
+</ul>
+<h5 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h5><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char</td>
+<td style="text-align:center">16</td>
+</tr>
+</tbody>
+</table>
+<h5 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h5><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">内容</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td style="text-align:center">true or false</td>
+<td>1字节</td>
+</tr>
+</tbody>
+</table>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ol>
+<li><p>Java低字节向高字节转换具有自动提升性质,转换顺序为 byte-&gt;short-&gt;int-&gt;long-&gt;float-&gt;double,但高字节向低字节强制转换可能丢失精度.</p>
+</li>
+<li><p>默认浮点类型为double,float加后缀<code>f</code>或<code>F</code>.</p>
+</li>
+</ol>
+<ul>
+<li>可以给数字加下划线, 比如<code>1_000_000</code>, Java编译器会直接删除他们.</li>
+</ul>
+<ol>
+<li>Maths类提供常见的数学函数.</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7ul1p40000344qvag8dbkyd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-eclipse_setting" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/31/eclipse_setting/" class="article-date">
@@ -96,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7t2yrlb0000pkqv2adp0dkf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7ul1p2x000044qvdnbcd9de" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -145,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7t2yrmq0001pkqvf4wwkli2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7ul1p42000544qvm8s7rcxb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +308,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-多线程/">Java,多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -181,7 +318,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-多线程/" style="font-size: 10px;">Java,多线程</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -203,6 +340,10 @@
       <ul>
         
           <li>
+            <a href="/2017/09/21/java_runnable/">Java Runnable的三种实现方法</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/18/java_interface/">Java 接口</a>
           </li>
         
@@ -216,10 +357,6 @@
         
           <li>
             <a href="/2017/09/13/java_06/">Java 字符串</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/10/java_05/">Java 面向对象编程(下)</a>
           </li>
         
       </ul>
