@@ -62,6 +62,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_extend" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/java_extend/" class="article-date">
+  <time datetime="2017-09-22T14:54:43.599Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/java_extend/">Java 面向对象编程(中)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
+<li>提高了代码的复用性</li>
+<li>让类与类之间产生了关系,为第三个特征多态提供了前提</li>
+<li>所有枚举类型都是Enum的子类,它提供了toString,valueOf和CompareTo方法</li>
+<li><code>Java</code>支持单继承, 不直接支持多继承. 多继承的的弊端是方法调用具有不确定性,因为方法的主体不同,<code>Java</code>对其进行了改良;</li>
+<li>当事物存在<code>(is-a)</code>的关系时, 可以通过继承实现这个关;</li>
+<li>子父类出现的相同名字的成员变量, 用<code>super</code>关键字来区分;</li>
+<li><p>子类每一个构造函数第一行都有隐式的super();<br>如果父类没有空参数构造函数, 则需要显式调用super的方式调用父类构造函数;<br>并且只能定义在第一行, 因为父类的初始化要先完成;<br>super()和this()不能同时出现,因为他们只能定义在第一行;<br>如下例:</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">zi</span> <span class="keyword">extends</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(<span class="string">"0"</span>);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(s);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">fu</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"fu runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>注意覆盖(Override:关键字<code>Override</code>), 重载(Overload), 重写(OverWrite:关键字<code>new</code>)三种方法;</p>
+</li>
+<li><p>将子类对象赋给父类变量是合法的</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Employee empl = <span class="keyword">new</span> Manager(<span class="string">"lzw"</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>现在考虑一下，当在父类变量上调用一个方法时会发生什么。<br>    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">empl.setSalary(<span class="number">1000</span>);</div></pre></td></tr></table></figure></p>
+<p>即使empl的类型是Employee，还是会调用Manager.getSalary()方法。<br>当调用方法时，虚拟机会查看对象的实际类型，并且定位方法的版本。这个过程被称作<code>动态方法查找</code></p>
+<ul>
+<li>不同于this引用，super不是对象的引用，而是绕过<code>动态查找方法</code>并调用特定方法的指令</li>
+</ul>
+<h3 id="万物基类–Object"><a href="#万物基类–Object" class="headerlink" title="万物基类–Object"></a>万物基类–Object</h3><ul>
+<li>所有类都隐式或显示的继承了Object类, 而Object类定义了7个适用于所有java对象的方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">String toString()</td>
+<td style="text-align:left">产生一个表示该对象的字符串,默认该字符串是类名称和哈希码</td>
+</tr>
+<tr>
+<td style="text-align:left">boolean equals(Object other)</td>
+<td style="text-align:left">如果other被认为与这个对象相等,返回true;如果other为null或者不相等,返回false. 如果两者指向同一对象,返回true. 如果想在other为null的时候也是安全的,推荐使用Object.equals(Object obj, Object other)</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj7w1ivro000f58qv1r1h5u3x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java_runnable" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/21/java_runnable/" class="article-date">
@@ -92,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/21/java_runnable/" data-id="cj7ul1p46000c44qv9mpam4ws" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/21/java_runnable/" data-id="cj7w1ivrz000p58qvm8futnlw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-多线程/">Java,多线程</a></li></ul>
@@ -167,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj7ul1p4v000s44qvf5db2320" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj7w1ivry000o58qv82g6gqo0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -243,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/17/java_07/" data-id="cj7ul1p48000e44qvh80pywxv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/17/java_07/" data-id="cj7w1ivrn000d58qvc98vl6gc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -427,7 +507,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7ul1p3w000144qvfz0ehw5x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7w1ivrb000158qvl5qqdf8a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -489,7 +569,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7ul1p4n000p44qvhom363ss" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7w1ivrl000a58qvbxtgdtf3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -527,7 +607,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7ul1p4l000m44qvf6736lme" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7w1ivrk000958qvlc2tb8dv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -576,7 +656,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7ul1p43000844qvmxhnte32" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7w1ivsa000t58qv0u0asl52" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -635,28 +715,6 @@ Li             Ri
 <li>封装的目的是为了解耦, 降低耦合可以加快系统的开发速度, 减轻维护的负担. 还提高了软件的可重用行,<br>也便于进一步优化.</li>
 <li>访问控制机制. 实体的可访问性由该实体声明所在的位置,以及该实体声明中所出现的访问修饰符<br>(<code>private</code>,<code>protected</code>,<code>public</code>)共同决定. 第一规则是尽可能地使每个类或者成员不被外界访问.</li>
 </ul>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
-<li>提高了代码的复用性</li>
-<li>让类与类之间产生了关系,为第三个特征多态提供了前提</li>
-<li>所有类都是Object的子类,有hasCode,toString,equals,clone方法</li>
-<li>所有枚举类型都是Enum的子类,它提供了toString,valueOf和CompareTo方法</li>
-<li><code>Java</code>支持单继承, 不直接支持多继承. 多继承的的弊端是方法调用具有不确定性,因为方法的主体不同,<code>Java</code>对其进行了改良;</li>
-<li>当事物存在<code>(is-a)</code>的关系时, 可以通过继承实现这个关;</li>
-<li>子父类出现的相同名字的成员变量, 用<code>super</code>关键字来区分;</li>
-<li><p>子类每一个构造函数第一行都有隐式的super();<br>如果父类没有空参数构造函数, 则需要显式调用super的方式调用父类构造函数;<br>并且只能定义在第一行, 因为父类的初始化要先完成;<br>super()和this()不能同时出现,因为他们只能定义在第一行;<br>如下例:</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">zi</span> <span class="keyword">extends</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(<span class="string">"0"</span>);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(s);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">fu</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"fu runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>注意覆盖(Override:关键字<code>Override</code>), 重载(Overload), 重写(OverWrite:关键字<code>new</code>)三种方法;</p>
-</li>
-<li><p>将子类对象赋给父类变量是合法的</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Employee empl = <span class="keyword">new</span> Manager(<span class="string">"lzw"</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>现在考虑一下，当在父类变量上调用一个方法时会发生什么。<br>    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">empl.setSalary(<span class="number">1000</span>);</div></pre></td></tr></table></figure></p>
-<p>即使empl的类型是Employee，还是会调用Manager.getSalary()方法。<br>当调用方法时，虚拟机会查看对象的实际类型，并且定位方法的版本。这个过程被称作<code>动态方法查找</code></p>
-<ul>
-<li>不同于this引用，super不是对象的引用，而是绕过<code>动态查找方法</code>并调用特定方法的指令​</li>
-</ul>
 <h5 id="创建对象时的流程如下"><a href="#创建对象时的流程如下" class="headerlink" title="创建对象时的流程如下:"></a>创建对象时的流程如下:</h5><ol>
 <li>加载指定的字节码文件进内存</li>
 <li>通过<code>new</code>在堆内存中开辟空间并分配首地址值</li>
@@ -672,7 +730,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7ul1p40000444qv3s20plam" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7w1ivri000658qvcj1zmsl4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -743,91 +801,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7ul1p4m000n44qvslod4o5h" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java_02" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/31/java_02/" class="article-date">
-  <time datetime="2017-08-31T15:02:17.278Z" itemprop="datePublished">2017-08-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/31/java_02/">Java 数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong> 一维数组 </strong> 定义方式:</p>
-<ul>
-<li><p>元素类型[] 数组名 = new 元素类型[元素类型或数组长度];</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div></pre></td></tr></table></figure>
-</li>
-<li><p>声明变量是在栈内存中开辟空间 –&gt; new 在堆内存中开辟空间 –&gt; 赋值是将堆内存中<br>实体的首地址赋给栈内存中的变量.所以数组是引用类型.</p>
-</li>
-<li><p>数组编译时不会在堆分配空间,所以检查不出下标越界错误.</p>
-</li>
-</ul>
-<blockquote>
-<p>注意, 长度非零的数组总是可变的,所以类具有公共的静态<code>final</code>数组域, 或者返回这种域的访问方法,这几乎总是可变的.</p>
-</blockquote>
-<p><strong> 多维数组 </strong> 定义方式:</p>
-<ul>
-<li><p>java没有真正意义上的多维数组，从技术上来讲，本质上二维数组是一维数组的数组</p>
-</li>
-<li><p>元素类型[][] 数组名 = new 元素类型[一维长度][二维长度];</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[][] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>][<span class="number">3</span>];</div></pre></td></tr></table></figure>
-</li>
-<li><p>在堆内存中一维实体存二维实体的首地址.</p>
-</li>
-<li><p>如果二维数组长度不定,需要分别初始化二维数组.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[][] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>][];</div><div class="line">arr[<span class="number">0</span>] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</div><div class="line">arr[<span class="number">1</span>] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="数组算法"><a href="#数组算法" class="headerlink" title="数组算法"></a>数组算法</h3><ul>
-<li>Arrays类和Collections类实现了数组和数组列表的常用算法</li>
-<li>填充<code>Arrays.fill()</code></li>
-<li>排序<code>Arrays.sort()</code>，数组可以使用parallelSort方法，如果数组较大，该方法可以将工作分布到多个处理器上运行</li>
-<li>产生字符串<code>Arrays.toString()</code></li>
-<li>二分查找<code>Array.binarySearch()</code>,查询成功返回正索引,查询失败返回<code>-(1+插入位置)</code>;</li>
-</ul>
-<h3 id="数组列表"><a href="#数组列表" class="headerlink" title="数组列表"></a>数组列表</h3><ul>
-<li>java.util.ArrayList类，其对象可以内部管理数组，当数组太小不够使用时，自动创建另外一个内部数组，并将元素移动到该数组，这个过程是透明的</li>
-<li>限制：不能使用基本类型作为类型参数，解决办法是使用包装类</li>
-<li>基本类型和它们对应的包装类型之间的转换是在一种名为<code>自动装箱</code>的过程中自动构造的</li>
-<li>将Integer对象赋值给int变量时，这个对象<code>自动拆箱</code>，内部产生一个int值</li>
-</ul>
-<h3 id="数组与数组列表的复制"><a href="#数组与数组列表的复制" class="headerlink" title="数组与数组列表的复制"></a>数组与数组列表的复制</h3><ul>
-<li>可以将数组变量复制到另一个数组变量，但两个变量引用同一个数组</li>
-<li>复制数组使用静态方法<code>Arrays.copyOf()</code></li>
-<li>复制数组列表可以直接使用构造方法</li>
-<li><code>Arrays.asList()</code>方法可以使用一个数组或任意数量的参数，使用任意数量参数时，你可以将它当作初始化数组的一种替代，返回数组列表</li>
-<li>没有简单的方法可以完成int[]和ArrayList<integer>之间的转换，需要使用显示循环或IntStream</integer></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7ul1p44000a44qvr3skqpkp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7w1ivrh000558qvltsk7n0z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -887,6 +861,10 @@ Li             Ri
       <ul>
         
           <li>
+            <a href="/2017/09/22/java_extend/">Java 面向对象编程(中)</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/21/java_runnable/">Java Runnable的三种实现方法</a>
           </li>
         
@@ -900,10 +878,6 @@ Li             Ri
         
           <li>
             <a href="/2017/09/15/informationSecure_01/">信息安全之DES加密过程</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/13/java_06/">Java 字符串</a>
           </li>
         
       </ul>
