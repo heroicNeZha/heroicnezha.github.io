@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="lzw Love Hj">
 <meta property="og:description" content="继承 提高了代码的复用性 让类与类之间产生了关系,为第三个特征多态提供了前提 所有枚举类型都是Enum的子类,它提供了toString,valueOf和CompareTo方法 Java支持单继承, 不直接支持多继承. 多继承的的弊端是方法调用具有不确定性,因为方法的主体不同,Java对其进行了改良; 当事物存在(is-a)的关系时, 可以通过继承实现这个关; 子父类出现的相同名字的成员变量, 用s">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-22T15:27:21.836Z">
+<meta property="og:updated_time" content="2017-09-23T13:41:45.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 面向对象编程(中)">
 <meta name="twitter:description" content="继承 提高了代码的复用性 让类与类之间产生了关系,为第三个特征多态提供了前提 所有枚举类型都是Enum的子类,它提供了toString,valueOf和CompareTo方法 Java支持单继承, 不直接支持多继承. 多继承的的弊端是方法调用具有不确定性,因为方法的主体不同,Java对其进行了改良; 当事物存在(is-a)的关系时, 可以通过继承实现这个关; 子父类出现的相同名字的成员变量, 用s">
@@ -127,13 +127,29 @@
 <td style="text-align:left">boolean equals(Object other)</td>
 <td style="text-align:left">如果other被认为与这个对象相等,返回true;如果other为null或者不相等,返回false. 如果两者指向同一对象,返回true. 如果想在other为null的时候也是安全的,推荐使用Object.equals(Object obj, Object other)</td>
 </tr>
+<tr>
+<td style="text-align:left">Class&lt;？&gt; getClass()</td>
+<td style="text-align:left">产生该对象所属的类的Class对象</td>
+</tr>
+<tr>
+<td style="text-align:left">protected Object clone()</td>
+<td style="text-align:left">拷贝该对象，默认为浅拷贝</td>
+</tr>
+<tr>
+<td style="text-align:left">protected void finalize()</td>
+<td style="text-align:left">垃圾回收机回收时调用，不要覆盖这个方法</td>
+</tr>
+<tr>
+<td style="text-align:left">wait、notify、notifyAll</td>
+<td style="text-align:left">并发编程</td>
+</tr>
 </tbody>
 </table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj7w1ivro000f58qv1r1h5u3x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj7xd75pt000ds8qvwg7tnwzv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
