@@ -86,24 +86,30 @@
       
         <ul>
 <li><p>枚举的定义</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Size &#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Size &#123;MONDAY,TUESDAY,WEDENSDAY),THURSDAY,FRIDAY,SATURDAY,SUNDAY&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Size notMySize = Size.valueOf(<span class="string">"SMALL"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Size notMySize = Size.valueOf(<span class="string">"MONDAY"</span>);</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会抛出异常</p>
+<p>将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会出IllegalArgumentException异常</p>
 <ul>
 <li>每个枚举类型都有一个静态方法values，该方法返回按照其声明次序排序的包含所有枚举实例的数组<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Size[] allValues = Size.values();</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>这个方法也能用于foreach遍历</p>
 <ul>
-<li>可以给枚举类型添加构造函数、方法和域。每个枚举类型实例保证只被构造一次</li>
-<li>可以给单个实例添加方法，但是只能覆盖枚举类中定义的方法</li>
+<li><p>可以给枚举类型添加构造函数、方法和域。每个枚举类型实例保证只被构造一次</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Size&#123;</div><div class="line">		MONDAY(<span class="string">"MON"</span>),TUESDAY(<span class="string">"TUES"</span>),WEDENSDAY(<span class="string">"WED"</span>),</div><div class="line">		THURSDAY(<span class="string">"TUES"</span>),FRIDAY(<span class="string">"FRI"</span>),SATURDAY(<span class="string">"SAT"</span>),SUNDAY(<span class="string">"SUN"</span>);</div><div class="line">		<span class="keyword">private</span> String abbreviation;</div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">private</span> <span class="title">Size</span><span class="params">(String abbr)</span> </span>&#123;</div><div class="line">			<span class="keyword">this</span>.abbreviation = abbr;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getAbbreviation</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> abbreviation;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以给单个实例添加方法，但是只能覆盖枚举类中定义的方法</p>
+</li>
 <li>从技术上说，每个枚举常量都是枚举类的一个匿名子类，匿名子类体中的东西当然可以添加实现</li>
-<li>枚举可以有静态成员，但需要使用静态初始化块来进行初始化工作，因为<em>枚举常量在静态成员之前构建</em></li>
-<li>枚举类型可以被嵌套在一个类中，这样嵌套的枚举类属于隐式的静态嵌套类，所以一样不能引用外部类的实例变量</li>
+<li><p>枚举可以有静态成员，但需要使用静态初始化块来进行初始化工作，因为<em>枚举常量在静态成员之前构建</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Size&#123;</div><div class="line">  MONDAY,TUESDAY,WEDENSDAY),THURSDAY,FRIDAY,SATURDAY,SUNDAY;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> week;</div><div class="line"></div><div class="line">  Size()&#123;</div><div class="line">    <span class="comment">//错误--不能在构造函数中访问静态变量</span></div><div class="line">    <span class="comment">//week = 7;</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span>&#123;</div><div class="line">    week = <span class="number">7</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>枚举类型可以被嵌套在一个类中，这样嵌套的枚举类属于隐式的静态嵌套类，所以一样不能引用外部类的实例变量</p>
+</li>
 <li>枚举常量可以被switch</li>
 </ul>
 <h3 id="java-lang-Enum类的方法"><a href="#java-lang-Enum类的方法" class="headerlink" title="java.lang.Enum类的方法"></a>java.lang.Enum<e>类的方法</e></h3><table>
@@ -156,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj7ytp5ze000dh4qvtgwxbr35" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj7yva10n0008p4qv3nv5ld2e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -252,52 +258,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj7ytp5ze000fh4qvcgt1nex7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj7yva10o0009p4qvmgyioc6u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java_runnable" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/21/java_runnable/" class="article-date">
-  <time datetime="2017-09-21T14:18:14.584Z" itemprop="datePublished">2017-09-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/21/java_runnable/">Java Runnable的三种实现方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h5><ul>
-<li>常规方法,通过实现Runnable<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/21/java_runnable/" data-id="cj7ytp5zt000lh4qv38jau4wr" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-多线程/">Java,多线程</a></li></ul>
 
     </footer>
   </div>
@@ -369,7 +333,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj7ytp609000rh4qvwqayqvvv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj7yva10q000cp4qviy734l6f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -381,9 +345,9 @@
 
 
   
-    <article id="post-java_07" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-java_package" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/17/java_07/" class="article-date">
+    <a href="/2017/09/17/java_package/" class="article-date">
   <time datetime="2017-09-17T14:13:13.054Z" itemprop="datePublished">2017-09-17</time>
 </a>
     
@@ -395,7 +359,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/17/java_07/">Java 包</a>
+      <a class="article-title" href="/2017/09/17/java_package/">Java 包</a>
     </h1>
   
 
@@ -445,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/17/java_07/" data-id="cj7ytp5zt000jh4qv9m1mpd82" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/17/java_package/" data-id="cj7yva10v000jp4qv9m7qez23" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -629,7 +593,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7ytp60p000vh4qvi6dl2ocu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7yva10l0004p4qvh3qnuxit" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -641,9 +605,9 @@ Li             Ri
 
 
   
-    <article id="post-java_06" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-java_string" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/13/java_06/" class="article-date">
+    <a href="/2017/09/13/java_string/" class="article-date">
   <time datetime="2017-09-13T14:16:13.037Z" itemprop="datePublished">2017-09-13</time>
 </a>
     
@@ -655,7 +619,7 @@ Li             Ri
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/13/java_06/">Java 字符串</a>
+      <a class="article-title" href="/2017/09/13/java_string/">Java 字符串</a>
     </h1>
   
 
@@ -691,7 +655,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7ytp609000sh4qvwxcxspl7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/java_string/" data-id="cj7yva10y000pp4qvff1l97l7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -703,9 +667,9 @@ Li             Ri
 
 
   
-    <article id="post-java_05" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-java_ploymorphism" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/10/java_05/" class="article-date">
+    <a href="/2017/09/10/java_ploymorphism/" class="article-date">
   <time datetime="2017-09-10T14:19:22.794Z" itemprop="datePublished">2017-09-10</time>
 </a>
     
@@ -717,7 +681,7 @@ Li             Ri
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/10/java_05/">Java 面向对象编程(下)</a>
+      <a class="article-title" href="/2017/09/10/java_ploymorphism/">Java 面向对象编程(下)</a>
     </h1>
   
 
@@ -729,7 +693,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7ytp5yy0008h4qvhke7ezdh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/java_ploymorphism/" data-id="cj7yva10w000lp4qv6rj6rur5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -778,7 +742,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7ytp5yj0001h4qvmh5hf5z7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7yva10b0000p4qvvpgn4apc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -790,9 +754,9 @@ Li             Ri
 
 
   
-    <article id="post-java_04" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-java_object" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/02/java_04/" class="article-date">
+    <a href="/2017/09/02/java_object/" class="article-date">
   <time datetime="2017-09-02T12:39:05.313Z" itemprop="datePublished">2017-09-02</time>
 </a>
     
@@ -804,7 +768,7 @@ Li             Ri
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/02/java_04/">Java 面向对象编程(上)</a>
+      <a class="article-title" href="/2017/09/02/java_object/">Java 面向对象编程(上)</a>
     </h1>
   
 
@@ -852,7 +816,78 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7ytp5yy0004h4qv6e4y6u54" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/java_object/" data-id="cj7yva10t000hp4qvclforwjv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java_memory" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/01/java_memory/" class="article-date">
+  <time datetime="2017-09-01T11:23:51.583Z" itemprop="datePublished">2017-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/01/java_memory/">Java 内存分配</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java对内存空间的划分为五部分:<br>栈,堆,方法区,本地方法区,寄存器.</p>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>栈内存中存储的是局部变量,一旦变量生命周期结束,该变量就被释放.</p>
+<p>并不是数据结构中的栈.</p>
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>堆内存中存储的是实体(对象),每一个实体都有一个首地址值.new 会在堆内存中开辟空间.</p>
+<p>堆内存中的变量都有一个默认初始化值.</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>初始值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td>double</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>boolen</td>
+<td>false</td>
+</tr>
+<tr>
+<td>char</td>
+<td>‘\u0000’</td>
+</tr>
+</tbody>
+</table>
+<p>堆中的空间释放依赖垃圾回收机制,具体查看多线程.</p>
+<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><h3 id="本地方法区"><a href="#本地方法区" class="headerlink" title="本地方法区"></a>本地方法区</h3><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>寄存器为计算机组成原理的内容.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/01/java_memory/" data-id="cj7yva10r000ep4qvus6bofcx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -880,7 +915,7 @@ Li             Ri
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-多线程/">Java,多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -890,7 +925,7 @@ Li             Ri
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-多线程/" style="font-size: 10px;">Java,多线程</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -920,15 +955,15 @@ Li             Ri
           </li>
         
           <li>
-            <a href="/2017/09/21/java_runnable/">Java Runnable的三种实现方法</a>
-          </li>
-        
-          <li>
             <a href="/2017/09/18/java_interface/">Java 接口</a>
           </li>
         
           <li>
-            <a href="/2017/09/17/java_07/">Java 包</a>
+            <a href="/2017/09/17/java_package/">Java 包</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/informationSecure_01/">信息安全之DES加密过程</a>
           </li>
         
       </ul>

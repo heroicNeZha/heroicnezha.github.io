@@ -5,18 +5,18 @@
   
   <title>Java 枚举 | lzw Love Hj</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="枚举的定义 1public enum Size &amp;#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&amp;#125;  枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如 1Size notMySize = Size.valueOf(&quot;SMALL&quot;);   将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会抛出异常  每">
+  <meta name="description" content="枚举的定义 1public enum Size &amp;#123;MONDAY,TUESDAY,WEDENSDAY),THURSDAY,FRIDAY,SATURDAY,SUNDAY&amp;#125;  枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如 1Size notMySize = Size.valueOf(&quot;MONDAY&quot;);   将Size.SMALL赋给notMySize。如果给">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 枚举">
 <meta property="og:url" content="http://yoursite.com/2017/09/24/java_enum/index.html">
 <meta property="og:site_name" content="lzw Love Hj">
-<meta property="og:description" content="枚举的定义 1public enum Size &amp;#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&amp;#125;  枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如 1Size notMySize = Size.valueOf(&quot;SMALL&quot;);   将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会抛出异常  每">
+<meta property="og:description" content="枚举的定义 1public enum Size &amp;#123;MONDAY,TUESDAY,WEDENSDAY),THURSDAY,FRIDAY,SATURDAY,SUNDAY&amp;#125;  枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如 1Size notMySize = Size.valueOf(&quot;MONDAY&quot;);   将Size.SMALL赋给notMySize。如果给">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-24T14:07:04.387Z">
+<meta property="og:updated_time" content="2017-09-24T14:55:22.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 枚举">
-<meta name="twitter:description" content="枚举的定义 1public enum Size &amp;#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&amp;#125;  枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如 1Size notMySize = Size.valueOf(&quot;SMALL&quot;);   将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会抛出异常  每">
+<meta name="twitter:description" content="枚举的定义 1public enum Size &amp;#123;MONDAY,TUESDAY,WEDENSDAY),THURSDAY,FRIDAY,SATURDAY,SUNDAY&amp;#125;  枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如 1Size notMySize = Size.valueOf(&quot;MONDAY&quot;);   将Size.SMALL赋给notMySize。如果给">
   
     <link rel="alternate" href="/atom.xml" title="lzw Love Hj" type="application/atom+xml">
   
@@ -89,24 +89,30 @@
       
         <ul>
 <li><p>枚举的定义</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Size &#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Size &#123;MONDAY,TUESDAY,WEDENSDAY),THURSDAY,FRIDAY,SATURDAY,SUNDAY&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Size notMySize = Size.valueOf(<span class="string">"SMALL"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Size notMySize = Size.valueOf(<span class="string">"MONDAY"</span>);</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会抛出异常</p>
+<p>将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会出IllegalArgumentException异常</p>
 <ul>
 <li>每个枚举类型都有一个静态方法values，该方法返回按照其声明次序排序的包含所有枚举实例的数组<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Size[] allValues = Size.values();</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>这个方法也能用于foreach遍历</p>
 <ul>
-<li>可以给枚举类型添加构造函数、方法和域。每个枚举类型实例保证只被构造一次</li>
-<li>可以给单个实例添加方法，但是只能覆盖枚举类中定义的方法</li>
+<li><p>可以给枚举类型添加构造函数、方法和域。每个枚举类型实例保证只被构造一次</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Size&#123;</div><div class="line">		MONDAY(<span class="string">"MON"</span>),TUESDAY(<span class="string">"TUES"</span>),WEDENSDAY(<span class="string">"WED"</span>),</div><div class="line">		THURSDAY(<span class="string">"TUES"</span>),FRIDAY(<span class="string">"FRI"</span>),SATURDAY(<span class="string">"SAT"</span>),SUNDAY(<span class="string">"SUN"</span>);</div><div class="line">		<span class="keyword">private</span> String abbreviation;</div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">private</span> <span class="title">Size</span><span class="params">(String abbr)</span> </span>&#123;</div><div class="line">			<span class="keyword">this</span>.abbreviation = abbr;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getAbbreviation</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> abbreviation;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以给单个实例添加方法，但是只能覆盖枚举类中定义的方法</p>
+</li>
 <li>从技术上说，每个枚举常量都是枚举类的一个匿名子类，匿名子类体中的东西当然可以添加实现</li>
-<li>枚举可以有静态成员，但需要使用静态初始化块来进行初始化工作，因为<em>枚举常量在静态成员之前构建</em></li>
-<li>枚举类型可以被嵌套在一个类中，这样嵌套的枚举类属于隐式的静态嵌套类，所以一样不能引用外部类的实例变量</li>
+<li><p>枚举可以有静态成员，但需要使用静态初始化块来进行初始化工作，因为<em>枚举常量在静态成员之前构建</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Size&#123;</div><div class="line">  MONDAY,TUESDAY,WEDENSDAY),THURSDAY,FRIDAY,SATURDAY,SUNDAY;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> week;</div><div class="line"></div><div class="line">  Size()&#123;</div><div class="line">    <span class="comment">//错误--不能在构造函数中访问静态变量</span></div><div class="line">    <span class="comment">//week = 7;</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span>&#123;</div><div class="line">    week = <span class="number">7</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>枚举类型可以被嵌套在一个类中，这样嵌套的枚举类属于隐式的静态嵌套类，所以一样不能引用外部类的实例变量</p>
+</li>
 <li>枚举常量可以被switch</li>
 </ul>
 <h3 id="java-lang-Enum类的方法"><a href="#java-lang-Enum类的方法" class="headerlink" title="java.lang.Enum类的方法"></a>java.lang.Enum<e>类的方法</e></h3><table>
@@ -159,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj7ytp5ze000dh4qvtgwxbr35" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj7yva10n0008p4qv3nv5ld2e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -192,7 +198,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-多线程/">Java,多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -202,7 +208,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-多线程/" style="font-size: 10px;">Java,多线程</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -232,15 +238,15 @@
           </li>
         
           <li>
-            <a href="/2017/09/21/java_runnable/">Java Runnable的三种实现方法</a>
-          </li>
-        
-          <li>
             <a href="/2017/09/18/java_interface/">Java 接口</a>
           </li>
         
           <li>
-            <a href="/2017/09/17/java_07/">Java 包</a>
+            <a href="/2017/09/17/java_package/">Java 包</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/informationSecure_01/">信息安全之DES加密过程</a>
           </li>
         
       </ul>
