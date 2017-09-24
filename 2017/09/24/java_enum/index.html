@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java 基本数据类型 | lzw Love Hj</title>
+  <title>Java 枚举 | lzw Love Hj</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java 中基本数据类型分整型,浮点型,字符型,布尔型四类八种 ; 整型   数据类型 长度 表示范围     byte 8 -128 ~ 127   short 16 -2^15 ~ (2^15)-1   int 32 -2^31 ~ (2^31)-1   long 64 -2^63 ~ (2^63)-1     常量 Integer.MIN_VALUE和 Integer.MAX_VALUE分别">
+  <meta name="description" content="枚举的定义 1public enum Size &amp;#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&amp;#125;  枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如 1Size notMySize = Size.valueOf(&quot;SMALL&quot;);   将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会抛出异常  每">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 基本数据类型">
-<meta property="og:url" content="http://yoursite.com/2017/08/31/java_01/index.html">
+<meta property="og:title" content="Java 枚举">
+<meta property="og:url" content="http://yoursite.com/2017/09/24/java_enum/index.html">
 <meta property="og:site_name" content="lzw Love Hj">
-<meta property="og:description" content="Java 中基本数据类型分整型,浮点型,字符型,布尔型四类八种 ; 整型   数据类型 长度 表示范围     byte 8 -128 ~ 127   short 16 -2^15 ~ (2^15)-1   int 32 -2^31 ~ (2^31)-1   long 64 -2^63 ~ (2^63)-1     常量 Integer.MIN_VALUE和 Integer.MAX_VALUE分别">
+<meta property="og:description" content="枚举的定义 1public enum Size &amp;#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&amp;#125;  枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如 1Size notMySize = Size.valueOf(&quot;SMALL&quot;);   将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会抛出异常  每">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-10T14:18:23.465Z">
+<meta property="og:updated_time" content="2017-09-24T14:07:04.387Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 基本数据类型">
-<meta name="twitter:description" content="Java 中基本数据类型分整型,浮点型,字符型,布尔型四类八种 ; 整型   数据类型 长度 表示范围     byte 8 -128 ~ 127   short 16 -2^15 ~ (2^15)-1   int 32 -2^31 ~ (2^31)-1   long 64 -2^63 ~ (2^63)-1     常量 Integer.MIN_VALUE和 Integer.MAX_VALUE分别">
+<meta name="twitter:title" content="Java 枚举">
+<meta name="twitter:description" content="枚举的定义 1public enum Size &amp;#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&amp;#125;  枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如 1Size notMySize = Size.valueOf(&quot;SMALL&quot;);   将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会抛出异常  每">
   
     <link rel="alternate" href="/atom.xml" title="lzw Love Hj" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-java_01" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-java_enum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/31/java_01/" class="article-date">
-  <time datetime="2017-08-31T14:35:01.863Z" itemprop="datePublished">2017-08-31</time>
+    <a href="/2017/09/24/java_enum/" class="article-date">
+  <time datetime="2017-09-24T13:55:28.574Z" itemprop="datePublished">2017-09-24</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java 基本数据类型
+      Java 枚举
     </h1>
   
 
@@ -87,110 +87,79 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java 中基本数据类型分整型,浮点型,字符型,布尔型四类八种 ;</p>
-<h5 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h5><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th style="text-align:center">长度</th>
-<th style="text-align:right">表示范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>byte</td>
-<td style="text-align:center">8</td>
-<td style="text-align:right">-128 ~ 127</td>
-</tr>
-<tr>
-<td>short</td>
-<td style="text-align:center">16</td>
-<td style="text-align:right">-2^15 ~ (2^15)-1</td>
-</tr>
-<tr>
-<td>int</td>
-<td style="text-align:center">32</td>
-<td style="text-align:right">-2^31 ~ (2^31)-1</td>
-</tr>
-<tr>
-<td>long</td>
-<td style="text-align:center">64</td>
-<td style="text-align:right">-2^63 ~ (2^63)-1</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>常量 Integer.MIN_VALUE和 Integer.MAX_VALUE分别是最小和最大的整数, 其他类也有同样作用的常量.</li>
-</ul>
-<h5 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h5><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th style="text-align:center">长度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>float</td>
-<td style="text-align:center">32</td>
-</tr>
-<tr>
-<td>double</td>
-<td style="text-align:center">64</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Double.POSITIVE_INFINITY代表∞, Double.NEGATIVE_INFINITY代表-∞, Double.NaN代表”非数值”.</li>
-<li>所有的”非数值”都被认为是彼此不同的, 比如不能这样判断<code>if(x==Double.NaN)</code>, 但是可以用<code>if(Double.isNaN(x))</code>.</li>
-</ul>
-<h5 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h5><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th style="text-align:center">长度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>char</td>
-<td style="text-align:center">16</td>
-</tr>
-</tbody>
-</table>
-<h5 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h5><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th style="text-align:center">内容</th>
-<th>长度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>boolean</td>
-<td style="text-align:center">true or false</td>
-<td>1字节</td>
-</tr>
-</tbody>
-</table>
-<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ol>
-<li><p>Java低字节向高字节转换具有自动提升性质,转换顺序为 byte-&gt;short-&gt;int-&gt;long-&gt;float-&gt;double,但高字节向低字节强制转换可能丢失精度.</p>
+        <ul>
+<li><p>枚举的定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Size &#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>默认浮点类型为double,float加后缀<code>f</code>或<code>F</code>.</p>
+<li><p>枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Size notMySize = Size.valueOf(<span class="string">"SMALL"</span>);</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<ul>
-<li>可以给数字加下划线, 比如<code>1_000_000</code>, Java编译器会直接删除他们.</li>
 </ul>
-<ol>
-<li>Maths类提供常见的数学函数.</li>
-</ol>
+<p>将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会抛出异常</p>
+<ul>
+<li>每个枚举类型都有一个静态方法values，该方法返回按照其声明次序排序的包含所有枚举实例的数组<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Size[] allValues = Size.values();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这个方法也能用于foreach遍历</p>
+<ul>
+<li>可以给枚举类型添加构造函数、方法和域。每个枚举类型实例保证只被构造一次</li>
+<li>可以给单个实例添加方法，但是只能覆盖枚举类中定义的方法</li>
+<li>从技术上说，每个枚举常量都是枚举类的一个匿名子类，匿名子类体中的东西当然可以添加实现</li>
+<li>枚举可以有静态成员，但需要使用静态初始化块来进行初始化工作，因为<em>枚举常量在静态成员之前构建</em></li>
+<li>枚举类型可以被嵌套在一个类中，这样嵌套的枚举类属于隐式的静态嵌套类，所以一样不能引用外部类的实例变量</li>
+<li>枚举常量可以被switch</li>
+</ul>
+<h3 id="java-lang-Enum类的方法"><a href="#java-lang-Enum类的方法" class="headerlink" title="java.lang.Enum类的方法"></a>java.lang.Enum<e>类的方法</e></h3><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">String toString()</td>
+<td style="text-align:left">在enum声明中所提供的该实例的名称</td>
+</tr>
+<tr>
+<td style="text-align:left">String name()</td>
+<td style="text-align:left">在enum声明中所提供的该实例的名称，name方法是final的</td>
+</tr>
+<tr>
+<td style="text-align:left">int ordinal()</td>
+<td style="text-align:left">在enum声明中该实例的位置</td>
+</tr>
+<tr>
+<td style="text-align:left">int compareTo(Emnu<t> type,String name)</t></td>
+<td style="text-align:left">通过序数值与other实例进行比较</td>
+</tr>
+<tr>
+<td style="text-align:left">static T valueOf(Class<t> type,String name)</t></td>
+<td style="text-align:left">返回给定名称的实例。考虑用枚举类型的valueOf或values方法替代它</td>
+</tr>
+<tr>
+<td style="text-align:left">Class<e> getDeclaringClass()</e></td>
+<td style="text-align:left">获取实例所在的类</td>
+</tr>
+<tr>
+<td style="text-align:left">int hashCode()</td>
+<td style="text-align:left">调用对应的Object的hashCode方法并且是final的</td>
+</tr>
+<tr>
+<td style="text-align:left">protected void finalize()</td>
+<td style="text-align:left">调用对应的Object的finalize方法并且是final的</td>
+</tr>
+<tr>
+<td style="text-align:left">protected Object clone()</td>
+<td style="text-align:left">抛出一个cloneNotSupportedException异常</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7ytp5yj0003h4qvow41dh07" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj7ytp5ze000dh4qvtgwxbr35" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -201,19 +170,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/08/31/java_02/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Java 数组
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/08/31/eclipse_setting/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/09/22/java_extend/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">eclipse 自用配置</div>
+      <div class="article-nav-title">Java 面向对象编程(中)</div>
     </a>
   
 </nav>

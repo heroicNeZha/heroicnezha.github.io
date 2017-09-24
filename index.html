@@ -62,6 +62,112 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_enum" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/24/java_enum/" class="article-date">
+  <time datetime="2017-09-24T13:55:28.574Z" itemprop="datePublished">2017-09-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/24/java_enum/">Java 枚举</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>枚举的定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Size &#123;SMALL, MEDIUM, LARGE, EXTRA_LARGE&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>枚举类型的静态方法valueOf很常用，它针对枚举类型而合成。例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Size notMySize = Size.valueOf(<span class="string">"SMALL"</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>将Size.SMALL赋给notMySize。如果给定名称的实例不存在，valueOf会抛出异常</p>
+<ul>
+<li>每个枚举类型都有一个静态方法values，该方法返回按照其声明次序排序的包含所有枚举实例的数组<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Size[] allValues = Size.values();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这个方法也能用于foreach遍历</p>
+<ul>
+<li>可以给枚举类型添加构造函数、方法和域。每个枚举类型实例保证只被构造一次</li>
+<li>可以给单个实例添加方法，但是只能覆盖枚举类中定义的方法</li>
+<li>从技术上说，每个枚举常量都是枚举类的一个匿名子类，匿名子类体中的东西当然可以添加实现</li>
+<li>枚举可以有静态成员，但需要使用静态初始化块来进行初始化工作，因为<em>枚举常量在静态成员之前构建</em></li>
+<li>枚举类型可以被嵌套在一个类中，这样嵌套的枚举类属于隐式的静态嵌套类，所以一样不能引用外部类的实例变量</li>
+<li>枚举常量可以被switch</li>
+</ul>
+<h3 id="java-lang-Enum类的方法"><a href="#java-lang-Enum类的方法" class="headerlink" title="java.lang.Enum类的方法"></a>java.lang.Enum<e>类的方法</e></h3><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">String toString()</td>
+<td style="text-align:left">在enum声明中所提供的该实例的名称</td>
+</tr>
+<tr>
+<td style="text-align:left">String name()</td>
+<td style="text-align:left">在enum声明中所提供的该实例的名称，name方法是final的</td>
+</tr>
+<tr>
+<td style="text-align:left">int ordinal()</td>
+<td style="text-align:left">在enum声明中该实例的位置</td>
+</tr>
+<tr>
+<td style="text-align:left">int compareTo(Emnu<t> type,String name)</t></td>
+<td style="text-align:left">通过序数值与other实例进行比较</td>
+</tr>
+<tr>
+<td style="text-align:left">static T valueOf(Class<t> type,String name)</t></td>
+<td style="text-align:left">返回给定名称的实例。考虑用枚举类型的valueOf或values方法替代它</td>
+</tr>
+<tr>
+<td style="text-align:left">Class<e> getDeclaringClass()</e></td>
+<td style="text-align:left">获取实例所在的类</td>
+</tr>
+<tr>
+<td style="text-align:left">int hashCode()</td>
+<td style="text-align:left">调用对应的Object的hashCode方法并且是final的</td>
+</tr>
+<tr>
+<td style="text-align:left">protected void finalize()</td>
+<td style="text-align:left">调用对应的Object的finalize方法并且是final的</td>
+</tr>
+<tr>
+<td style="text-align:left">protected Object clone()</td>
+<td style="text-align:left">抛出一个cloneNotSupportedException异常</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj7ytp5ze000dh4qvtgwxbr35" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java_extend" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/22/java_extend/" class="article-date">
@@ -146,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj7xd75pt000ds8qvwg7tnwzv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj7ytp5ze000fh4qvcgt1nex7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -188,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/21/java_runnable/" data-id="cj7xd75q0000js8qvdlsag3j0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/21/java_runnable/" data-id="cj7ytp5zt000lh4qv38jau4wr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-多线程/">Java,多线程</a></li></ul>
@@ -263,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj7xd75qj000ps8qvutl3nr0c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj7ytp609000rh4qvwqayqvvv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -339,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/17/java_07/" data-id="cj7xd75ql000rs8qvblfypnzh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/17/java_07/" data-id="cj7ytp5zt000jh4qv9m1mpd82" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -523,7 +629,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7xd75qh000os8qvy65ocved" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj7ytp60p000vh4qvi6dl2ocu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -585,7 +691,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7xd75py000hs8qvt5lexhbp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/java_06/" data-id="cj7ytp609000sh4qvwxcxspl7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -623,7 +729,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7xd75po0009s8qvgicjwnbl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/java_05/" data-id="cj7ytp5yy0008h4qvhke7ezdh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -672,7 +778,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7xd75pj0005s8qvaw42gci8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj7ytp5yj0001h4qvmh5hf5z7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -746,78 +852,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7xd75pl0007s8qv0siafivm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java_03" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/01/java_03/" class="article-date">
-  <time datetime="2017-09-01T11:23:51.583Z" itemprop="datePublished">2017-09-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/01/java_03/">Java 内存分配</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Java对内存空间的划分为五部分:<br>栈,堆,方法区,本地方法区,寄存器.</p>
-<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>栈内存中存储的是局部变量,一旦变量生命周期结束,该变量就被释放.</p>
-<p>并不是数据结构中的栈.</p>
-<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>堆内存中存储的是实体(对象),每一个实体都有一个首地址值.new 会在堆内存中开辟空间.</p>
-<p>堆内存中的变量都有一个默认初始化值.</p>
-<table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>初始值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>int</td>
-<td>0</td>
-</tr>
-<tr>
-<td>double</td>
-<td>0.0</td>
-</tr>
-<tr>
-<td>boolen</td>
-<td>false</td>
-</tr>
-<tr>
-<td>char</td>
-<td>‘\u0000’</td>
-</tr>
-</tbody>
-</table>
-<p>堆中的空间释放依赖垃圾回收机制,具体查看多线程.</p>
-<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><h3 id="本地方法区"><a href="#本地方法区" class="headerlink" title="本地方法区"></a>本地方法区</h3><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>寄存器为计算机组成原理的内容.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7xd75pg0004s8qvoo1m1h5x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/java_04/" data-id="cj7ytp5yy0004h4qv6e4y6u54" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -877,6 +912,10 @@ Li             Ri
       <ul>
         
           <li>
+            <a href="/2017/09/24/java_enum/">Java 枚举</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/22/java_extend/">Java 面向对象编程(中)</a>
           </li>
         
@@ -890,10 +929,6 @@ Li             Ri
         
           <li>
             <a href="/2017/09/17/java_07/">Java 包</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/15/informationSecure_01/">信息安全之DES加密过程</a>
           </li>
         
       </ul>

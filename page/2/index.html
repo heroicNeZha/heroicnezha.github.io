@@ -62,6 +62,77 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_03" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/01/java_03/" class="article-date">
+  <time datetime="2017-09-01T11:23:51.583Z" itemprop="datePublished">2017-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/01/java_03/">Java 内存分配</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java对内存空间的划分为五部分:<br>栈,堆,方法区,本地方法区,寄存器.</p>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>栈内存中存储的是局部变量,一旦变量生命周期结束,该变量就被释放.</p>
+<p>并不是数据结构中的栈.</p>
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>堆内存中存储的是实体(对象),每一个实体都有一个首地址值.new 会在堆内存中开辟空间.</p>
+<p>堆内存中的变量都有一个默认初始化值.</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>初始值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td>double</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>boolen</td>
+<td>false</td>
+</tr>
+<tr>
+<td>char</td>
+<td>‘\u0000’</td>
+</tr>
+</tbody>
+</table>
+<p>堆中的空间释放依赖垃圾回收机制,具体查看多线程.</p>
+<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><h3 id="本地方法区"><a href="#本地方法区" class="headerlink" title="本地方法区"></a>本地方法区</h3><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>寄存器为计算机组成原理的内容.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/01/java_03/" data-id="cj7ytp5yy0005h4qva4f0vv9e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java_02" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/31/java_02/" class="article-date">
@@ -134,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7xd75pv000fs8qvx8l1bmpn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_02/" data-id="cj7ytp5zt000hh4qvrw7uux2e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -271,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7xd75pq000bs8qv7drb5joc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/java_01/" data-id="cj7ytp5yj0003h4qvow41dh07" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -317,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7xd75mh0000s8qvgiavb819" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/eclipse_setting/" data-id="cj7ytp5ws0000h4qvkr6800l1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -366,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7xd75pe0003s8qvbw6vg6c9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj7ytp5ze000ah4qvjwqf0vvx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -424,6 +495,10 @@
       <ul>
         
           <li>
+            <a href="/2017/09/24/java_enum/">Java 枚举</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/22/java_extend/">Java 面向对象编程(中)</a>
           </li>
         
@@ -437,10 +512,6 @@
         
           <li>
             <a href="/2017/09/17/java_07/">Java 包</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/15/informationSecure_01/">信息安全之DES加密过程</a>
           </li>
         
       </ul>
