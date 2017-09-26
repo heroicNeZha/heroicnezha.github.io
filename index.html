@@ -62,6 +62,79 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_genericity" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/26/java_genericity/" class="article-date">
+  <time datetime="2017-09-26T13:07:28.860Z" itemprop="datePublished">2017-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/26/java_genericity/">Java 泛型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><p>泛型类是有一个或多个类型参数的类</p>
+<ul>
+<li><p>例如储存键值对​的简单泛型类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GotIt</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</div><div class="line">	<span class="keyword">public</span> K key;</div><div class="line">	<span class="keyword">public</span> V value;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">GotIt</span><span class="params">(K key, V value)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">		<span class="keyword">this</span>.key = key;</div><div class="line">		<span class="keyword">this</span>.value = value;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> key;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> value;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>类型参数不能用基本类型实例化，例如GotIt<string,int>在Java中是无效的</string,int></p>
+</li>
+<li><p>当你构造一个泛型类对象时，可以在构造函数中省略类型参数。但仍然要提供一对尖括号，这时构造函数的类型参数是推断出来的，这种空的尖括号可以被称为钻石</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GotIt&lt;String, Integer&gt; gotIt = <span class="keyword">new</span> GotIt&lt;&gt;(<span class="string">"zero"</span>,<span class="number">0</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><p>泛型方法是带参数类型的方法</p>
+<ul>
+<li><p>泛型方法可以是普通类也可以是泛型类的方法</p>
+</li>
+<li><p>声明一个泛型方法时，类型参数要放在修饰符后，返回类型之前</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T[] swap(<span class="keyword">int</span> i, <span class="keyword">int</span> j, T... values) &#123;</div><div class="line">  T temp = values[i];</div><div class="line">  values[i] = values[j];</div><div class="line">  values[j] = temp;</div><div class="line">  <span class="keyword">return</span> values;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>调用时可以不用显提供类型，但提供了类型可以得到一个更好的错误消息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Double[] result1 = generic_test.swap(<span class="number">0</span>, <span class="number">1</span>, <span class="number">1.5</span>, <span class="number">2</span>, <span class="number">3</span>);</div><div class="line">Double[] result2 = generic_test.&lt;Double&gt;swap(<span class="number">0</span>, <span class="number">1</span>, <span class="number">1.5</span>, <span class="number">2</span>, <span class="number">3</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>result1对应的错误信息为<code>Type mismatch: cannot convert from Number&amp;Comparable&lt;?&gt;[] to Double[]</code></p>
+</li>
+<li><p>result2对应的错误信息为<code>The parameterized method &lt;Double&gt;swap(int, int, Double...) of type generic_test is not applicable for the arguments (int, int, Double, Integer, Integer)</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="类型限定"><a href="#类型限定" class="headerlink" title="类型限定"></a>类型限定</h3><ul>
+<li>可以让类型参数满足某些要求，对类型做出限定，要求该类型继承某些类或者实现某些接口</li>
+</ul>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><ul>
+<li>子类型通配符&lt;? extends Employee&gt;</li>
+<li>父类型通配符&lt;? super Employee&gt;</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/26/java_genericity/" data-id="cj81nvdsu0000p8qvuinn23va" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java_enum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/24/java_enum/" class="article-date">
@@ -828,108 +901,6 @@ Li             Ri
 
 
   
-    <article id="post-java_memory" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/01/java_memory/" class="article-date">
-  <time datetime="2017-09-01T11:23:51.583Z" itemprop="datePublished">2017-09-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/01/java_memory/">Java 内存分配</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JVM对内存空间的划分为五部分:<br>栈,堆,方法区,本地方法区,寄存器.</p>
-<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><ul>
-<li><p>栈内存中存储的是局部变量,一旦变量生命周期结束,该变量就被释放.</p>
-</li>
-<li><p>每个线程包含一个栈区, 栈中只保存基础数据类型的对象和自定义对象的引用</p>
-</li>
-<li><p>栈区分为三个部分:基本类型变量区, 执行环境上下文, 操作指令区</p>
-</li>
-<li><p>并不是数据结构中的栈.</p>
-</li>
-</ul>
-<h3 id="堆-heap"><a href="#堆-heap" class="headerlink" title="堆(heap)"></a>堆(heap)</h3><ul>
-<li><p>堆内存中存储的是实体(对象),每一个实体都有一个首地址值.</p>
-</li>
-<li><p>堆中不存放基本类型和对象引用</p>
-</li>
-<li><p>new 会在堆内存中开辟空间</p>
-</li>
-<li><p>JVM只有一个堆区并且所有线程共享</p>
-</li>
-<li><p>堆内存中的变量都有一个默认初始化值.</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>初始值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>int</td>
-<td>0</td>
-</tr>
-<tr>
-<td>double</td>
-<td>0.0</td>
-</tr>
-<tr>
-<td>boolen</td>
-<td>false</td>
-</tr>
-<tr>
-<td>char</td>
-<td>‘\u0000’</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>堆中的空间释放依赖垃圾回收机制,具体查看多线程.</li>
-</ul>
-<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><ul>
-<li><p>又称静态区, 跟堆一样, 被所有线程共享.</p>
-</li>
-<li><p>这个方法包含所有的class和static变量</p>
-</li>
-</ul>
-<h3 id="本地方法区"><a href="#本地方法区" class="headerlink" title="本地方法区"></a>本地方法区</h3><ul>
-<li>运行时本地系统平台中的内容, 不同操作系统中也不一样</li>
-</ul>
-<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><ul>
-<li>寄存器为计算机组成原理的内容.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/java_memory/" data-id="cj80aq4i2000gmcqvbp1u64ln" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-JVM/">Java,JVM</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -946,7 +917,7 @@ Li             Ri
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-JVM/">Java,JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -956,7 +927,7 @@ Li             Ri
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-JVM/" style="font-size: 10px;">Java,JVM</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -978,6 +949,10 @@ Li             Ri
       <ul>
         
           <li>
+            <a href="/2017/09/26/java_genericity/">Java 泛型</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/24/java_enum/">Java 枚举</a>
           </li>
         
@@ -991,10 +966,6 @@ Li             Ri
         
           <li>
             <a href="/2017/09/17/java_package/">Java 包</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/15/informationSecure_01/">信息安全之DES加密过程</a>
           </li>
         
       </ul>
