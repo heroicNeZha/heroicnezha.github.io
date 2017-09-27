@@ -62,6 +62,113 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_collection" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/27/java_collection/" class="article-date">
+  <time datetime="2017-09-27T13:40:12.415Z" itemprop="datePublished">2017-09-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/27/java_collection/">Java 集合</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="集合类框架"><a href="#集合类框架" class="headerlink" title="集合类框架"></a>集合类框架</h3><h3 id="​迭代器"><a href="#​迭代器" class="headerlink" title="​迭代器"></a>​迭代器</h3><ul>
+<li>每个集合都提供了按某种顺序迭代元素的方式，因为Collection的父接口Iterable<t>定义了iterator方法返回一个迭代器，例如</t></li>
+<li>对实现了Iterable<e>接口的类的任意对象都可以使用foreach循环，并且会被转换成上例的格式，例如</e></li>
+<li>Iterable接口的remove方法可以移除之前访问的最后一个元素，所以如果中间没有调用next或previous时不能连续两次调用remove方法。使用removeIf方法也很容易：<code>collection.removeIf(e -&gt; e fulfills the condition;</code></li>
+<li>ListIterator接口是Iterator的子接口，含有以下方法：在迭代之前添加元素，修改被访问的元素，以及向后回溯，与链表一起使用时很有趣：</li>
+</ul>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><ul>
+<li>set可以有效检测一个值是不是它的元素，但是它不记得添加的顺序。</li>
+<li>例如你想知道一段文字是否含有关键词，可以这样实现。</li>
+<li>如果你为元素提供了很好的哈希函数，那么哈希set更加高效。Java类库中的String、Path等类都有很好的hash函数</li>
+<li>TreeSet的元素必须实现Comparable接口，或者你在构造函数中提供Comparator</li>
+</ul>
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><ul>
+<li>map用于存储键与值之间的联系。</li>
+<li>调用put方法添加新的联系，或者改变已存键所对应的值：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果你想按顺序访问键，使用TreeMap；如果你不需要按顺序访问键，使用HashMap效率更高</p>
+<ul>
+<li>如果键不存在，get方法会返回null，所以使用<code>getOrDefault(K key，V defaultValue)</code>更好</li>
+<li>merge方法可以检查一个值是否存在，不存在则赋默认值，存在则加1。常用于计数器：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">counts.merge(word ,<span class="number">1</span> ,Integer::sum);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果word之前不存在，就将word和1联系起来，如果存在就将之前的值加1</p>
+<ul>
+<li>你可以通过调用这些方法获取map中的键、值、记录的视图<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Set&lt;K&gt; keySet()</div><div class="line">Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()</div><div class="line">Collection&lt;K&gt; values()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>例如要迭代map中所有的key，你可以遍历entrySet方法返回的set：<br>或者简单的使用forEach方法：</p>
+<ul>
+<li>上例返回的集合不是map数据的拷贝，但是他们与map相联。如果在视图中移除了键或记录，那么该记录也从实际关联的map中移除</li>
+<li>一些map不允许键或值为null，例如ConcurrentHashMap。但是当你使用一些允许null值的map时，要注意一些map方法会将null值解释为不存在的记录或者是应该删除的记录</li>
+<li>想要展示map可以使用会记录添加顺序的LinkedHashMap</li>
+</ul>
+<h3 id="其余集合"><a href="#其余集合" class="headerlink" title="其余集合"></a>其余集合</h3><ul>
+<li><p>properties类可以方便地使用纯文本格式保存和加载</p>
+<ul>
+<li><p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>结果如下：</p>
+<ul>
+<li><p>加载属性时可以调用以下方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>然后使用getProperty方法得到键所对应的值，当然这个方法也能指定一个默认值<br>注意因为历史原因，不要使用get方法因为返回的是Object类型</p>
+<ul>
+<li>BitSet（位组）类可以用来存储一系列比特。<ul>
+<li>位组将比特塞进一个long类型的数组里。所以存储值为boolean型的数组相比，使用位组更有效。</li>
+<li>第i个位置为1表示i在集合内。</li>
+<li>注意BitSet不是集合类，他没有实现Collection接口。</li>
+</ul>
+</li>
+<li>栈、队列、双端队列、优先级队列<ul>
+<li>Java集合类框架中没有stack，只有一个Java早期遗留下来的应该避免使用的Stack类，如果你需要使用栈、队列和双端队列，并且不关心线程安全问题，可以使用ArrayDeque。</li>
+<li>使用ArrayDeque作为栈时，使用其push和pop方法，使用队列时使用add和remove方法。在并发程序中通常使用线程安全的队列。</li>
+<li>优先级队列在元素以任意顺序插入后，以有序方式检索元素。既当你调用remove方法时，会得到优先级队列中的当前最小元素。</li>
+</ul>
+</li>
+<li>枚举set和枚举map<ul>
+<li>当你想要收集一些枚举值的集合可以使用EnumSet类，EnumSet类没有公共的构造函数，使用静态工厂方法来构造EnumSet：</li>
+<li>EnumMap是key为枚举类型的映射。它被实现为一个值数组：</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/27/java_collection/" data-id="cj8333y940004j4qvaz5x6p47" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java_genericity" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/26/java_genericity/" class="article-date">
@@ -123,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/26/java_genericity/" data-id="cj81nvdsu0000p8qvuinn23va" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/26/java_genericity/" data-id="cj8333y9a0008j4qvl4afnfvn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -235,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj80aq4hw0009mcqv0pb2qg7w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj8333y970006j4qvwyk4f75y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -331,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj80aq4ht0005mcqvrs39ipz4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj8333y9i000ej4qv4txaqd42" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -406,7 +513,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj80aq4hz000bmcqv8tcwfj6m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj8333y9y000qj4qvk82jgqoi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -482,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/17/java_package/" data-id="cj80aq4i3000imcqvn6gwk508" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/17/java_package/" data-id="cj8333y9s000mj4qv70vqhjnu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -666,7 +773,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj80aq4hv0008mcqvw8cdbf49" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj8333ya0000sj4qviwp3mqmq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -728,7 +835,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/java_string/" data-id="cj80aq4i5000lmcqvkvqi231g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/java_string/" data-id="cj8333ya3000uj4qve3c8m9ot" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -766,7 +873,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/java_ploymorphism/" data-id="cj80aq4i7000nmcqvlukpvseg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/java_ploymorphism/" data-id="cj8333y9q000kj4qvrfda3jko" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -815,84 +922,10 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj80aq4hi0000mcqvpzp5ir4f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj8333y920003j4qvohk7thd5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java_object" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/02/java_object/" class="article-date">
-  <time datetime="2017-09-02T12:39:05.313Z" itemprop="datePublished">2017-09-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/02/java_object/">Java 面向对象编程(上)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h3><ul>
-<li>面向对象三个特征:封装,继承和多态</li>
-<li>(Accessor)访问器和(Mutator)更改器方法,其中更改器方法更好</li>
-</ul>
-<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><ul>
-<li>当你将一个方法声明为final时，子类不可以覆盖它。声明为final的类不能被继承。</li>
-<li>有final声明的变量必须在所有的构造函数末尾初始化。之后该变量不会被再次修改</li>
-<li>final声明引用时，只是声明该引用永不改变，但是修改对象自身是完全合法的 来，比如数组列表添加元素</li>
-</ul>
-<h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><ul>
-<li>如果你在类中将变量声明为static，那么该变量是属于这个类的，而不是对象</li>
-<li><p>可修改的静态常量很少，但是静态常量(static final)很普遍，比如System.out，它在System类中这样声明</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">System</span> </span>&#123;</div><div class="line">	   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> PrintStream out;</div><div class="line">		 …</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>静态初始块，用于额外的静态初始化工作</p>
-</li>
-<li>静态方法，同样使用static修饰，用于给不属于你的类提供额外功能等</li>
-<li>不能在静态方法中访问实例变量，因为静态方法没有运行在对象上</li>
-<li>静态方法最常见的使用就是工厂方法，返回类的新实例的静态方法，工厂方法也能返回共享对象</li>
-</ul>
-<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><ul>
-<li>封装就是隐藏实现细节. 对外提供公共的访问方式(接口).</li>
-<li>封装的目的是为了解耦, 降低耦合可以加快系统的开发速度, 减轻维护的负担. 还提高了软件的可重用行,<br>也便于进一步优化.</li>
-<li>访问控制机制. 实体的可访问性由该实体声明所在的位置,以及该实体声明中所出现的访问修饰符<br>(<code>private</code>,<code>protected</code>,<code>public</code>)共同决定. 第一规则是尽可能地使每个类或者成员不被外界访问.</li>
-</ul>
-<h5 id="创建对象时的流程如下"><a href="#创建对象时的流程如下" class="headerlink" title="创建对象时的流程如下:"></a>创建对象时的流程如下:</h5><ol>
-<li>加载指定的字节码文件进内存</li>
-<li>通过<code>new</code>在堆内存中开辟空间并分配首地址值</li>
-<li>对象中的属性进行默认初始化</li>
-<li>调用对应的构造函数. 构造函数压栈</li>
-<li>隐式执行<code>super()</code>访问父类构造函数</li>
-<li>对象中的属性进行初始化</li>
-<li>调用类中的构造代码块</li>
-<li>执行构造函数中自定义的初始化代码</li>
-<li>初始化完毕, 将地址赋给指定的引用</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/java_object/" data-id="cj80aq4i0000dmcqvpgzzyf9x" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
 
     </footer>
   </div>
@@ -949,6 +982,10 @@ Li             Ri
       <ul>
         
           <li>
+            <a href="/2017/09/27/java_collection/">Java 集合</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/26/java_genericity/">Java 泛型</a>
           </li>
         
@@ -962,10 +999,6 @@ Li             Ri
         
           <li>
             <a href="/2017/09/18/java_interface/">Java 接口</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/17/java_package/">Java 包</a>
           </li>
         
       </ul>
