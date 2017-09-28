@@ -84,7 +84,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="集合类框架"><a href="#集合类框架" class="headerlink" title="集合类框架"></a>集合类框架</h3><h3 id="​迭代器"><a href="#​迭代器" class="headerlink" title="​迭代器"></a>​迭代器</h3><ul>
+        <h3 id="集合类框架"><a href="#集合类框架" class="headerlink" title="集合类框架"></a>集合类框架</h3><p>继承关系如下:</p>
+<p><img src="http://images2015.cnblogs.com/blog/875181/201609/875181-20160921100733106-1187286566.png" alt=""></p>
+<h3 id="​迭代器"><a href="#​迭代器" class="headerlink" title="​迭代器"></a>​迭代器</h3><ul>
 <li>每个集合都提供了按某种顺序迭代元素的方式，因为Collection的父接口Iterable<t>定义了iterator方法返回一个迭代器，例如</t></li>
 <li>对实现了Iterable<e>接口的类的任意对象都可以使用foreach循环，并且会被转换成上例的格式，例如</e></li>
 <li>Iterable接口的remove方法可以移除之前访问的最后一个元素，所以如果中间没有调用next或previous时不能连续两次调用remove方法。使用removeIf方法也很容易：<code>collection.removeIf(e -&gt; e fulfills the condition;</code></li>
@@ -121,11 +123,11 @@
 <h3 id="其余集合"><a href="#其余集合" class="headerlink" title="其余集合"></a>其余集合</h3><ul>
 <li><p>properties类可以方便地使用纯文本格式保存和加载</p>
 <ul>
-<li><p>例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<li>例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">String path = <span class="string">"E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\collection\\setting.txt"</span>;</div><div class="line">Properties settings = <span class="keyword">new</span> Properties();</div><div class="line">settings.put(<span class="string">"width"</span>, <span class="string">"200"</span>);</div><div class="line">settings.put(<span class="string">"title"</span>, <span class="string">"Hello,World"</span>);</div><div class="line"><span class="keyword">try</span>(OutputStream out = Files.newOutputStream(Paths.get(path)))&#123;</div><div class="line">  settings.store(out, <span class="string">"settings"</span>);</div><div class="line">&#125;<span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">  e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>结果如下：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#settings</div><div class="line">#Thu Sep 28 22:52:02 CST 2017</div><div class="line">width=200</div><div class="line">title=Hello,World</div></pre></td></tr></table></figure>
 <ul>
 <li><p>加载属性时可以调用以下方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
@@ -157,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/27/java_collection/" data-id="cj8333y940004j4qvaz5x6p47" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/27/java_collection/" data-id="cj84l1pul0005moqvrusz8ur6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -230,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/26/java_genericity/" data-id="cj8333y9a0008j4qvl4afnfvn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/26/java_genericity/" data-id="cj84l1pv0000cmoqvm52dp0lv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -342,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj8333y970006j4qvwyk4f75y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj84l1puu0009moqv078zvlj2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -438,7 +440,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj8333y9i000ej4qv4txaqd42" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj84l1pur0008moqvy38qmb45" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -513,7 +515,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj8333y9y000qj4qvk82jgqoi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj84l1pv4000emoqvqhbcny7t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -589,7 +591,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/17/java_package/" data-id="cj8333y9s000mj4qv70vqhjnu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/17/java_package/" data-id="cj84l1pxq000wmoqvpzhgyc5a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -773,7 +775,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj8333ya0000sj4qviwp3mqmq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj84l1pui0004moqvxbcsont6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -835,7 +837,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/java_string/" data-id="cj8333ya3000uj4qve3c8m9ot" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/java_string/" data-id="cj84l1pwr000rmoqvxrleapou" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -873,7 +875,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/java_ploymorphism/" data-id="cj8333y9q000kj4qvrfda3jko" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/java_ploymorphism/" data-id="cj84l1pwj000omoqv72q0o6ag" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -922,7 +924,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj8333y920003j4qvohk7thd5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj84l1psf0000moqvd86yi9en" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
