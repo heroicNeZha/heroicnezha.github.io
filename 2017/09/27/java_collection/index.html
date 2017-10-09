@@ -14,7 +14,7 @@
 <meta property="og:description" content="集合类框架继承关系如下:  ​迭代器 每个集合都提供了按某种顺序迭代元素的方式，因为Collection的父接口Iterable定义了iterator方法返回一个迭代器，例如 对实现了Iterable接口的类的任意对象都可以使用foreach循环，并且会被转换成上例的格式，例如 Iterable接口的remove方法可以移除之前访问的最后一个元素，所以如果中间没有调用next或previous时不">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/875181/201609/875181-20160921100733106-1187286566.png">
-<meta property="og:updated_time" content="2017-09-29T13:09:15.574Z">
+<meta property="og:updated_time" content="2017-10-09T13:50:45.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 集合">
 <meta name="twitter:description" content="集合类框架继承关系如下:  ​迭代器 每个集合都提供了按某种顺序迭代元素的方式，因为Collection的父接口Iterable定义了iterator方法返回一个迭代器，例如 对实现了Iterable接口的类的任意对象都可以使用foreach循环，并且会被转换成上例的格式，例如 Iterable接口的remove方法可以移除之前访问的最后一个元素，所以如果中间没有调用next或previous时不">
@@ -105,7 +105,7 @@
 </ul>
 <h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><ul>
 <li>map用于存储键与值之间的联系。</li>
-<li>调用put方法添加新的联系，或者改变已存键所对应的值：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<li>调用put方法添加新的联系，或者改变已存键所对应的值：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Map&lt;String,Integer&gt; article = <span class="keyword">new</span> HashMap&lt;&gt;();<span class="comment">//Map为抽象接口,不能被实例化</span></div><div class="line">article.put(<span class="string">"word"</span>, <span class="number">4</span>);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>如果你想按顺序访问键，使用TreeMap；如果你不需要按顺序访问键，使用HashMap效率更高</p>
@@ -134,7 +134,7 @@
 <p>;<br>结果如下：</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#settings</div><div class="line">#Thu Sep 28 22:52:02 CST 2017</div><div class="line">width=200</div><div class="line">title=Hello,World</div></pre></td></tr></table></figure>
 <ul>
-<li>加载属性时可以调用以下方法：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<li>加载属性时可以调用以下方法：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  String path = <span class="string">"E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\collection\\settings.txt"</span>;</div><div class="line">Properties readers = <span class="keyword">new</span> Properties();</div><div class="line"><span class="keyword">try</span>(InputStream in = Files.newInputStream(Paths.get(path)))&#123;</div><div class="line">	readers.load(in);</div><div class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div><div class="line">System.out.println(<span class="string">"the width of "</span>+readers.getProperty(<span class="string">"title"</span>)+</div><div class="line">		<span class="string">" is "</span>+readers.getProperty(<span class="string">"width"</span>));</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -163,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/27/java_collection/" data-id="cj85yhwzq0004u4qvh0yvpldc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/27/java_collection/" data-id="cj8k8kool0000tsqvz8gukdq7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>

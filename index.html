@@ -100,7 +100,7 @@
 </ul>
 <h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><ul>
 <li>map用于存储键与值之间的联系。</li>
-<li>调用put方法添加新的联系，或者改变已存键所对应的值：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<li>调用put方法添加新的联系，或者改变已存键所对应的值：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Map&lt;String,Integer&gt; article = <span class="keyword">new</span> HashMap&lt;&gt;();<span class="comment">//Map为抽象接口,不能被实例化</span></div><div class="line">article.put(<span class="string">"word"</span>, <span class="number">4</span>);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>如果你想按顺序访问键，使用TreeMap；如果你不需要按顺序访问键，使用HashMap效率更高</p>
@@ -129,7 +129,7 @@
 <p>;<br>结果如下：</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#settings</div><div class="line">#Thu Sep 28 22:52:02 CST 2017</div><div class="line">width=200</div><div class="line">title=Hello,World</div></pre></td></tr></table></figure>
 <ul>
-<li>加载属性时可以调用以下方法：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<li>加载属性时可以调用以下方法：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  String path = <span class="string">"E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\collection\\settings.txt"</span>;</div><div class="line">Properties readers = <span class="keyword">new</span> Properties();</div><div class="line"><span class="keyword">try</span>(InputStream in = Files.newInputStream(Paths.get(path)))&#123;</div><div class="line">	readers.load(in);</div><div class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div><div class="line">System.out.println(<span class="string">"the width of "</span>+readers.getProperty(<span class="string">"title"</span>)+</div><div class="line">		<span class="string">" is "</span>+readers.getProperty(<span class="string">"width"</span>));</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -158,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/27/java_collection/" data-id="cj85yhwzq0004u4qvh0yvpldc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/27/java_collection/" data-id="cj8k8kool0000tsqvz8gukdq7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -231,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/26/java_genericity/" data-id="cj85yhx0j000ju4qvmn29oub6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/26/java_genericity/" data-id="cj8k8kop5000jtsqviw4mg31h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -343,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj85yhx1g000wu4qvao1gz85w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj8k8kooy000atsqv9gxpssmx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -439,7 +439,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj85yhwzx0009u4qvb21uhr31" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj8k8kop3000htsqvv5pt78r2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -514,7 +514,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj85yhwzu0006u4qvlzvzcpfb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj8k8kop6000mtsqvxcnoe333" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -590,7 +590,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/17/java_package/" data-id="cj85yhx1l000yu4qv7gx6fh80" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/17/java_package/" data-id="cj8k8kops000xtsqvgiy5euo9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -774,7 +774,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj85yhx00000bu4qvl4wczkm9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj8k8kop0000ctsqvblfxemoo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -836,7 +836,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/java_string/" data-id="cj85yhx0x000su4qv7j4nk3zb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/java_string/" data-id="cj8k8kopp000utsqvrqjp2g7m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -874,7 +874,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/java_ploymorphism/" data-id="cj85yhx0r000ou4qvo7gtt2mx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/java_ploymorphism/" data-id="cj8k8kop2000etsqvqpywk11q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -923,7 +923,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj85yhwzk0002u4qvxgig2uw8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj8k8kooq0001tsqvateom8v4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
