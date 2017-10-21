@@ -5,18 +5,18 @@
   
   <title>Java 多线程 | lzw Love Hj</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="进程:应用程序在内存中分配的空间线程:是进程中负责程序执行的执行单元,也成为执行路径.一个进程中至少有一个线程在负责该进程的运行.多线程:如果一个进程中有一个或多个线程在运行,就是多线程程序">
+  <meta name="description" content="进程:应用程序在内存中分配的空间线程:是进程中负责程序执行的执行单元,也成为执行路径.一个进程中至少有一个线程在负责该进程的运行.多线程:如果一个进程中有一个或多个线程在运行,就是多线程程序 Runnable Runnable用来描述你想执行的任务, 通常和其他任务并行运行. 1234567891011121314151617public static void main(String[] arg">
 <meta name="keywords" content="java,多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 多线程">
 <meta property="og:url" content="http://yoursite.com/2017/10/18/java_multithreading/index.html">
 <meta property="og:site_name" content="lzw Love Hj">
-<meta property="og:description" content="进程:应用程序在内存中分配的空间线程:是进程中负责程序执行的执行单元,也成为执行路径.一个进程中至少有一个线程在负责该进程的运行.多线程:如果一个进程中有一个或多个线程在运行,就是多线程程序">
+<meta property="og:description" content="进程:应用程序在内存中分配的空间线程:是进程中负责程序执行的执行单元,也成为执行路径.一个进程中至少有一个线程在负责该进程的运行.多线程:如果一个进程中有一个或多个线程在运行,就是多线程程序 Runnable Runnable用来描述你想执行的任务, 通常和其他任务并行运行. 1234567891011121314151617public static void main(String[] arg">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-19T14:30:34.549Z">
+<meta property="og:updated_time" content="2017-10-21T14:56:32.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 多线程">
-<meta name="twitter:description" content="进程:应用程序在内存中分配的空间线程:是进程中负责程序执行的执行单元,也成为执行路径.一个进程中至少有一个线程在负责该进程的运行.多线程:如果一个进程中有一个或多个线程在运行,就是多线程程序">
+<meta name="twitter:description" content="进程:应用程序在内存中分配的空间线程:是进程中负责程序执行的执行单元,也成为执行路径.一个进程中至少有一个线程在负责该进程的运行.多线程:如果一个进程中有一个或多个线程在运行,就是多线程程序 Runnable Runnable用来描述你想执行的任务, 通常和其他任务并行运行. 1234567891011121314151617public static void main(String[] arg">
   
     <link rel="alternate" href="/atom.xml" title="lzw Love Hj" type="application/atom+xml">
   
@@ -88,11 +88,21 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>进程:应用程序在内存中分配的空间<br>线程:是进程中负责程序执行的执行单元,也成为执行路径.一个进程中至少有一个线程在负责该进程的运行.<br>多线程:如果一个进程中有一个或多个线程在运行,就是多线程程序</p>
+<h3 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h3><ul>
+<li><p>Runnable用来描述你想执行的任务, 通常和其他任务并行运行.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">  Runnable task = ()-&gt;&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</div><div class="line">      System.out.println(<span class="string">"hello"</span>+i);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  Runnable task2 = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</div><div class="line">        System.out.println(<span class="string">"goodbye"</span>+i);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">  Executor exec = Executors.newCachedThreadPool();</div><div class="line">  exec.execute(task);</div><div class="line">  exec.execute(task2);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">goodbye0</div><div class="line">hello0</div><div class="line">goodbye1</div><div class="line">hello1</div><div class="line">goodbye2</div><div class="line">goodbye3</div><div class="line">hello2</div><div class="line">hello3</div><div class="line">goodbye4</div><div class="line">hello4</div></pre></td></tr></table></figure>
+</li>
+<li><p>在上面的代码中,lambda表达式和实例化Runnable的作用是一样的,run的方法体中的代码将被放入一段线程中执行.</p>
+</li>
+<li>如果不是计算密集型,通常不会使一个线程只运行一个任务,因为一个线程中的任务执行很快.如果是计算密集型,通常会使线程和处理器一一对应,可以减少线程切换的开销.</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/java_multithreading/" data-id="cj900fsur000nt0qvjtbwjm15" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/java_multithreading/" data-id="cj91g74rw000pb8qv4l827v24" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>

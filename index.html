@@ -102,7 +102,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/19/android_baiduapi4.9E-324/" data-id="cj900fst40006t0qv5g32bmyy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/19/android_baiduapi4.9E-324/" data-id="cj91g74r80008b8qv61sdv36e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/百度地图API/">百度地图API</a></li></ul>
@@ -144,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/19/android_request_permissions/" data-id="cj900fsqo0000t0qvalugmwyx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/19/android_request_permissions/" data-id="cj91g74qs0000b8qvgjc0yw1k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/permission/">permission</a></li></ul>
@@ -179,11 +179,21 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>进程:应用程序在内存中分配的空间<br>线程:是进程中负责程序执行的执行单元,也成为执行路径.一个进程中至少有一个线程在负责该进程的运行.<br>多线程:如果一个进程中有一个或多个线程在运行,就是多线程程序</p>
+<h3 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h3><ul>
+<li><p>Runnable用来描述你想执行的任务, 通常和其他任务并行运行.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">  Runnable task = ()-&gt;&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</div><div class="line">      System.out.println(<span class="string">"hello"</span>+i);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  Runnable task2 = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</div><div class="line">        System.out.println(<span class="string">"goodbye"</span>+i);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">  Executor exec = Executors.newCachedThreadPool();</div><div class="line">  exec.execute(task);</div><div class="line">  exec.execute(task2);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">goodbye0</div><div class="line">hello0</div><div class="line">goodbye1</div><div class="line">hello1</div><div class="line">goodbye2</div><div class="line">goodbye3</div><div class="line">hello2</div><div class="line">hello3</div><div class="line">goodbye4</div><div class="line">hello4</div></pre></td></tr></table></figure>
+</li>
+<li><p>在上面的代码中,lambda表达式和实例化Runnable的作用是一样的,run的方法体中的代码将被放入一段线程中执行.</p>
+</li>
+<li>如果不是计算密集型,通常不会使一个线程只运行一个任务,因为一个线程中的任务执行很快.如果是计算密集型,通常会使线程和处理器一一对应,可以减少线程切换的开销.</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/java_multithreading/" data-id="cj900fsur000nt0qvjtbwjm15" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/java_multithreading/" data-id="cj91g74rw000pb8qv4l827v24" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
@@ -221,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/17/IO/" data-id="cj900fst10005t0qv1yylhzro" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/17/IO/" data-id="cj91g74qz0001b8qv94n4oohv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -592,7 +602,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/12/regex/" data-id="cj900fsv20010t0qv9ps2zplq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/12/regex/" data-id="cj91g74s40014b8qvtfl6k0hu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
@@ -700,7 +710,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/27/java_collection/" data-id="cj900fsvc001dt0qv99sl62tr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/27/java_collection/" data-id="cj91g74rd000fb8qvbvhj7ypr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -773,7 +783,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/26/java_genericity/" data-id="cj900fsut000pt0qvlaw4bwyk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/26/java_genericity/" data-id="cj91g74s50016b8qvj7b64z9n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -885,7 +895,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj900fsun000jt0qv83qxo3wx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/24/java_enum/" data-id="cj91g74rf000kb8qvv9bwxvfz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -981,7 +991,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj900fsvb001bt0qvqn60ktzz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/22/java_extend/" data-id="cj91g74sn001gb8qverkn0l4d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -1056,7 +1066,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj900fsuu000qt0qvokuvr2mk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/18/java_interface/" data-id="cj91g74rv000ob8qvjl78w5ze" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
