@@ -5,15 +5,18 @@
   
   <title>Java 输入输出 | lzw Love Hj</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Java">
+  <meta name="description" content="Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);相比之下,Reader和Writer分别用来读取和生成字符序列.  获取流对象  12345678//从文件获取流的最简单方法就是使用静态方法Path path = Paths.get(&quot;E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\IO\\lzw.tx">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 输入输出">
 <meta property="og:url" content="http://yoursite.com/2017/10/17/IO/index.html">
 <meta property="og:site_name" content="lzw Love Hj">
+<meta property="og:description" content="Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);相比之下,Reader和Writer分别用来读取和生成字符序列.  获取流对象  12345678//从文件获取流的最简单方法就是使用静态方法Path path = Paths.get(&quot;E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\IO\\lzw.tx">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-17T14:21:26.328Z">
+<meta property="og:updated_time" content="2017-11-02T15:00:02.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 输入输出">
+<meta name="twitter:description" content="Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);相比之下,Reader和Writer分别用来读取和生成字符序列.  获取流对象  12345678//从文件获取流的最简单方法就是使用静态方法Path path = Paths.get(&quot;E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\IO\\lzw.tx">
   
     <link rel="alternate" href="/atom.xml" title="lzw Love Hj" type="application/atom+xml">
   
@@ -84,11 +87,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);<br>相比之下,Reader和Writer分别用来读取和生成字符序列.</p>
+<ul>
+<li>获取流对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从文件获取流的最简单方法就是使用静态方法</span></div><div class="line">Path path = Paths.get(<span class="string">"E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\IO\\lzw.txt"</span>);</div><div class="line">OutputStream out = Files.newOutputStream(path);</div><div class="line">InputStream in = Files.newInputStream(path);</div><div class="line"></div><div class="line"><span class="comment">//通过URL类的openStream方法返回输入流读取网页内容</span></div><div class="line">URL url = <span class="keyword">new</span> URL(<span class="string">"http://www.baidu.com"</span>);</div><div class="line">InputStream in = url.openStream();</div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/17/IO/" data-id="cj98ib9o30000l0qv6fkx9ery" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/17/IO/" data-id="cj9illgoy00006sqvafp7p3a8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
