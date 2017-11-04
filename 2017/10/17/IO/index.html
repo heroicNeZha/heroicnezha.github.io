@@ -5,18 +5,18 @@
   
   <title>Java 输入输出 | lzw Love Hj</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);相比之下,Reader和Writer分别用来读取和生成字符序列.  获取流对象  12345678//从文件获取流的最简单方法就是使用静态方法Path path = Paths.get(&quot;E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\IO\\lzw.tx">
+  <meta name="description" content="Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);windows本身就可以操作设备,各种语言只是使用系统平台上的这个资源,并对外提供了各种语言自己的操作功能,这些资源使用完了一定要释放;IO: 用于处理设备上的数据的技术;Java中所涉及的功能对象都在java.io包中.相比之下,Reader和Writer分别用来读取和生成字符序列. File 设">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 输入输出">
 <meta property="og:url" content="http://yoursite.com/2017/10/17/IO/index.html">
 <meta property="og:site_name" content="lzw Love Hj">
-<meta property="og:description" content="Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);相比之下,Reader和Writer分别用来读取和生成字符序列.  获取流对象  12345678//从文件获取流的最简单方法就是使用静态方法Path path = Paths.get(&quot;E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\IO\\lzw.tx">
+<meta property="og:description" content="Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);windows本身就可以操作设备,各种语言只是使用系统平台上的这个资源,并对外提供了各种语言自己的操作功能,这些资源使用完了一定要释放;IO: 用于处理设备上的数据的技术;Java中所涉及的功能对象都在java.io包中.相比之下,Reader和Writer分别用来读取和生成字符序列. File 设">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-02T15:00:02.276Z">
+<meta property="og:updated_time" content="2017-11-04T14:54:53.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 输入输出">
-<meta name="twitter:description" content="Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);相比之下,Reader和Writer分别用来读取和生成字符序列.  获取流对象  12345678//从文件获取流的最简单方法就是使用静态方法Path path = Paths.get(&quot;E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\IO\\lzw.tx">
+<meta name="twitter:description" content="Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);windows本身就可以操作设备,各种语言只是使用系统平台上的这个资源,并对外提供了各种语言自己的操作功能,这些资源使用完了一定要释放;IO: 用于处理设备上的数据的技术;Java中所涉及的功能对象都在java.io包中.相比之下,Reader和Writer分别用来读取和生成字符序列. File 设">
   
     <link rel="alternate" href="/atom.xml" title="lzw Love Hj" type="application/atom+xml">
   
@@ -87,16 +87,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);<br>相比之下,Reader和Writer分别用来读取和生成字符序列.</p>
-<ul>
-<li>获取流对象</li>
+        <p>Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关);<br>windows本身就可以操作设备,各种语言只是使用系统平台上的这个资源,并对外提供了各种语言自己的操作功能,这些资源使用完了一定要释放;<br>IO: 用于处理设备上的数据的技术;<br>Java中所涉及的功能对象都在java.io包中.<br>相比之下,Reader和Writer分别用来读取和生成字符序列.</p>
+<h3 id="File"><a href="#File" class="headerlink" title="File"></a>File</h3><ul>
+<li><p>设备上最常见的存储形式就是文件File</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">File file = <span class="keyword">new</span> File(<span class="string">"src"</span>+File.separator+<span class="string">"IO"</span>+File.separatorChar+<span class="string">"lzw.txt"</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用的分隔符仅适用于Windows系统,全适配可以用<code>File.separator</code></p>
+</li>
+<li><p>获取流对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从文件获取流的最简单方法就是使用静态方法</span></div><div class="line">Path path = Paths.get(<span class="string">"E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\IO\\lzw.txt"</span>);</div><div class="line">Path relativePath = Paths.get(<span class="string">"src\\IO\\lzw.txt"</span>);</div><div class="line">OutputStream out = Files.newOutputStream(path);</div><div class="line">InputStream in = Files.newInputStream(path);</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从文件获取流的最简单方法就是使用静态方法</span></div><div class="line">Path path = Paths.get(<span class="string">"E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\IO\\lzw.txt"</span>);</div><div class="line">OutputStream out = Files.newOutputStream(path);</div><div class="line">InputStream in = Files.newInputStream(path);</div><div class="line"></div><div class="line"><span class="comment">//通过URL类的openStream方法返回输入流读取网页内容</span></div><div class="line">URL url = <span class="keyword">new</span> URL(<span class="string">"http://www.baidu.com"</span>);</div><div class="line">InputStream in = url.openStream();</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/17/IO/" data-id="cj9illgoy00006sqvafp7p3a8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/17/IO/" data-id="cj9lgqfix0000t8qvfjlzahr6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -157,7 +163,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
     </div>
   </div>
 
@@ -168,6 +174,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/11/04/java_Date/">Java 日期及其格式</a>
+          </li>
         
           <li>
             <a href="/2017/10/19/android_baiduapi4.9E-324/">Android 百度定位返回4.9E-324</a>
@@ -183,10 +193,6 @@
         
           <li>
             <a href="/2017/10/17/IO/">Java 输入输出</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/12/regex/">正则表达式</a>
           </li>
         
       </ul>
