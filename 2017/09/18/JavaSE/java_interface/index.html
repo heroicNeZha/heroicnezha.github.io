@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java 接口 | lzw Love Hj</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="接口是服务提供方和想让他们的对象对服务是可用的那些类，之间约定合同的一种机制。 接口声明与实现 声明如下   123public interface Isalary&amp;#123;    Decimal pay();&amp;#125;   接口中的方法默认为公有方法，无需声明  实现接口   12345public class ManagerSalary implements Isalary&amp;#123;">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 接口">
+<meta property="og:url" content="http://yoursite.com/2017/09/18/JavaSE/java_interface/index.html">
+<meta property="og:site_name" content="lzw Love Hj">
+<meta property="og:description" content="接口是服务提供方和想让他们的对象对服务是可用的那些类，之间约定合同的一种机制。 接口声明与实现 声明如下   123public interface Isalary&amp;#123;    Decimal pay();&amp;#125;   接口中的方法默认为公有方法，无需声明  实现接口   12345public class ManagerSalary implements Isalary&amp;#123;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-18T13:59:34.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 接口">
+<meta name="twitter:description" content="接口是服务提供方和想让他们的对象对服务是可用的那些类，之间约定合同的一种机制。 接口声明与实现 声明如下   123public interface Isalary&amp;#123;    Decimal pay();&amp;#125;   接口中的方法默认为公有方法，无需声明  实现接口   12345public class ManagerSalary implements Isalary&amp;#123;">
+  
+    <link rel="alternate" href="/atom.xml" title="lzw Love Hj" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">lzw Love Hj</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JavaSE/java_interface" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/18/JavaSE/java_interface/" class="article-date">
+  <time datetime="2017-09-18T13:11:25.875Z" itemprop="datePublished">2017-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java 接口
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>接口是服务提供方和想让他们的对象对服务是可用的那些类，之间约定合同的一种机制。</p>
+<h3 id="接口声明与实现"><a href="#接口声明与实现" class="headerlink" title="接口声明与实现"></a>接口声明与实现</h3><ul>
+<li><p>声明如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Isalary</span></span>&#123;</div><div class="line">    <span class="function">Decimal <span class="title">pay</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  接口中的方法默认为公有方法，无需声明</p>
+</li>
+<li><p>实现接口</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ManagerSalary</span> <span class="keyword">implements</span> <span class="title">Isalary</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> decimal <span class="title">pay</span><span class="params">()</span></span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="number">15000</span>*<span class="number">14</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实体类必须实现接口的所有方法，但抽象类可以只实现部分方法</p>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3></li>
+<li><p>下面这段代码很常见</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Isalary anyone = <span class="keyword">new</span> Manager();</div><div class="line">Decimal salary = anyone.pay();</div></pre></td></tr></table></figure>
+<p>  “文言文”的说法是</p>
+<blockquote>
+<p>当子类型T的任何值不需要转换就能赋值给父类型S的变量时，类型S是类型T的父类。</p>
+</blockquote>
+</li>
+<li>虽然可以声明接口类型的变量，但不能存在类型为接口的对象，所有的对象都是类的实例</li>
+<li>想从父类转换为子类可以使用强制类型转换(cast)，但弄错了就会发生编译时错误或强制类型转换异常</li>
+<li>为了避免异常可以使用instanceof操作符来测试对象是否是期望的类型</li>
+<li>接口可以被继承，实现子接口的类必须实现子父接口中的所有方法</li>
+<li>一个类可以实现很多个接口，但不能继承多个类</li>
+<li>定义在接口中的任何变量都自动为<code>public static final</code><h3 id="接口中的方法实现"><a href="#接口中的方法实现" class="headerlink" title="接口中的方法实现"></a>接口中的方法实现</h3></li>
+<li>接口中可以有静态方法与默认方法，过去或许将接口作为抽象规范，但现在思想变了</li>
+<li>静态方法常常用作工厂方法</li>
+<li><p>默认方法则提供一个默认实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Persion</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">default</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>默认方法的一个重要用途是接口演化，比如为接口Collection添加一个新方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> class Bag implements <span class="title">Collection</span><span class="params">()</span></span>&#123;</div><div class="line">  ...</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">stream</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>那Collection的实现类Bag将无法通过编译，因为它们没有实现新方法。但如果提供了默认实现，就可以向后兼容了。这时编译后在Bag的实例上调用新方法，就会自动寻找Collection的默认实现了</p>
+<ul>
+<li>如果有两个接口,它们具有相同的方法名并且至少有一个提供了默认实现,那么实现这两个接口的类就会发生冲突，而解决办法可以使用委托其中一个冲突方法或者提供自己的方法并实现计划(此条存疑,经试验为自动实现第一个接口的方法)<h5 id="常见接口用法"><a href="#常见接口用法" class="headerlink" title="常见接口用法"></a>常见接口用法</h5></li>
+<li>Java标准类库中的四个使用接口的常见情况<code>Comparable</code>接口、<code>Comparator</code>接口、<code>Runable</code>接口和UI回调使用的<code>EventHandler</code>接口</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/18/JavaSE/java_interface/" data-id="cj9m87b3c000ohsqvgnvkdvi9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/22/JavaSE/java_extend/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java 面向对象编程(中)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/17/JavaSE/java_package/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java 包</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permission/">permission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度地图API/">百度地图API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/11/04/JavaSE/java_Date/">Java 日期及其格式</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/19/android_baiduapi4.9E-324/">Android 百度定位返回4.9E-324</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/19/android_request_permissions/">Android 申请权限</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/18/JavaSE/java_multithreading/">Java 多线程</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/17/JavaSE/IO流/">Java IO</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 lzw<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
