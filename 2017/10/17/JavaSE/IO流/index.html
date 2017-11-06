@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="lzw Love Hj">
 <meta property="og:description" content="Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关); windows本身就可以操作设备,各种语言只是使用系统平台上的这个资源,并对外提供了各种语言自己的操作功能,这些资源使用完了一定要释放; IO是用于处理设备上的数据的技术;Java中所涉及的功能对象都在java.io包中. File 设备上最常见的存储形式就是文件File 12File file">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-05T03:33:34.942Z">
+<meta property="og:updated_time" content="2017-11-06T14:31:47.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java IO">
 <meta name="twitter:description" content="Java API 中读取字节被称为输入流,字节可以来自文件,网络链接中的数组(与Stream无关); windows本身就可以操作设备,各种语言只是使用系统平台上的这个资源,并对外提供了各种语言自己的操作功能,这些资源使用完了一定要释放; IO是用于处理设备上的数据的技术;Java中所涉及的功能对象都在java.io包中. File 设备上最常见的存储形式就是文件File 12File file">
@@ -106,7 +106,7 @@
 <p>流按操作分为两种: 字符流和字节流; 按流向分可分为两种: 输入流和输出流</p>
 <h3 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h3><ul>
 <li>InputStream和OutputStream</li>
-<li>获取流对象<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从文件获取流的最简单方法就是使用静态方法</span></div><div class="line">Path path = Paths.get(<span class="string">"E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\IO\\lzw.txt"</span>);</div><div class="line">Path relativePath = Paths.get(<span class="string">"src\\IO\\lzw.txt"</span>);</div><div class="line">OutputStream out = Files.newOutputStream(path);</div><div class="line">InputStream in = Files.newInputStream(path);</div></pre></td></tr></table></figure>
+<li>获取流对象<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从文件获取流的最简单方法就是使用静态方法</span></div><div class="line">Path path = Paths.get(<span class="string">"E:"</span>+File.separator+<span class="string">"Workspace"</span>+File.separator</div><div class="line">+<span class="string">"Java SE"</span>+File.separator+<span class="string">"Practice4JavaSE"</span>+File.separator+<span class="string">"src"</span>+File.separator</div><div class="line">+<span class="string">"IO"</span>+File.separator+<span class="string">"lzw.txt"</span>);</div><div class="line">Path relativePath = Paths.get(<span class="string">"src"</span>+File.separator+<span class="string">"IO"</span>+File.separator+<span class="string">"lzw.txt"</span>);</div><div class="line">OutputStream out = Files.newOutputStream(path);</div><div class="line">InputStream in = Files.newInputStream(path);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h3><ul>
@@ -117,7 +117,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/17/JavaSE/IO流/" data-id="cj9m87b35000fhsqvpt1porxx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/17/JavaSE/IO流/" data-id="cj9oacmc0000fs4qvb57mrfi8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
