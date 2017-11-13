@@ -62,6 +62,102 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JavaSE/java_extend" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/JavaSE/java_extend/" class="article-date">
+  <time datetime="2017-09-22T14:54:43.599Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/JavaSE/java_extend/">Java 面向对象编程(中)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
+<li>提高了代码的复用性</li>
+<li>让类与类之间产生了关系,为第三个特征多态提供了前提</li>
+<li>所有枚举类型都是Enum的子类,它提供了toString,valueOf和CompareTo方法</li>
+<li><code>Java</code>支持单继承, 不直接支持多继承. 多继承的的弊端是方法调用具有不确定性,因为方法的主体不同,<code>Java</code>对其进行了改良;</li>
+<li>当事物存在<code>(is-a)</code>的关系时, 可以通过继承实现这个关;</li>
+<li>子父类出现的相同名字的成员变量, 用<code>super</code>关键字来区分;</li>
+<li><p>子类每一个构造函数第一行都有隐式的super();<br>如果父类没有空参数构造函数, 则需要显式调用super的方式调用父类构造函数;<br>并且只能定义在第一行, 因为父类的初始化要先完成;<br>super()和this()不能同时出现,因为他们只能定义在第一行;<br>如下例:</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">zi</span> <span class="keyword">extends</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(<span class="string">"0"</span>);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">zi</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(s);</div><div class="line">		System.out.println(<span class="string">"zi runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">fu</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">fu</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"fu runs"</span>+ s );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>注意覆盖(Override:关键字<code>Override</code>), 重载(Overload), 重写(OverWrite:关键字<code>new</code>)三种方法;</p>
+</li>
+<li><p>将子类对象赋给父类变量是合法的</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Employee empl = <span class="keyword">new</span> Manager(<span class="string">"lzw"</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>现在考虑一下，当在父类变量上调用一个方法时会发生什么。<br>    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">empl.setSalary(<span class="number">1000</span>);</div></pre></td></tr></table></figure></p>
+<p>即使empl的类型是Employee，还是会调用Manager.getSalary()方法。<br>当调用方法时，虚拟机会查看对象的实际类型，并且定位方法的版本。这个过程被称作<code>动态方法查找</code></p>
+<ul>
+<li>不同于this引用，super不是对象的引用，而是绕过<code>动态查找方法</code>并调用特定方法的指令</li>
+</ul>
+<h3 id="万物基类–Object"><a href="#万物基类–Object" class="headerlink" title="万物基类–Object"></a>万物基类–Object</h3><ul>
+<li>所有类都隐式或显示的继承了Object类, 而Object类定义了7个适用于所有java对象的方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">String toString()</td>
+<td style="text-align:left">产生一个表示该对象的字符串,默认该字符串是类名称和哈希码</td>
+</tr>
+<tr>
+<td style="text-align:left">boolean equals(Object other)</td>
+<td style="text-align:left">如果other被认为与这个对象相等,返回true;如果other为null或者不相等,返回false. 如果两者指向同一对象,返回true. 如果想在other为null的时候也是安全的,推荐使用Object.equals(Object obj, Object other)</td>
+</tr>
+<tr>
+<td style="text-align:left">Class&lt;？&gt; getClass()</td>
+<td style="text-align:left">产生该对象所属的类的Class对象</td>
+</tr>
+<tr>
+<td style="text-align:left">protected Object clone()</td>
+<td style="text-align:left">拷贝该对象，默认为浅拷贝</td>
+</tr>
+<tr>
+<td style="text-align:left">protected void finalize()</td>
+<td style="text-align:left">垃圾回收机回收时调用，不要覆盖这个方法</td>
+</tr>
+<tr>
+<td style="text-align:left">wait、notify、notifyAll</td>
+<td style="text-align:left">并发编程</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/22/JavaSE/java_extend/" data-id="cj9yuiz47000p3cqv3m2axwjk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JavaSE/java_interface" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/18/JavaSE/java_interface/" class="article-date">
@@ -125,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/JavaSE/java_interface/" data-id="cj9oacmc5000ps4qvw8fazs3s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/18/JavaSE/java_interface/" data-id="cj9yuiz45000l3cqv07tyauvf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -201,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/17/JavaSE/java_package/" data-id="cj9oacmcd0012s4qv3oflnw58" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/17/JavaSE/java_package/" data-id="cj9yuiz49000t3cqv5bhai1in" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -213,9 +309,9 @@
 
 
   
-    <article id="post-informationSecure_01" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-information_security/informationSecure_01" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/15/informationSecure_01/" class="article-date">
+    <a href="/2017/09/15/information_security/informationSecure_01/" class="article-date">
   <time datetime="2017-09-15T15:13:14.416Z" itemprop="datePublished">2017-09-15</time>
 </a>
     
@@ -227,7 +323,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/15/informationSecure_01/">信息安全之DES加密过程</a>
+      <a class="article-title" href="/2017/09/15/information_security/informationSecure_01/">信息安全之DES加密过程</a>
     </h1>
   
 
@@ -385,7 +481,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/informationSecure_01/" data-id="cj9oacmbb0001s4qvczjep0ox" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/information_security/informationSecure_01/" data-id="cj9yuiz3w00053cqvxmxotpkb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -447,7 +543,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/JavaSE/java_string/" data-id="cj9oacmcf0017s4qvsnwb2hh2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/JavaSE/java_string/" data-id="cj9yuiz4v001q3cqvf2dox9gl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -481,11 +577,87 @@ Li             Ri
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3>
+        <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ol>
+<li><p>基本概念</p>
+<p>多态本质上就是指同一种事物表现出来的多种形态<br>饮料：可乐、雪碧、乐虎、果啤..<br>宠物：狗、猫、鸟、小强…<br>整数：int i = 10;  short s = 10;  byte b = 10; …<br>… …</p>
+</li>
+</ol>
+<ul>
+<li>语法格式<br>父类类型 引用名 = new 子类类型(); 如：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Person p = <span class="keyword">new</span> Student();</div><div class="line">p.show();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>解析：<br>   在编译阶段p是Person类型的，只能调用Person类中的show()方法<br>   在运行阶段p指向的是Student类型的对象，因此最终调用Student类中的show()方法</p>
+<ul>
+<li><p>多态的效果</p>
+<ul>
+<li>当父类的引用指向子类的对象时，父类的引用可以直接调用父类的方法</li>
+<li>当父类的引用指向子类的对象时，父类的引用不可以直接调用子类的方法</li>
+<li>当父类的引用指向子类的对象时，编译阶段调用父类的，运行阶段最终调用子类的版本<br>(<em>上述方式指非静态的成员方法</em>)</li>
+<li>当父类的引用指向子类的对象时，对于静态方法来说，最终调用父类的版本</li>
+</ul>
+</li>
+<li><p>引用类型之间的转换</p>
+<ul>
+<li>子类类型向父类类型之间的转换自动完成，因此是自动类型转换。</li>
+<li>父类类型向子类类型之间的转换需要进行强制类型转换，格式如下：<br>   <code>目标类型 目标类型的引用 = (目标类型)源类型的引用;</code></li>
+<li>引用类型之间的转换必须发生在父子类之间，否则编译报错，执行不到运行阶段。</li>
+<li>只要拥有父子类关系则进行强制类型转换时，编译阶段不会报错，当转换的目标类型<br> 并不是该引用真正指向的类型时，则运行阶段产生类型转换异常。</li>
+<li>为了避免上述错误的发生，可以使用instanceof运算符进行判断，格式如下：<br> <code>if(引用变量名 instanceof 引用类型){ 语句块; }</code><br> 当引用变量名真正指向的对象是后面的引用类型时，则返回true，并执行语句块；<br> 否则返回false；</li>
+</ul>
+</li>
+<li><p>多态的作用<br> 多态的作用在于屏蔽不同子类的差异性，实现通用的编程，根据实参传递的不同产生不同的效果</p>
+</li>
+</ul>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><ol>
+<li>抽象方法<br>抽象方法就是指不能具体实现的方法，通常使用abstract关键字修饰。<br>具体语法格式如下：<br>   <code>访问控制符 abstract 返回值类型 方法名(形参列表);</code><br>如：<br>   <code>public abstract void cry();</code></li>
+</ol>
+<ul>
+<li><p>抽象类<br>抽象类就是指具有抽象方法并且使用abstract关键字修饰的类</p>
+</li>
+<li><p>注意事项</p>
+<ul>
+<li>抽象类不能被实例化为对象，否则编译报错</li>
+<li>抽象类中可以有成员变量、成员方法以及构造方法，可以没有抽象方法</li>
+<li>抽象类中可以有抽象方法也可以没有，但有了抽象方法必须是抽象类</li>
+</ul>
+</li>
+<li><p>抽象类的作用<br> 抽象类的意义不在于实例化对象而在于被继承，因为子类若不重写抽象类中的抽象方法，则子类也要变成抽象类，因此抽象类对子类具有强制性和规范性。<br> 因此使用抽象类的设计通常叫做模板设计模式。</p>
+</li>
+<li><p>经验：<br> 在以后的开发中推荐使用父类的引用指向子类对象的形式，因为这种情况下引用直接调用的方法一定是父类拥有的方法，此时若更改指向的子类对象，那么后续直接调用的方法不需要做任何的修改直接生效，因此提供了代码的可维护性</p>
+</li>
+</ul>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><ol>
+<li>基本概念<ul>
+<li>接口是双方,即服务提供方和想让它们的对象对服务是可用的那些类,只见约定合同的一种机制</li>
+<li>接口指定了一组实现类必须提供的方法</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>注意事项</p>
+<ul>
+<li>接口中的所有变量都必须由public static final共同修饰，也就是常量</li>
+<li>接口中的所有方法都必须由public abstract共同修饰，可以省略但推荐写上</li>
+<li>接口中的方法可以提供默认实现,使用default关键字</li>
+</ul>
+</li>
+<li><p>抽象类和接口之间的主要区别(笔试题)</p>
+<ul>
+<li>定义抽象类的关键字是class，定义接口的关键字是interface</li>
+<li>继承抽象类的关键字是extends，而实现接口的关键字是implements</li>
+<li>继承抽象类是单继承，而实现接口是多实现</li>
+<li>抽象类中有构造方法，但接口中没有</li>
+<li>抽象类中可以有成员变量，而接口中只有常量</li>
+<li>抽象类中可以有成员方法，而接口中只有抽象方法</li>
+<li>抽象类中增加方法可以不影响子类，但接口一定影响子类</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/JavaSE/java_ploymorphism/" data-id="cj9oacmce0014s4qvxwpbrmg1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/JavaSE/java_ploymorphism/" data-id="cj9yuiz4m001l3cqvkxevebl9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -497,9 +669,9 @@ Li             Ri
 
 
   
-    <article id="post-design_pattern_01" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-disign_pattern/design_pattern_01" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/03/design_pattern_01/" class="article-date">
+    <a href="/2017/09/03/disign_pattern/design_pattern_01/" class="article-date">
   <time datetime="2017-09-03T13:49:53.254Z" itemprop="datePublished">2017-09-03</time>
 </a>
     
@@ -511,7 +683,7 @@ Li             Ri
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/03/design_pattern_01/">单例设计模式</a>
+      <a class="article-title" href="/2017/09/03/disign_pattern/design_pattern_01/">单例设计模式</a>
     </h1>
   
 
@@ -534,7 +706,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/design_pattern_01/" data-id="cj9oacmbz000es4qvwb7jjdim" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/disign_pattern/design_pattern_01/" data-id="cj9yuiz44000j3cqvyyahijb1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -608,7 +780,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/JavaSE/java_object/" data-id="cj9oacmcb000zs4qvnbj3pqrp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/JavaSE/java_object/" data-id="cj9yuiz4n001m3cqvng39mug3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -710,7 +882,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/JavaSE/java_memory/" data-id="cj9oacmc8000us4qvtc2cwojc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/JavaSE/java_memory/" data-id="cj9yuiz46000n3cqvcb2c5972" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
@@ -794,144 +966,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/JavaSE/java_array/" data-id="cj9oacmc3000ls4qvlzys2359" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JavaSE/java_type" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/31/JavaSE/java_type/" class="article-date">
-  <time datetime="2017-08-31T14:35:01.863Z" itemprop="datePublished">2017-08-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/31/JavaSE/java_type/">Java 基本数据类型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Java 中基本数据类型分整型,浮点型,字符型,布尔型四类八种 ;</p>
-<h5 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h5><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th style="text-align:center">长度</th>
-<th style="text-align:right">表示范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>byte</td>
-<td style="text-align:center">8</td>
-<td style="text-align:right">-128 ~ 127</td>
-</tr>
-<tr>
-<td>short</td>
-<td style="text-align:center">16</td>
-<td style="text-align:right">-2^15 ~ (2^15)-1</td>
-</tr>
-<tr>
-<td>int</td>
-<td style="text-align:center">32</td>
-<td style="text-align:right">-2^31 ~ (2^31)-1</td>
-</tr>
-<tr>
-<td>long</td>
-<td style="text-align:center">64</td>
-<td style="text-align:right">-2^63 ~ (2^63)-1</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>常量 Integer.MIN_VALUE和 Integer.MAX_VALUE分别是最小和最大的整数, 其他类也有同样作用的常量.</li>
-</ul>
-<h5 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h5><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th style="text-align:center">长度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>float</td>
-<td style="text-align:center">32</td>
-</tr>
-<tr>
-<td>double</td>
-<td style="text-align:center">64</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Double.POSITIVE_INFINITY代表∞, Double.NEGATIVE_INFINITY代表-∞, Double.NaN代表”非数值”.</li>
-<li>所有的”非数值”都被认为是彼此不同的, 比如不能这样判断<code>if(x==Double.NaN)</code>, 但是可以用<code>if(Double.isNaN(x))</code>.</li>
-</ul>
-<h5 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h5><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th style="text-align:center">长度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>char</td>
-<td style="text-align:center">16</td>
-</tr>
-</tbody>
-</table>
-<h5 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h5><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th style="text-align:center">内容</th>
-<th>长度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>boolean</td>
-<td style="text-align:center">true or false</td>
-<td>1字节</td>
-</tr>
-</tbody>
-</table>
-<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ol>
-<li><p>Java低字节向高字节转换具有自动提升性质,转换顺序为 byte-&gt;short-&gt;int-&gt;long-&gt;float-&gt;double,但高字节向低字节强制转换可能丢失精度.</p>
-</li>
-<li><p>默认浮点类型为double,float加后缀<code>f</code>或<code>F</code>.</p>
-</li>
-</ol>
-<ul>
-<li>可以给数字加下划线, 比如<code>1_000_000</code>, Java编译器会直接删除他们.</li>
-</ul>
-<ol>
-<li>Maths类提供常见的数学函数.</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/JavaSE/java_type/" data-id="cj9oacmcr001is4qvtmoy6b0t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/JavaSE/java_array/" data-id="cj9yuiz40000b3cqve7sccb8y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -959,7 +994,7 @@ Li             Ri
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permission/">permission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度地图API/">百度地图API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permission/">permission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度地图API/">百度地图API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
     </div>
   </div>
 
@@ -969,7 +1004,7 @@ Li             Ri
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -991,23 +1026,23 @@ Li             Ri
       <ul>
         
           <li>
+            <a href="/2017/11/12/gossip/StudyRoute/">Java Web学习路线</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/04/JavaSE/java_Date/">Java 日期及其格式</a>
           </li>
         
           <li>
-            <a href="/2017/10/19/android_baiduapi4.9E-324/">Android 百度定位返回4.9E-324</a>
+            <a href="/2017/10/19/Android/android_baiduapi4.9E-324/">Android 百度定位返回4.9E-324</a>
           </li>
         
           <li>
-            <a href="/2017/10/19/android_request_permissions/">Android 申请权限</a>
+            <a href="/2017/10/19/Android/android_request_permissions/">Android 申请权限</a>
           </li>
         
           <li>
             <a href="/2017/10/18/JavaSE/java_multithreading/">Java 多线程</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/17/JavaSE/IO流/">Java IO</a>
           </li>
         
       </ul>

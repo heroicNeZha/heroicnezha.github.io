@@ -62,6 +62,143 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JavaSE/java_type" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/31/JavaSE/java_type/" class="article-date">
+  <time datetime="2017-08-31T14:35:01.863Z" itemprop="datePublished">2017-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/31/JavaSE/java_type/">Java 基本数据类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java 中基本数据类型分整型,浮点型,字符型,布尔型四类八种 ;</p>
+<h5 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h5><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">长度</th>
+<th style="text-align:right">表示范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td style="text-align:center">8</td>
+<td style="text-align:right">-128 ~ 127</td>
+</tr>
+<tr>
+<td>short</td>
+<td style="text-align:center">16</td>
+<td style="text-align:right">-2^15 ~ (2^15)-1</td>
+</tr>
+<tr>
+<td>int</td>
+<td style="text-align:center">32</td>
+<td style="text-align:right">-2^31 ~ (2^31)-1</td>
+</tr>
+<tr>
+<td>long</td>
+<td style="text-align:center">64</td>
+<td style="text-align:right">-2^63 ~ (2^63)-1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>常量 Integer.MIN_VALUE和 Integer.MAX_VALUE分别是最小和最大的整数, 其他类也有同样作用的常量.</li>
+</ul>
+<h5 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h5><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td>double</td>
+<td style="text-align:center">64</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Double.POSITIVE_INFINITY代表∞, Double.NEGATIVE_INFINITY代表-∞, Double.NaN代表”非数值”.</li>
+<li>所有的”非数值”都被认为是彼此不同的, 比如不能这样判断<code>if(x==Double.NaN)</code>, 但是可以用<code>if(Double.isNaN(x))</code>.</li>
+</ul>
+<h5 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h5><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char</td>
+<td style="text-align:center">16</td>
+</tr>
+</tbody>
+</table>
+<h5 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h5><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">内容</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td style="text-align:center">true or false</td>
+<td>1字节</td>
+</tr>
+</tbody>
+</table>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ol>
+<li><p>Java低字节向高字节转换具有自动提升性质,转换顺序为 byte-&gt;short-&gt;int-&gt;long-&gt;float-&gt;double,但高字节向低字节强制转换可能丢失精度.</p>
+</li>
+<li><p>默认浮点类型为double,float加后缀<code>f</code>或<code>F</code>.</p>
+</li>
+</ol>
+<ul>
+<li>可以给数字加下划线, 比如<code>1_000_000</code>, Java编译器会直接删除他们.</li>
+</ul>
+<ol>
+<li>Maths类提供常见的数学函数.</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/31/JavaSE/java_type/" data-id="cj9yuiz4w001s3cqvaaq4u78l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JavaSE/eclipse_setting" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/31/JavaSE/eclipse_setting/" class="article-date">
@@ -96,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/JavaSE/eclipse_setting/" data-id="cj9oacmc1000gs4qvs7ulysqg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/JavaSE/eclipse_setting/" data-id="cj9yuiz3x00083cqvy9a69yb0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -108,9 +245,9 @@
 
 
   
-    <article id="post-hello_world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-gossip/hello_world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/30/hello_world/" class="article-date">
+    <a href="/2017/08/30/gossip/hello_world/" class="article-date">
   <time datetime="2017-08-30T14:06:40.487Z" itemprop="datePublished">2017-08-30</time>
 </a>
     
@@ -122,7 +259,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/30/hello_world/">Hello World</a>
+      <a class="article-title" href="/2017/08/30/gossip/hello_world/">Hello World</a>
     </h1>
   
 
@@ -145,9 +282,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/30/hello_world/" data-id="cj9oacmby000cs4qvq6nabz3s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/30/gossip/hello_world/" data-id="cj9yuiz3t00033cqvvlansczk" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+
     </footer>
   </div>
   
@@ -171,7 +310,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permission/">permission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度地图API/">百度地图API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permission/">permission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度地图API/">百度地图API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
     </div>
   </div>
 
@@ -181,7 +320,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -203,23 +342,23 @@
       <ul>
         
           <li>
+            <a href="/2017/11/12/gossip/StudyRoute/">Java Web学习路线</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/04/JavaSE/java_Date/">Java 日期及其格式</a>
           </li>
         
           <li>
-            <a href="/2017/10/19/android_baiduapi4.9E-324/">Android 百度定位返回4.9E-324</a>
+            <a href="/2017/10/19/Android/android_baiduapi4.9E-324/">Android 百度定位返回4.9E-324</a>
           </li>
         
           <li>
-            <a href="/2017/10/19/android_request_permissions/">Android 申请权限</a>
+            <a href="/2017/10/19/Android/android_request_permissions/">Android 申请权限</a>
           </li>
         
           <li>
             <a href="/2017/10/18/JavaSE/java_multithreading/">Java 多线程</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/17/JavaSE/IO流/">Java IO</a>
           </li>
         
       </ul>
