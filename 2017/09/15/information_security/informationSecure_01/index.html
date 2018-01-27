@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="lzw Love Hj">
 <meta property="og:description" content="代换是将明文字母替换为其他字母,数字或者符号.置换是保持铭文的所有字母不变,只是打乱明文字母的位置和次序 DES同时使用代换和置换两种技巧, 它用56位密匙加密64位密文, 最后输出64位密文.整个过程由两部分组成:一个是加密过程, 一个是子密钥产生过程.  加密过程                       子密钥产生  64位明文                      64位密钥输入">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-12T13:09:46.214Z">
+<meta property="og:updated_time" content="2018-01-27T12:43:10.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="信息安全之DES加密过程">
 <meta name="twitter:description" content="代换是将明文字母替换为其他字母,数字或者符号.置换是保持铭文的所有字母不变,只是打乱明文字母的位置和次序 DES同时使用代换和置换两种技巧, 它用56位密匙加密64位密文, 最后输出64位密文.整个过程由两部分组成:一个是加密过程, 一个是子密钥产生过程.  加密过程                       子密钥产生  64位明文                      64位密钥输入">
@@ -220,7 +220,7 @@
       ╱   ╲    │
      ╱     ╲   │
     ╱       ╲  │
-   ╱          +
+   ╱         异或
   ╱            │
  ╱             │
 Li             Ri
@@ -230,14 +230,27 @@ Li             Ri
 <li><p>加密函数F则是上一轮右边Ri-1和子密钥K1的函数即</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Li = Ri-1</div><div class="line">Ri = Li-1(异或)F(Ri-1,Ki)</div></pre></td></tr></table></figure>
 </li>
-<li><p>加密函数F本质上是Ri-1和子密钥Ki的异或,如图4所示</p>
-</li>
+<li><p>加密函数F本质上是Ri-1和子密钥Ki的异或,如图4所示<br>   Ri-1                    Ki</p>
+<pre><code>|                      |
+|(32位)                |
+</code></pre><p>  置换选择E                 |</p>
+<pre><code>|(48位)                |
+|                      |
+--------- 异或 ---------
+           |(48位)
+          S盒
+           |(32位)
+        置换选择P
+           |
+          Ri
+  图4 F函数的结构
+</code></pre></li>
 </ul>
-
+<h3 id="子密钥产生"><a href="#子密钥产生" class="headerlink" title="子密钥产生"></a>子密钥产生</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/information_security/informationSecure_01/" data-id="cjbi1l526001a9wqvza98ni36" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/information_security/informationSecure_01/" data-id="cjcxd7zib001bjgqvq7di6myf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -289,7 +302,7 @@ Li             Ri
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Web/" style="font-size: 10px;">Java Web</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Web/" style="font-size: 15px;">Java Web</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -298,7 +311,7 @@ Li             Ri
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
     </div>
   </div>
 
@@ -309,6 +322,10 @@ Li             Ri
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/01/27/web_basis/Ajax/">Ajax</a>
+          </li>
         
           <li>
             <a href="/2017/12/11/web_basis/FirstJSP/">Servlet与JSP</a>
@@ -326,10 +343,6 @@ Li             Ri
             <a href="/2017/10/19/Android/android_baiduapi4.9E-324/">Android 百度定位返回4.9E-324</a>
           </li>
         
-          <li>
-            <a href="/2017/10/19/Android/android_request_permissions/">Android 申请权限</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -342,7 +355,7 @@ Li             Ri
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 lzw<br>
+      &copy; 2018 lzw<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

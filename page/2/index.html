@@ -62,6 +62,79 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JavaSE/java_genericity" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/26/JavaSE/java_genericity/" class="article-date">
+  <time datetime="2017-09-26T13:07:28.860Z" itemprop="datePublished">2017-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/26/JavaSE/java_genericity/">Java 泛型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><p>泛型类是有一个或多个类型参数的类</p>
+<ul>
+<li><p>例如储存键值对​的简单泛型类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GotIt</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</div><div class="line">	<span class="keyword">public</span> K key;</div><div class="line">	<span class="keyword">public</span> V value;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">GotIt</span><span class="params">(K key, V value)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">		<span class="keyword">this</span>.key = key;</div><div class="line">		<span class="keyword">this</span>.value = value;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> key;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> value;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>类型参数不能用基本类型实例化，例如GotIt<string,int>在Java中是无效的</string,int></p>
+</li>
+<li><p>当你构造一个泛型类对象时，可以在构造函数中省略类型参数。但仍然要提供一对尖括号，这时构造函数的类型参数是推断出来的，这种空的尖括号可以被称为钻石</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GotIt&lt;String, Integer&gt; gotIt = <span class="keyword">new</span> GotIt&lt;&gt;(<span class="string">"zero"</span>,<span class="number">0</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><p>泛型方法是带参数类型的方法</p>
+<ul>
+<li><p>泛型方法可以是普通类也可以是泛型类的方法</p>
+</li>
+<li><p>声明一个泛型方法时，类型参数要放在修饰符后，返回类型之前</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T[] swap(<span class="keyword">int</span> i, <span class="keyword">int</span> j, T... values) &#123;</div><div class="line">  T temp = values[i];</div><div class="line">  values[i] = values[j];</div><div class="line">  values[j] = temp;</div><div class="line">  <span class="keyword">return</span> values;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>调用时可以不用显提供类型，但提供了类型可以得到一个更好的错误消息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Double[] result1 = generic_test.swap(<span class="number">0</span>, <span class="number">1</span>, <span class="number">1.5</span>, <span class="number">2</span>, <span class="number">3</span>);</div><div class="line">Double[] result2 = generic_test.&lt;Double&gt;swap(<span class="number">0</span>, <span class="number">1</span>, <span class="number">1.5</span>, <span class="number">2</span>, <span class="number">3</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>result1对应的错误信息为<code>Type mismatch: cannot convert from Number&amp;Comparable&lt;?&gt;[] to Double[]</code></p>
+</li>
+<li><p>result2对应的错误信息为<code>The parameterized method &lt;Double&gt;swap(int, int, Double...) of type generic_test is not applicable for the arguments (int, int, Double, Integer, Integer)</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="类型限定"><a href="#类型限定" class="headerlink" title="类型限定"></a>类型限定</h3><ul>
+<li>可以让类型参数满足某些要求，对类型做出限定，要求该类型继承某些类或者实现某些接口</li>
+</ul>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><ul>
+<li>子类型通配符&lt;? extends Employee&gt;</li>
+<li>父类型通配符&lt;? super Employee&gt;</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/26/JavaSE/java_genericity/" data-id="cjcxd7zhv000ijgqvqdgkp9x0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JavaSE/java_enum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/24/JavaSE/java_enum/" class="article-date">
@@ -162,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/24/JavaSE/java_enum/" data-id="cjbi1l51n000a9wqv7sxc3r04" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/24/JavaSE/java_enum/" data-id="cjcxd7zhv000njgqv4evussgq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -258,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/22/JavaSE/java_extend/" data-id="cjbi1l51r000i9wqv0w41c37a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/22/JavaSE/java_extend/" data-id="cjcxd7zhv000pjgqv7kf5ow1u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -333,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/JavaSE/java_interface/" data-id="cjbi1l51o000c9wqv6ybqhbfp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/18/JavaSE/java_interface/" data-id="cjcxd7zhv000kjgqvxpzyp7bq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -409,7 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/17/JavaSE/java_package/" data-id="cjbi1l51t000m9wqvl0wd3wtw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/17/JavaSE/java_package/" data-id="cjcxd7zhv000yjgqvbkk0aist" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -576,7 +649,7 @@
       ╱   ╲    │
      ╱     ╲   │
     ╱       ╲  │
-   ╱          +
+   ╱         异或
   ╱            │
  ╱             │
 Li             Ri
@@ -586,14 +659,27 @@ Li             Ri
 <li><p>加密函数F则是上一轮右边Ri-1和子密钥K1的函数即</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Li = Ri-1</div><div class="line">Ri = Li-1(异或)F(Ri-1,Ki)</div></pre></td></tr></table></figure>
 </li>
-<li><p>加密函数F本质上是Ri-1和子密钥Ki的异或,如图4所示</p>
-</li>
+<li><p>加密函数F本质上是Ri-1和子密钥Ki的异或,如图4所示<br>   Ri-1                    Ki</p>
+<pre><code>|                      |
+|(32位)                |
+</code></pre><p>  置换选择E                 |</p>
+<pre><code>|(48位)                |
+|                      |
+--------- 异或 ---------
+           |(48位)
+          S盒
+           |(32位)
+        置换选择P
+           |
+          Ri
+  图4 F函数的结构
+</code></pre></li>
 </ul>
-
+<h3 id="子密钥产生"><a href="#子密钥产生" class="headerlink" title="子密钥产生"></a>子密钥产生</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/information_security/informationSecure_01/" data-id="cjbi1l526001a9wqvza98ni36" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/information_security/informationSecure_01/" data-id="cjcxd7zib001bjgqvq7di6myf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
@@ -655,7 +741,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/13/JavaSE/java_string/" data-id="cjbi1l51w000s9wqvdadncssh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/13/JavaSE/java_string/" data-id="cjcxd7zia0019jgqvpt1tmqpn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -769,7 +855,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/10/JavaSE/java_ploymorphism/" data-id="cjbi1l51u000n9wqv2lfl9xna" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/10/JavaSE/java_ploymorphism/" data-id="cjcxd7zhv000wjgqvr4pxh7ol" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -818,7 +904,7 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/03/disign_pattern/design_pattern_01/" data-id="cjbi1l52200149wqv9k4r9lkx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/03/disign_pattern/design_pattern_01/" data-id="cjcxd7zhl000bjgqvwdv849de" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -892,112 +978,10 @@ Li             Ri
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/JavaSE/java_object/" data-id="cjbi1l51v000q9wqvbsrb38o5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/JavaSE/java_object/" data-id="cjcxd7zi50010jgqv54t3ptmo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JavaSE/java_memory" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/01/JavaSE/java_memory/" class="article-date">
-  <time datetime="2017-09-01T11:23:51.583Z" itemprop="datePublished">2017-09-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/01/JavaSE/java_memory/">Java 内存分配</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JVM对内存空间的划分为五部分:<br>栈,堆,方法区,本地方法区,寄存器.</p>
-<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><ul>
-<li><p>栈内存中存储的是局部变量,一旦变量生命周期结束,该变量就被释放.</p>
-</li>
-<li><p>每个线程包含一个栈区, 栈中只保存基础数据类型的对象和自定义对象的引用</p>
-</li>
-<li><p>栈区分为三个部分:基本类型变量区, 执行环境上下文, 操作指令区</p>
-</li>
-<li><p>并不是数据结构中的栈.</p>
-</li>
-</ul>
-<h3 id="堆-heap"><a href="#堆-heap" class="headerlink" title="堆(heap)"></a>堆(heap)</h3><ul>
-<li><p>堆内存中存储的是实体(对象),每一个实体都有一个首地址值.</p>
-</li>
-<li><p>堆中不存放基本类型和对象引用</p>
-</li>
-<li><p>new 会在堆内存中开辟空间</p>
-</li>
-<li><p>JVM只有一个堆区并且所有线程共享</p>
-</li>
-<li><p>堆内存中的变量都有一个默认初始化值.</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>初始值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>int</td>
-<td>0</td>
-</tr>
-<tr>
-<td>double</td>
-<td>0.0</td>
-</tr>
-<tr>
-<td>boolen</td>
-<td>false</td>
-</tr>
-<tr>
-<td>char</td>
-<td>‘\u0000’</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>堆中的空间释放依赖垃圾回收机制,具体查看多线程.</li>
-</ul>
-<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><ul>
-<li><p>又称静态区, 跟堆一样, 被所有线程共享.</p>
-</li>
-<li><p>这个方法包含所有的class和static变量</p>
-</li>
-</ul>
-<h3 id="本地方法区"><a href="#本地方法区" class="headerlink" title="本地方法区"></a>本地方法区</h3><ul>
-<li>运行时本地系统平台中的内容, 不同操作系统中也不一样</li>
-</ul>
-<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><ul>
-<li>寄存器为计算机组成原理的内容.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/JavaSE/java_memory/" data-id="cjbi1l51q000g9wqv9499qyig" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
 
     </footer>
   </div>
@@ -1032,7 +1016,7 @@ Li             Ri
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Web/" style="font-size: 10px;">Java Web</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Web/" style="font-size: 15px;">Java Web</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -1041,7 +1025,7 @@ Li             Ri
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
     </div>
   </div>
 
@@ -1052,6 +1036,10 @@ Li             Ri
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/01/27/web_basis/Ajax/">Ajax</a>
+          </li>
         
           <li>
             <a href="/2017/12/11/web_basis/FirstJSP/">Servlet与JSP</a>
@@ -1069,10 +1057,6 @@ Li             Ri
             <a href="/2017/10/19/Android/android_baiduapi4.9E-324/">Android 百度定位返回4.9E-324</a>
           </li>
         
-          <li>
-            <a href="/2017/10/19/Android/android_request_permissions/">Android 申请权限</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1085,7 +1069,7 @@ Li             Ri
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 lzw<br>
+      &copy; 2018 lzw<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

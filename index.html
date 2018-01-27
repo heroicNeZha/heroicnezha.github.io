@@ -62,6 +62,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-web_basis/Ajax" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/27/web_basis/Ajax/" class="article-date">
+  <time datetime="2018-01-27T12:43:27.241Z" itemprop="datePublished">2018-01-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/27/web_basis/Ajax/">Ajax</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
+<li>Ajax全称是 异步 JavaScript 和 XML,目的是为了不重载界面的情况下更新部分网页;</li>
+</ul>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ul>
+<li><p>使用JavaScript发送异步请求的例程</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个异步请求</span></div><div class="line">request = createRequest();</div><div class="line"><span class="comment">//如果为空说明创建失败</span></div><div class="line"><span class="keyword">if</span> (request == <span class="literal">null</span>) &#123;</div><div class="line">  alert(<span class="string">"Unable to create request"</span>);</div><div class="line">  <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> url= <span class="string">"http://localhost/services/getDetails.php?ImageID="</span> + <span class="built_in">escape</span>(itemName);</div><div class="line"><span class="comment">//打开一个连接到目标url,http方法是get,true表示异步</span></div><div class="line">request.open(<span class="string">"GET"</span>, url, <span class="literal">true</span>);</div><div class="line"><span class="comment">//当readyState改变时执行目标函数</span></div><div class="line">request.onreadystatechange = displayDetails;</div><div class="line"><span class="comment">//发送请求,null表示不包含数据</span></div><div class="line">request.send(<span class="literal">null</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用JavaScript创建请求的例程</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createRequest</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="comment">//大多数非IE浏览器适用</span></div><div class="line">    request = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">  &#125; <span class="keyword">catch</span> (tryMS) &#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      <span class="comment">//晚期IE浏览器</span></div><div class="line">      request = <span class="keyword">new</span> ActiveXObject(<span class="string">"Msxml2.XMLHTTP"</span>);</div><div class="line">    &#125; <span class="keyword">catch</span> (otherMS) &#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">//古老的IE浏览器</span></div><div class="line">        request = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">      &#125; <span class="keyword">catch</span> (failed) &#123;</div><div class="line">        request = <span class="literal">null</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> request;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改网页内容的 displayDetails 方法的例程</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//状态信息=4表示后端处理了请求</span></div><div class="line"><span class="keyword">if</span> (request.readyState == <span class="number">4</span>) &#123;</div><div class="line">  <span class="comment">//状态=200表示响应正常</span></div><div class="line">  <span class="keyword">if</span> (request.status == <span class="number">200</span>) &#123;</div><div class="line">    <span class="comment">//获得要修改的控件</span></div><div class="line">    detailDiv = <span class="built_in">document</span>.getElementById(<span class="string">"description"</span>);</div><div class="line">    <span class="comment">//修改内容</span></div><div class="line">    detailDiv.innerHTML = request.responseText;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/27/web_basis/Ajax/" data-id="cjcxd7zi90017jgqvr7xhby33" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Web/">Java Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-web_basis/FirstJSP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/12/11/web_basis/FirstJSP/" class="article-date">
@@ -91,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/web_basis/FirstJSP/" data-id="cjbi1l52400189wqvzshtonhj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/11/web_basis/FirstJSP/" data-id="cjcxd7zif001kjgqvlwb8y9qp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Web/">Java Web</a></li></ul>
@@ -250,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/12/gossip/StudyRoute/" data-id="cjbi1l52100129wqvyuc4jurt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/12/gossip/StudyRoute/" data-id="cjcxd7zid001fjgqv9khf5mkk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
@@ -418,7 +470,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/04/JavaSE/java_Date/" data-id="cjbi1l51k00049wqvhw1keavj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/04/JavaSE/java_Date/" data-id="cjcxd7zhl000ejgqvbigeeu6i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -470,7 +522,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/19/Android/android_baiduapi4.9E-324/" data-id="cjbi1l52000109wqvc959tcgt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/19/Android/android_baiduapi4.9E-324/" data-id="cjcxd7zh10000jgqvt73vvab5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/百度地图API/">百度地图API</a></li></ul>
@@ -512,7 +564,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/19/Android/android_request_permissions/" data-id="cjbi1l51x000v9wqvk7vmjz54" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/19/Android/android_request_permissions/" data-id="cjcxd7zh10001jgqvp1kxvhlm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/permission/">permission</a></li></ul>
@@ -561,7 +613,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/JavaSE/java_multithreading/" data-id="cjbi1l51t000k9wqvrzzjqu6c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/JavaSE/java_multithreading/" data-id="cjcxd7zi60012jgqvx6lp5hl2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
@@ -628,7 +680,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/17/JavaSE/java_IOStream/" data-id="cjbi1l51l00069wqvu0rhonet" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/17/JavaSE/java_IOStream/" data-id="cjcxd7zhl000fjgqv9l3mi5x2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -999,7 +1051,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/12/syntactic_sugar/regex/" data-id="cjbi1l527001c9wqv7oirsnoz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/12/syntactic_sugar/regex/" data-id="cjcxd7zif001ijgqvrea6ubtw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
@@ -1107,80 +1159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/27/JavaSE/java_collection/" data-id="cjbi1l51m00089wqvpuud5t3d" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JavaSE/java_genericity" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/26/JavaSE/java_genericity/" class="article-date">
-  <time datetime="2017-09-26T13:07:28.860Z" itemprop="datePublished">2017-09-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/26/JavaSE/java_genericity/">Java 泛型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><p>泛型类是有一个或多个类型参数的类</p>
-<ul>
-<li><p>例如储存键值对​的简单泛型类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GotIt</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</div><div class="line">	<span class="keyword">public</span> K key;</div><div class="line">	<span class="keyword">public</span> V value;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">GotIt</span><span class="params">(K key, V value)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">		<span class="keyword">this</span>.key = key;</div><div class="line">		<span class="keyword">this</span>.value = value;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> key;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> value;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>类型参数不能用基本类型实例化，例如GotIt<string,int>在Java中是无效的</string,int></p>
-</li>
-<li><p>当你构造一个泛型类对象时，可以在构造函数中省略类型参数。但仍然要提供一对尖括号，这时构造函数的类型参数是推断出来的，这种空的尖括号可以被称为钻石</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GotIt&lt;String, Integer&gt; gotIt = <span class="keyword">new</span> GotIt&lt;&gt;(<span class="string">"zero"</span>,<span class="number">0</span>);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><p>泛型方法是带参数类型的方法</p>
-<ul>
-<li><p>泛型方法可以是普通类也可以是泛型类的方法</p>
-</li>
-<li><p>声明一个泛型方法时，类型参数要放在修饰符后，返回类型之前</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T[] swap(<span class="keyword">int</span> i, <span class="keyword">int</span> j, T... values) &#123;</div><div class="line">  T temp = values[i];</div><div class="line">  values[i] = values[j];</div><div class="line">  values[j] = temp;</div><div class="line">  <span class="keyword">return</span> values;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>调用时可以不用显提供类型，但提供了类型可以得到一个更好的错误消息</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Double[] result1 = generic_test.swap(<span class="number">0</span>, <span class="number">1</span>, <span class="number">1.5</span>, <span class="number">2</span>, <span class="number">3</span>);</div><div class="line">Double[] result2 = generic_test.&lt;Double&gt;swap(<span class="number">0</span>, <span class="number">1</span>, <span class="number">1.5</span>, <span class="number">2</span>, <span class="number">3</span>);</div></pre></td></tr></table></figure>
-<ul>
-<li><p>result1对应的错误信息为<code>Type mismatch: cannot convert from Number&amp;Comparable&lt;?&gt;[] to Double[]</code></p>
-</li>
-<li><p>result2对应的错误信息为<code>The parameterized method &lt;Double&gt;swap(int, int, Double...) of type generic_test is not applicable for the arguments (int, int, Double, Integer, Integer)</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="类型限定"><a href="#类型限定" class="headerlink" title="类型限定"></a>类型限定</h3><ul>
-<li>可以让类型参数满足某些要求，对类型做出限定，要求该类型继承某些类或者实现某些接口</li>
-</ul>
-<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><ul>
-<li>子类型通配符&lt;? extends Employee&gt;</li>
-<li>父类型通配符&lt;? super Employee&gt;</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/26/JavaSE/java_genericity/" data-id="cjbi1l51q000e9wqv1tcdg2ru" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/27/JavaSE/java_collection/" data-id="cjcxd7zhv000tjgqvhblw2smm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -1218,7 +1197,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Web/" style="font-size: 10px;">Java Web</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Web/" style="font-size: 15px;">Java Web</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -1227,7 +1206,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
     </div>
   </div>
 
@@ -1238,6 +1217,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/01/27/web_basis/Ajax/">Ajax</a>
+          </li>
         
           <li>
             <a href="/2017/12/11/web_basis/FirstJSP/">Servlet与JSP</a>
@@ -1255,10 +1238,6 @@
             <a href="/2017/10/19/Android/android_baiduapi4.9E-324/">Android 百度定位返回4.9E-324</a>
           </li>
         
-          <li>
-            <a href="/2017/10/19/Android/android_request_permissions/">Android 申请权限</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1271,7 +1250,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 lzw<br>
+      &copy; 2018 lzw<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
