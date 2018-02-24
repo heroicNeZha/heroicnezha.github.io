@@ -62,6 +62,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-web_basis/jquery" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/24/web_basis/jquery/" class="article-date">
+  <time datetime="2018-02-24T09:49:10.757Z" itemprop="datePublished">2018-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/24/web_basis/jquery/">jQuery</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>jQuery是一个JavaScript库, 随着更多开发者的加入,已经继承了JavaScript、CSS、DOM和Ajax于一体的强大功能.</p>
+<ul>
+<li>文档<ul>
+<li><a href="http://api.jquery.com/" target="_blank" rel="external">英文api文档</a></li>
+<li><a href="http://tool.oschina.net/apidocs/apidoc?api=jquery" target="_blank" rel="external">开源中国的中文文档</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/24/web_basis/jquery/" data-id="cje18o0pj001glwqv0opc0o9i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Web/">Java Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-web_basis/Ajax" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/27/web_basis/Ajax/" class="article-date">
@@ -98,11 +144,15 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//状态信息=4表示后端处理了请求</span></div><div class="line"><span class="keyword">if</span> (request.readyState == <span class="number">4</span>) &#123;</div><div class="line">  <span class="comment">//状态=200表示响应正常</span></div><div class="line">  <span class="keyword">if</span> (request.status == <span class="number">200</span>) &#123;</div><div class="line">    <span class="comment">//获得要修改的控件</span></div><div class="line">    detailDiv = <span class="built_in">document</span>.getElementById(<span class="string">"description"</span>);</div><div class="line">    <span class="comment">//修改内容</span></div><div class="line">    detailDiv.innerHTML = request.responseText;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<h4 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h4><ul>
+<li>但是使用jQuery就很简单了,通过jQuery()方法实现ajax</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAddressByjQuery</span>(<span class="params">itemName</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> tel = $(<span class="string">"#tel"</span>).val();</div><div class="line">	$.ajax(&#123;</div><div class="line">		dataType:<span class="string">"text"</span>,</div><div class="line">		type:<span class="string">"get"</span>,</div><div class="line">		url:<span class="string">"../php/pizza_address.php?dummy="</span>+ <span class="keyword">new</span> <span class="built_in">Date</span>().getTime(),</div><div class="line">		data:&#123;<span class="string">"tel"</span>:tel&#125;,</div><div class="line">		success:<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">			$(<span class="string">"#address"</span>).text(data);</div><div class="line">		&#125;</div><div class="line">		&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/27/web_basis/Ajax/" data-id="cjcxd7zi90017jgqvr7xhby33" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/27/web_basis/Ajax/" data-id="cje18o0p90019lwqv45jrw4et" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Web/">Java Web</a></li></ul>
@@ -143,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/web_basis/FirstJSP/" data-id="cjcxd7zif001kjgqvlwb8y9qp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/11/web_basis/FirstJSP/" data-id="cje18o0pj001elwqv9uyp2ruo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Web/">Java Web</a></li></ul>
@@ -302,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/12/gossip/StudyRoute/" data-id="cjcxd7zid001fjgqv9khf5mkk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/12/gossip/StudyRoute/" data-id="cje18o0p90014lwqvd1t2le7c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
@@ -470,7 +520,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/04/JavaSE/java_Date/" data-id="cjcxd7zhl000ejgqvbigeeu6i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/04/JavaSE/java_Date/" data-id="cje18o0ox0003lwqvsof645a2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -522,7 +572,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/19/Android/android_baiduapi4.9E-324/" data-id="cjcxd7zh10000jgqvt73vvab5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/19/Android/android_baiduapi4.9E-324/" data-id="cje18o0ou0001lwqve63s2adc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/百度地图API/">百度地图API</a></li></ul>
@@ -564,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/19/Android/android_request_permissions/" data-id="cjcxd7zh10001jgqvp1kxvhlm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/19/Android/android_request_permissions/" data-id="cje18o0oy0004lwqv66c2nedd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/permission/">permission</a></li></ul>
@@ -613,7 +663,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/18/JavaSE/java_multithreading/" data-id="cjcxd7zi60012jgqvx6lp5hl2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/18/JavaSE/java_multithreading/" data-id="cje18o0oz000nlwqvahma1slf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
@@ -680,7 +730,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/17/JavaSE/java_IOStream/" data-id="cjcxd7zhl000fjgqv9l3mi5x2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/17/JavaSE/java_IOStream/" data-id="cje18o0oz0005lwqvbxn4cqbu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -1051,118 +1101,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/12/syntactic_sugar/regex/" data-id="cjcxd7zif001ijgqvrea6ubtw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/12/syntactic_sugar/regex/" data-id="cje18o0pj001jlwqvz85ysits" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JavaSE/java_collection" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/27/JavaSE/java_collection/" class="article-date">
-  <time datetime="2017-09-27T13:40:12.415Z" itemprop="datePublished">2017-09-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/27/JavaSE/java_collection/">Java 集合</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="集合类框架"><a href="#集合类框架" class="headerlink" title="集合类框架"></a>集合类框架</h3><p>继承关系如下:</p>
-<p><img src="http://images2015.cnblogs.com/blog/875181/201609/875181-20160921100733106-1187286566.png" alt=""></p>
-<h3 id="​迭代器"><a href="#​迭代器" class="headerlink" title="​迭代器"></a>​迭代器</h3><ul>
-<li>每个集合都提供了按某种顺序迭代元素的方式，因为Collection的父接口Iterable<t>定义了iterator方法返回一个迭代器，例如</t></li>
-<li>对实现了Iterable<e>接口的类的任意对象都可以使用foreach循环，并且会被转换成上例的格式，例如</e></li>
-<li>Iterable接口的remove方法可以移除之前访问的最后一个元素，所以如果中间没有调用next或previous时不能连续两次调用remove方法。使用removeIf方法也很容易：<code>collection.removeIf(e -&gt; e fulfills the condition;</code></li>
-<li>ListIterator接口是Iterator的子接口，含有以下方法：在迭代之前添加元素，修改被访问的元素，以及向后回溯，与链表一起使用时很有趣：</li>
-</ul>
-<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><ul>
-<li>set可以有效检测一个值是不是它的元素，但是它不记得添加的顺序。</li>
-<li>例如你想知道一段文字是否含有关键词，可以这样实现。</li>
-<li>如果你为元素提供了很好的哈希函数，那么哈希set更加高效。Java类库中的String、Path等类都有很好的hash函数</li>
-<li>TreeSet的元素必须实现Comparable接口，或者你在构造函数中提供Comparator</li>
-</ul>
-<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><ul>
-<li>map用于存储键与值之间的联系。</li>
-<li>调用put方法添加新的联系，或者改变已存键所对应的值：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Map&lt;String,Integer&gt; article = <span class="keyword">new</span> HashMap&lt;&gt;();<span class="comment">//Map为抽象接口,不能被实例化</span></div><div class="line">article.put(<span class="string">"word"</span>, <span class="number">4</span>);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>如果你想按顺序访问键，使用TreeMap；如果你不需要按顺序访问键，使用HashMap效率更高</p>
-<ul>
-<li>如果键不存在，get方法会返回null，所以使用<code>getOrDefault(K key，V defaultValue)</code>更好</li>
-<li>merge方法可以检查一个值是否存在，不存在则赋默认值，存在则加1。常用于计数器：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">counts.merge(word ,<span class="number">1</span> ,Integer::sum);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>如果word之前不存在，就将word和1联系起来，如果存在就将之前的值加1</p>
-<ul>
-<li>你可以通过调用这些方法获取map中的键、值、记录的视图<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Set&lt;K&gt; keySet()</div><div class="line">Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()</div><div class="line">Collection&lt;K&gt; values()</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>例如要迭代map中所有的key，你可以遍历entrySet方法返回的set：<br>或者简单的使用forEach方法：</p>
-<ul>
-<li>上例返回的集合不是map数据的拷贝，但是他们与map相联。如果在视图中移除了键或记录，那么该记录也从实际关联的map中移除</li>
-<li>一些map不允许键或值为null，例如ConcurrentHashMap。但是当你使用一些允许null值的map时，要注意一些map方法会将null值解释为不存在的记录或者是应该删除的记录</li>
-<li>想要展示map可以使用会记录添加顺序的LinkedHashMap</li>
-</ul>
-<h3 id="其余集合"><a href="#其余集合" class="headerlink" title="其余集合"></a>其余集合</h3><ul>
-<li><p>properties类可以方便地使用纯文本格式保存和加载</p>
-<ul>
-<li>例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">String path = <span class="string">"E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\collection\\setting.txt"</span>;</div><div class="line">Properties settings = <span class="keyword">new</span> Properties();</div><div class="line">settings.put(<span class="string">"width"</span>, <span class="string">"200"</span>);</div><div class="line">settings.put(<span class="string">"title"</span>, <span class="string">"Hello,World"</span>);</div><div class="line"><span class="keyword">try</span>(OutputStream out = Files.newOutputStream(Paths.get(path)))&#123;</div><div class="line">  settings.store(out, <span class="string">"settings"</span>);</div><div class="line">&#125;<span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">  e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>;<br>结果如下：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#settings</div><div class="line">#Thu Sep 28 22:52:02 CST 2017</div><div class="line">width=200</div><div class="line">title=Hello,World</div></pre></td></tr></table></figure>
-<ul>
-<li>加载属性时可以调用以下方法：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  String path = <span class="string">"E:\\Workspace\\Java SE\\Practice4JavaSE\\src\\collection\\settings.txt"</span>;</div><div class="line">Properties readers = <span class="keyword">new</span> Properties();</div><div class="line"><span class="keyword">try</span>(InputStream in = Files.newInputStream(Paths.get(path)))&#123;</div><div class="line">	readers.load(in);</div><div class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div><div class="line">System.out.println(<span class="string">"the width of "</span>+readers.getProperty(<span class="string">"title"</span>)+</div><div class="line">		<span class="string">" is "</span>+readers.getProperty(<span class="string">"width"</span>));</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<p>然后使用getProperty方法得到键所对应的值，当然这个方法也能指定一个默认值<br>注意因为历史原因，不要使用get方法因为返回的是Object类型</p>
-<ul>
-<li>BitSet（位组）类可以用来存储一系列比特。<ul>
-<li>位组将比特塞进一个long类型的数组里。所以存储值为boolean型的数组相比，使用位组更有效。</li>
-<li>第i个位置为1表示i在集合内。</li>
-<li>注意BitSet不是集合类，他没有实现Collection接口。</li>
-</ul>
-</li>
-<li>栈、队列、双端队列、优先级队列<ul>
-<li>Java集合类框架中没有stack，只有一个Java早期遗留下来的应该避免使用的Stack类，如果你需要使用栈、队列和双端队列，并且不关心线程安全问题，可以使用ArrayDeque。</li>
-<li>使用ArrayDeque作为栈时，使用其push和pop方法，使用队列时使用add和remove方法。在并发程序中通常使用线程安全的队列。</li>
-<li>优先级队列在元素以任意顺序插入后，以有序方式检索元素。既当你调用remove方法时，会得到优先级队列中的当前最小元素。</li>
-</ul>
-</li>
-<li>枚举set和枚举map<ul>
-<li>当你想要收集一些枚举值的集合可以使用EnumSet类，EnumSet类没有公共的构造函数，使用静态工厂方法来构造EnumSet：</li>
-<li>EnumMap是key为枚举类型的映射。它被实现为一个值数组：</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/27/JavaSE/java_collection/" data-id="cjcxd7zhv000tjgqvhblw2smm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
 
     </footer>
   </div>
@@ -1197,7 +1139,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Web/" style="font-size: 15px;">Java Web</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+      <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Web/" style="font-size: 16.67px;">Java Web</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
     </div>
   </div>
 
@@ -1206,7 +1148,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
     </div>
   </div>
 
@@ -1217,6 +1159,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/02/24/web_basis/jquery/">jQuery</a>
+          </li>
         
           <li>
             <a href="/2018/01/27/web_basis/Ajax/">Ajax</a>
@@ -1232,10 +1178,6 @@
         
           <li>
             <a href="/2017/11/04/JavaSE/java_Date/">Java 日期及其格式</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/19/Android/android_baiduapi4.9E-324/">Android 百度定位返回4.9E-324</a>
           </li>
         
       </ul>

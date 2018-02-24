@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="lzw Love Hj">
 <meta property="og:description" content="概念 Ajax全称是 异步 JavaScript 和 XML,目的是为了不重载界面的情况下更新部分网页;  步骤 使用JavaScript发送异步请求的例程 1234567891011121314//创建一个异步请求request = createRequest();//如果为空说明创建失败if (request == null) &amp;#123;  alert(&quot;Unable to create r">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-27T13:00:27.900Z">
+<meta property="og:updated_time" content="2018-02-24T10:33:39.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax">
 <meta name="twitter:description" content="概念 Ajax全称是 异步 JavaScript 和 XML,目的是为了不重载界面的情况下更新部分网页;  步骤 使用JavaScript发送异步请求的例程 1234567891011121314//创建一个异步请求request = createRequest();//如果为空说明创建失败if (request == null) &amp;#123;  alert(&quot;Unable to create r">
@@ -101,11 +101,15 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//状态信息=4表示后端处理了请求</span></div><div class="line"><span class="keyword">if</span> (request.readyState == <span class="number">4</span>) &#123;</div><div class="line">  <span class="comment">//状态=200表示响应正常</span></div><div class="line">  <span class="keyword">if</span> (request.status == <span class="number">200</span>) &#123;</div><div class="line">    <span class="comment">//获得要修改的控件</span></div><div class="line">    detailDiv = <span class="built_in">document</span>.getElementById(<span class="string">"description"</span>);</div><div class="line">    <span class="comment">//修改内容</span></div><div class="line">    detailDiv.innerHTML = request.responseText;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<h4 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h4><ul>
+<li>但是使用jQuery就很简单了,通过jQuery()方法实现ajax</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAddressByjQuery</span>(<span class="params">itemName</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> tel = $(<span class="string">"#tel"</span>).val();</div><div class="line">	$.ajax(&#123;</div><div class="line">		dataType:<span class="string">"text"</span>,</div><div class="line">		type:<span class="string">"get"</span>,</div><div class="line">		url:<span class="string">"../php/pizza_address.php?dummy="</span>+ <span class="keyword">new</span> <span class="built_in">Date</span>().getTime(),</div><div class="line">		data:&#123;<span class="string">"tel"</span>:tel&#125;,</div><div class="line">		success:<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">			$(<span class="string">"#address"</span>).text(data);</div><div class="line">		&#125;</div><div class="line">		&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/27/web_basis/Ajax/" data-id="cjcxd7zi90017jgqvr7xhby33" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/27/web_basis/Ajax/" data-id="cje18o0p90019lwqv45jrw4et" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Web/">Java Web</a></li></ul>
@@ -115,6 +119,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/02/24/web_basis/jquery/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          jQuery
+        
+      </div>
+    </a>
   
   
     <a href="/2017/12/11/web_basis/FirstJSP/" id="article-nav-older" class="article-nav-link-wrap">
@@ -148,7 +161,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Web/" style="font-size: 15px;">Java Web</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+      <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Web/" style="font-size: 16.67px;">Java Web</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/百度地图API/" style="font-size: 10px;">百度地图API</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
     </div>
   </div>
 
@@ -157,7 +170,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
     </div>
   </div>
 
@@ -168,6 +181,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/02/24/web_basis/jquery/">jQuery</a>
+          </li>
         
           <li>
             <a href="/2018/01/27/web_basis/Ajax/">Ajax</a>
@@ -183,10 +200,6 @@
         
           <li>
             <a href="/2017/11/04/JavaSE/java_Date/">Java 日期及其格式</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/19/Android/android_baiduapi4.9E-324/">Android 百度定位返回4.9E-324</a>
           </li>
         
       </ul>
