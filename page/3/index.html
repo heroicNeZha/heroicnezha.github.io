@@ -62,6 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-disign_pattern/design_pattern_01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/03/disign_pattern/design_pattern_01/" class="article-date">
+  <time datetime="2017-09-03T13:49:53.254Z" itemprop="datePublished">2017-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/03/disign_pattern/design_pattern_01/">单例设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。</p>
+</blockquote>
+<p>Java中一共有23中设计模式, 今天学的是第一种: 单例设计模式.</p>
+<p>解决问题: 单例设计模式解决的问题是一个类的对象在内存中的唯一性.</p>
+<p>应用场景: 多个应用都在操作同一个配置文件时, 需要程序A操作后的结果,<br>程序B要知道并基于A操作后的结果进行操作.</p>
+<p>示例:</p>
+<p>再类加载时加载对象(饿汉):<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Single</span></span>&#123;</div><div class="line">  <span class="keyword">static</span> Single s = <span class="keyword">new</span> Single();</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span></span>&#123;&#125;;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">static</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> s;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>延迟加载方式(懒汉):<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Single</span></span>&#123;</div><div class="line">  <span class="keyword">static</span> Single s = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span></span>&#123;&#125;;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">static</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span>) &#123;</div><div class="line">      s = <span class="keyword">new</span> Single();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> s;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>主方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">  Single s1 = Single.getInstance();</div><div class="line">  Single s2 = Single.getInstance();</div><div class="line">  System.out.println(s1==s2);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用静态方法<code>getInstance()</code>得到唯一的静态对象<code>s</code>;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/03/disign_pattern/design_pattern_01/" data-id="cje9r47tx000620qvrqnulpva" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JavaSE/java_object" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/02/JavaSE/java_object/" class="article-date">
@@ -124,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/02/JavaSE/java_object/" data-id="cje18o0p9000slwqvumbd4cd1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/02/JavaSE/java_object/" data-id="cje9r47ui001420qvzev4vnlt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -226,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/JavaSE/java_memory/" data-id="cje18o0oz000ilwqvr27qw1qe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/JavaSE/java_memory/" data-id="cje9r47uj001620qvpa7qjzjy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
@@ -310,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/JavaSE/java_array/" data-id="cje18o0oz0008lwqvnbzk0hfp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/JavaSE/java_array/" data-id="cje9r47u7000j20qv622z51os" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -447,7 +496,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/JavaSE/java_type/" data-id="cje18o0p9000ulwqvn4g6f8c5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/JavaSE/java_type/" data-id="cje9r47up001j20qvp3dvas1h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -493,7 +542,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/31/JavaSE/eclipse_setting/" data-id="cje18o0op0000lwqvt3k1tior" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/31/JavaSE/eclipse_setting/" data-id="cje9r47tx000f20qvfqt4wjx7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -542,7 +591,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/30/gossip/hello_world/" data-id="cje18o0p9000zlwqv8t7t3te4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/30/gossip/hello_world/" data-id="cje9r47tx000820qvfy1r0h5n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
@@ -589,7 +638,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li></ul>
     </div>
   </div>
 
@@ -602,23 +651,23 @@
       <ul>
         
           <li>
-            <a href="/2018/02/24/web_basis/jquery/">jQuery</a>
+            <a href="/2018/03/01/javaEE/struct2/">Struct2</a>
           </li>
         
           <li>
-            <a href="/2018/01/27/web_basis/Ajax/">Ajax</a>
+            <a href="/2018/02/24/javaEE/jquery/">jQuery</a>
           </li>
         
           <li>
-            <a href="/2017/12/11/web_basis/FirstJSP/">Servlet与JSP</a>
+            <a href="/2018/01/27/javaEE/Ajax/">Ajax</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/11/javaEE/FirstJSP/">Servlet与JSP</a>
           </li>
         
           <li>
             <a href="/2017/11/12/gossip/StudyRoute/">Java Web学习路线</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/04/JavaSE/java_Date/">Java 日期及其格式</a>
           </li>
         
       </ul>
